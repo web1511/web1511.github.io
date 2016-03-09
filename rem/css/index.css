@@ -1,0 +1,129 @@
+* { padding: 0; margin: 0; }
+
+a,a:link,a:hover,a:visited{color:#000;text-decoration:none;}
+
+html, body { width: 100%; height: 100%; }
+#wrap {width:100%;max-width: 10rem;height: 100%; margin: 0 auto; position: relative; }
+
+#pageMin{ width: 100%; position: absolute; top: 1.1362rem; left: 0; overflow: hidden; background:#eee;}
+
+#page{ width: 100%; height: 100%; margin: 0 auto 0 auto; overflow: hidden;box-sizing:border-box;/* translate3d(0,0,0); */}
+#top_wrap{ width: 100%;background-color: #FE5400; position: fixed; top: 0; left: 0; z-index: 999; }
+.top {box-sizing: border-box; height:1.15625rem;padding:0.2rem 0.2rem 0.2rem 1.2rem;background: url(../img/logo.png) no-repeat;
+
+ background-position: 0.2rem center; background-size: 0.75rem 0.675rem;}
+
+.top_con {width: 100%;height:0.78125rem;line-height:0.78125rem;background: #B52600; border-radius: 0.1rem;line-height:0.78125rem;}
+
+.top_con span{height:0.78125rem;font-size: 0.375rem;padding-left: 0.78125rem;color: #F0E0DC;}
+
+#page .banner{width: 100%;height:3.225rem;position: relative;}
+
+#page .swiper-wrapper{height:100%;}
+
+#page .swiper-wrapper img{width: 100%;height: 100%;}
+
+#page .btns{text-align: right;left: -0.2rem;bottom:0.06rem;}
+
+#page .btns span{width: 0.2rem;height: 0.2rem;background:#ffffff;margin:0 0.1rem;opacity: 0.7;margin-top:0.1rem;}
+
+#page .btns .swiper-pagination-bullet-active{background-color: #FE5400;}
+
+section, nav{width: 100%;overflow: hidden;background:#ffffff;}
+
+nav ul{width: 100%;overflow: hidden;height: 5rem;}
+
+nav ul li{width:25%;height: 2rem;float: left;list-style: none;position: relative;text-align: center;padding-top: 0.25rem;}
+
+nav ul li img{width: 1.203125rem;height: 1.203125rem;}
+
+nav ul li span{font-size: 0.375rem;position: absolute;bottom: 0.1rem;left:0;display: block;width: 100%;}
+
+section div{box-sizing: border-box;}
+
+section div a{width:100%;height:100%;display:block;float:left;}
+
+section img{width:100%;height:100%;}
+
+.news_img{width:100%;height:3rem;}
+
+.news_img img{width:100%;height:100%;}
+
+#page .title{box-sizing: border-box;width:100%;height:1rem;line-height:1rem;font-size: 0.43rem;}
+
+#page .title:before{content:"";display:block;height:0.8rem;width:0.08rem;background-color:#FE5400;float:left;margin-right:0.2rem;margin-top: 0.1rem;}
+
+.Overseas_Amoy,.csh,.Global_purchase,.Hot_market{width:100%;overflow:hidden;margin-bottom:0.2rem;background:#ffffff;}
+
+.Overseas_Amoy .left{width:4.265625rem;height:5.671875rem;float:left;}
+
+.Overseas_Amoy .right{width:5.734375rem;float:left;}
+
+.Overseas_Amoy .h_top{width:100%;height:2rem;}
+
+.Overseas_Amoy .h_top a{display:block;float:left;}
+
+.Overseas_Amoy .h_top a:nth-child(1){width:3.278125rem;height:100%;}
+
+.Overseas_Amoy .h_top a:nth-child(2){width:2.45625rem;height:100%;}
+
+.Overseas_Amoy .bottom{width:100%;height:3.671875rem;}
+
+.Overseas_Amoy .bottom a{width:50%;height:100%;float:left;}
+
+.sect-wrap div{width:100%;height:3.0625rem;border-top:1px solid #eeeeee;}
+
+.sect-wrap a.bigImg{width:4rem;height:100%;border:none;}
+
+.sect-wrap a{box-sizing:border-box; width:2rem;float:left;border-left:1px solid #eeeeee;}
+
+.Global_purchase div{width:100%;height:3.0625rem;}
+
+.Global_purchase div:nth-child(2) a:nth-child(1){width:6rem;height:100%;border-right:1px solid #eeeeee;box-sizing: border-box;}
+
+.Global_purchase div:nth-child(2) a:nth-child(2){width:4rem;height:100%;}
+
+.Global_purchase div:nth-child(3) a{width:20%;height:100%;}
+
+.news_2{width:100%;height:2.40325rem;}
+
+.Hot_market .col-1{width:100%;height:4rem;overflow:hidden;}
+
+.Hot_market .col-1 dl{width:50%;height:100%;float:left;}
+
+.Hot_market div h4{font-weight:normal;color:#333333;font-size: 0.5rem;padding:0.05rem 0;}
+
+.Hot_market div small{color:#777777;font-size: 0.325rem;float: left;/* padding-left: 0.1rem; */}
+
+.Hot_market div dt{height:1.1875rem;padding:0.2rem 0 0 0.2rem;}
+
+.Hot_market .col-1 dd{width:100%;height:2.21rem;padding:0.1rem 0;}
+
+.Hot_market .col-2 dl{width:25%;float:left;height: 3.0625rem;}
+
+.Guess_youlike,.Hot_market,.Overseas_Amoy{margin-top:0.2rem;}
+
+.Guess_youlike ul{box-sizing: border-box;width:100%;list-style-type:none;overflow:hidden;background-color:#eeeeee;padding-left:0.1rem;}
+
+.Guess_youlike ul li{box-sizing: border-box;width:49%;float:left;padding-bottom:0.2rem;margin-bottom:0.1rem;background-color:#ffffff;margin-right:0.07rem;}
+
+.Guess_youlike ul li div{height:4.672rem;margin-bottom:0.2rem;}
+
+.Guess_youlike ul li p{margin:0 0.2rem;height:1.0625rem;line-height:0.5rem;font-size:0.375rem;word-break: break-all;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 
+
+2;color:#666666;}
+
+.Guess_youlike ul li span{line-height:0.4rem;margin-top:0.1rem;display:block;padding-left:0.2rem;color:#FE5400;font-size: 0.37rem;}
+
+footer{box-sizing: border-box;width:100%;height:4.5rem;background-color:#292c33;padding:0.5rem 0.3rem 0.5rem 0.3rem;overflow:hidden;}
+
+footer .footer_nav{width:100%;overflow:hidden;text-align:center;height: 1.25rem;margin:0 auto;}
+
+footer .footer_nav a{width:2.15rem;height:1.1rem;line-height:1rem;margin:0 0.1rem;border-radius:0.25rem;float:left;background-color:#3F434E;border:2px solid 
+
+#1A1B21;color:#c3c6ca;font-size: 0.4375rem;box-sizing: border-box;}
+
+footer p{width:100%;text-align:center;display:block;margin-left:-0.2rem;color:#c3c6ca;margin:0.5rem 0;font-size: 0.375rem;}
+
+.backTop{width:1.375rem;height:1.375rem;line-height:1.375rem;background:pink;border-radius:0.6875rem;position:fixed;right:0.3rem;bottom:0.5rem;z-index:9999;font-size:0.3rem;
+text-align:center;color:white;display:none;}
