@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="flexible" content="initial-dpr=2,maximum-dpr=3" />
+	<!-- <meta name="flexible" content="initial-dpr=2,maximum-dpr=3" /> -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1" />
 	<title>模仿移动端淘宝网</title>
-	<script type="text/javascript" src="js/flexible.js"></script>
+	<script>
+	var iWidth=document.documentElement.getBoundingClientRect().width;
+	document.getElementsByTagName("html")[0].style.fontSize=iWidth/10+"px";
+   </script>
 	<link rel="stylesheet" type="text/css" href="css/swiper-3.2.7.min.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<!-- <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
