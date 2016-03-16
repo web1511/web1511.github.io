@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=640">
+	<title>移动端定宽度适配页面</title>
+	<script src="mobile-util.js"></script>
+	<style type="text/css">
+       *{
+       	  box-sizing:border-box;
+       	  -moz-box-sizing:border-box; /* Firefox */
+         -webkit-box-sizing:border-box; /* Safari */
+       	  margin:0;
+       	  -webkit-text-size-adjust:none; 
+       }
+        html {
+            background-color: #f7f7f7;
+        }
+        body{
+        	width:640px;
+        	margin:0 auto;
+        	line-height:1.4;
+        	background-color: #fff;
+        }
+        .app{
+        	display: inline-block;
+        	position:relative;
+        	/* display:-webkit-flex;
+        	display:flex; */
+        	padding:26px 20px;
+        	border-bottom:1px solid #cfcfcf;
+        }
+        .app_icon{
+        	display: inline-block;
+        	width:94px;
+        	height:94px;
+        	border-radius:8px;
+        	overflow:hidden;/*为了圆角*/
+        }
+        .app_img{
+        	display:block;
+        	max-width:100%; 
+        }
+        .app_text{
+        	display: inline-block;
+        	margin-left:18px;
+        	margin-right:auto;/*为了右边的按钮间隙相等*/
+        }
+        .app_text_title{
+        	font-size:35px;
+        	color:#181818;
+        }
+        .app_text_summary{
+        	font-size:24px;
+        	color:#828282;
+        }
+        .app_button {
+        	display:inline-block;
+        	height:52px;
+        	padding:8px 26px;
+        	text-align:center;
+        	font-size:26px;
+        	background-color:#3cba1a;
+        	text-decoration:none;
+        	color:#fff;
+        	border-radius:8px;
+        	vertical-align: bottom;
+        }
+        .app_label{
+        	position:absolute;
+        	width:88px;
+        	height:64px;
+        	left:0;
+        	top:0;
+        	background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABACAMAAACpzkDwAAAAY1BMVEX////kNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyD99vXkNyDkNyDkNyDkNyD1xcHkNyD////99vX76+r64d/41tT2y8j0wLzztK/xqKLvm5TtjYXrf3bqcGToX1HmTTzkNyDPEQg9AAAAEXRSTlMAESIzRFVmd4iZqqq7zN3u7uYy9NoAAAHASURBVHja1dXbkoIwEATQJtyXyxJFIKiE///KJSJCVhQ3ZB62H7Sssk6Nk8agt54ijXwG2EXzJHAxxuKkScAwx5KaRS702FBTbdQnuKtrI9V3sJbFV0rezR9aIWouNzcQrKs6fOHi9i74FPG+AiHD60zmnBFuhHjPJh7eZhVuN6sVMeATuO+bRr3Ksu234TzAdh4wV5048WYTznzgD3BfV93gnvsNOPWAz+FusWJev4GzT9kX8COdKav1uL1P+gLOfWAv3KofoT/gRejAABZPPf4FJwzYDTeqGxpc+IAZrK2i5hcdjh0Yw7IUChbV9C83w7kHmMOC3+BmePIkP/QLOHGwA+74cVxFxdszr2bYZLtLuFJrVbA8XU+3VY9wxrAPburH4V34QU5wDOyE720YYHkc740BNl/DEj6oCl/VKR7lCH+7sAGX0xVXXe/H+QUr8NOV5oAEjgESOAINHIIGDkAD25h3DbbjguLcVuEYNHACGjhzaOCcgQQuXNDAAWjgGDSwxYPTYRc0cAgaOAURzIhg24uY4BxEsEcEx6CBC4cIjkADkwwMkqqNMM3AoBoYVAODphIKZkRwSuTCxz/LDzuIyYMbR8EsAAAAAElFTkSuQmCC') no-repeat;
+        }
+	</style>
+</head>
+<body>
+	<div class="app">
+		<div class="app_icon">
+			<img src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png" alt="手游" class="app_img">
+		</div>
+		<div class="app_text">
+			<h2 class="app_text_title">忍者必须死Ⅱ</h2>
+			<p class="app_text_summary">史上最萌的手游，安装量过10万。</p>
+		</div>
+		<a class="app_button" href="#">下载</a>
+		<i class="app_label"></i>
+	</div>
+</body>
+</html>
