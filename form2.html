@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>  
 <head>
-<meta charset="UTF-8">    
+<meta charset="UTF-8">
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>    
 <title>注册</title>
 <style>
+html,body{height:100%;width:100%;}
 *{margin:0;
   padding:0; 
 }
@@ -12,7 +14,7 @@ body{font-size:20px;}
   width:1024px;
   padding:15px;
   margin:100px auto 0;
-  border: 1px dashed orange;
+  border: 1px dashed #066036;
 }
 label{
   text-align:right;
@@ -20,13 +22,13 @@ label{
 label b{
   display:inline-block;
   width:134px;
-  color: rgb(255, 165, 0);
+  color: #066036;
 }
 p{
   display:inline;
   margin-left:10px;
   visibility:hidden;
-  color: orange;
+  color: #066036;
 }
 
 #count{
@@ -65,47 +67,85 @@ input[type="submit"]{
     outline:none;
     width: 80px;
     height: 28px;
-    background-color: #FF9800;
+    background-color: #066036;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #ccc;
+    color:#fff;
 }
 input[type="text"],input[type="password"]{
-    border: 1px solid rgb(255, 165, 0);
+    border: 1px solid #066036;
 }
 .quepwd{
   background-color: rgba(178, 224, 23, 0.41);
 }
-
+.regBtn{
+  margin:0 auto;
+  display:block;
+  border: none;
+  outline:none;
+  width: 80px;
+  height: 28px;
+  background-color: #066036;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #ccc;
+  font-size:18px;
+  color:#fff;
+}
+.wrap{
+   width:100%;
+   height:100%;
+   background-color:rgba(88,85,88,0.5);
+   padding-top:20px;
+   position:relative;
+}
+.wrap i{
+  position:absolute;
+  color:green;
+  right:20px;
+  top:0px;
+  cursor:pointer;
+  font-style:normal;
+}
+.popBox{
+   position:absolute;
+   z-index:2;
+}
 </style>    
 </head>
     
-<body>
-   <form id="allcontent" action="login.php">
-     <div>
-       <label><b>会员名：</b><input type="text"></label><p>5-25个字符，一个汉字为两个字符，推荐使用中文会员名。</p>
-     </div>
-     <div id="count">0个字符</div>
-     <div>
-       <label><b>密码：</b><input type="password"></label><p>6-16个字符，使用字母加数字或符号的组合密码,不能单独使用字母、数字或符号。</p>
-     </div>
-     <div id="em">
-       <em>弱</em><em>中</em><em>强</em>
-     </div>
-     <div>
-       <label><b>确认密码：</b><input type="password" disabled="true" class="quepwd"></label><p></p>
-     </div>
-     <div>
-        <input type="submit" value="提交" />
-     </div>
-   </form>
+<body style="height:2000px;">
+   <div class="wrap">
+       <i id="close" title="关闭弹窗">X</i>
+       <button class="regBtn" title="出现弹窗注册页面">注册</button>
+       <div class="popBox" style="display:none ">
+           <form id="allcontent" action="login.php">
+             <div>
+               <label><b>会员名：</b><input type="text"></label><p>5-25个字符，一个汉字为两个字符，推荐使用中文会员名。</p>
+             </div>
+             <div id="count">0个字符</div>
+             <div>
+               <label><b>密码：</b><input type="password"></label><p>6-16个字符，使用字母加数字或符号的组合密码,不能单独使用字母、数字或符号。</p>
+             </div>
+             <div id="em">
+               <em>弱</em><em>中</em><em>强</em>
+             </div>
+             <div>
+               <label><b>确认密码：</b><input type="password" disabled="true" class="quepwd"></label><p></p>
+             </div>
+             <div>
+                <input type="submit" value="提交" />
+             </div>
+         </form>
+      </div>
+   </div>
 
 <script>
 function getLength(str){
   // \x00-xff代表单字节字符。
   return str.replace(/[^\x00-\xff]/g, "xx").length;
 }
-
 function findStr(str, n){//找到相同的字符串
   var tmp = 0;
   for (var i = 0; i < str.length; i++){
@@ -115,169 +155,199 @@ function findStr(str, n){//找到相同的字符串
   }
   return tmp;
 }
-
 window.onload = function() {
-  var oForm = document.getElementById('allcontent');
-  var aInput = document.getElementsByTagName('input');
-  var oName = aInput[0];//会员
-  var pwd = aInput[1];//密码
-  var pwd2 = aInput[2];//确认密码
-  var aP = document.getElementsByTagName('p');
-  var name_msg = aP[0];//会员提示语
-  var pwd_msg = aP[1];//密码提示语
-  var pwd2_msg = aP[2];//确认密码提示语
-  var count = document.getElementById('count');//判断字符
-  var aEm = document.getElementsByTagName('em');//强度判断
-  var name_length = 0;
-  //会员名
-    function memberF(){
-       name_msg.style.visibility='visible';
-       name_msg.innerHTML = "<i class='ati'></i>5-25个字符，一个汉字为两个字符，推荐使用中文会员名。";//只要一聚焦的时候就会出现这个提示
-    }
-    function memberKeyup(){
-       //显示判断字符的信息
-       count.style.visibility='visible';
-       name_length = getLength(oName.value);
-       count.innerHTML =name_length+'</i>个字符';
-       //判断长度为0的时候,信息隐藏
-       if(name_length==0){
-         count.style.visibility='hidden';
-       } 
-    }
-    function memberB(elem){
-        //含有非法字符 \u4e00-\u9fa5表示的汉字 
-        var re = /[^\w\u4e00-\u9fa5]/g;
-        if(re.test(elem.value)){
-          name_msg.innerHTML = '<i></i>含有非法字符';
-          return false; 
-        }
-        //不能为空
-        else if(elem.value == ''){
-          name_msg.innerHTML = '<i></i>用户名不能为空';
-          return false;  
-        }
-        //长度超过25个字符
-        else if(name_length>25){
-          name_msg.innerHTML = '<i></i>长度超过25个字符！';
-          return false;  
-        }
-        //长度少于6个字符
-        else if(name_length<6){
-          name_msg.innerHTML = '<i></i>长度不能少于6个字符！';
-          return false;  
-        }
-        //OK
-        else{
-          name_msg.innerHTML = '<i></i>OK！';
-          return true; 
-        }
-    }
-    oName.onfocus = function(){
-        memberF();
-    }
-    oName.onkeyup = function(){
-        memberKeyup();
-    }
-    oName.onblur = function(){
-        memberB(this);
-    }
-    function pwdF(){
-        pwd_msg.style.visibility = 'visible';
-        pwd_msg.innerHTML = '<i class="ati"></i>6-16个字符，请使用字母加数字或符号的组合密码，不能单独使用字母、数字或符号。';
-    }
-    function pwdKeyup(elem2){//强中弱
-      //大于5字符为“中”,并且下面的确认密码可以使用
-      if(elem2.value.length>5){
-        aEm[1].className = 'active';
-        pwd2.disabled =false;
-        pwd2.className ='';
-      }else{//
-        aEm[1].className = '';
-        pwd2.disabled =true;
-        pwd2.className ='quepwd';
-      }
-      //大于10字符为“强”
-      if(elem2.value.length>10){
-         aEm[2].className = 'active';
-      }else{
-        aEm[2].className = '';
-      }
-    }
-    function pwdB(elem3){
-      var m = findStr(elem3.value, elem3.value[0]);//相同字符
-      var reg_n = /[^\d]/g;//不能全是数字
-      var reg_c = /[^a-zA-Z]/g;//不能全为字母
+   var module = (function(){
+        var oForm = document.getElementById('allcontent');
+        var aInput = document.getElementsByTagName('input');
+        var oName = aInput[0];//会员
+        var pwd = aInput[1];//密码
+        var pwd2 = aInput[2];//确认密码
+        var aP = document.getElementsByTagName('p');
+        var name_msg = aP[0];//会员提示语
+        var pwd_msg = aP[1];//密码提示语
+        var pwd2_msg = aP[2];//确认密码提示语
+        var count = document.getElementById('count');//判断字符
+        var aEm = document.getElementsByTagName('em');//强度判断
+        var name_length = 0;
+        //会员名
+          function memberF(){
+             name_msg.style.visibility='visible';
+             name_msg.innerHTML = "<i class='ati'></i>5-25个字符，一个汉字为两个字符，推荐使用中文会员名。";//只要一聚焦的时候就会出现这个提示
+          }
+          function memberKeyup(){
+             //显示判断字符的信息
+             count.style.visibility='visible';
+             name_length = getLength(oName.value);
+             count.innerHTML =name_length+'</i>个字符';
+             //判断长度为0的时候,信息隐藏
+             if(name_length==0){
+               count.style.visibility='hidden';
+             } 
+          }
+          function memberB(elem){
+              //含有非法字符 \u4e00-\u9fa5表示的汉字 
+              var re = /[^\w\u4e00-\u9fa5]/g;
+              if(re.test(elem.value)){
+                name_msg.innerHTML = '<i></i>含有非法字符';
+                return false; 
+              }
+              //不能为空
+              else if(elem.value == ''){
+                name_msg.innerHTML = '<i></i>用户名不能为空';
+                return false;  
+              }
+              //长度超过25个字符
+              else if(name_length>25){
+                name_msg.innerHTML = '<i></i>长度超过25个字符！';
+                return false;  
+              }
+              //长度少于6个字符
+              else if(name_length<6){
+                name_msg.innerHTML = '<i></i>长度不能少于6个字符！';
+                return false;  
+              }
+              //OK
+              else{
+                name_msg.innerHTML = '<i></i>OK！';
+                return true; 
+              }
+          }
+          oName.onfocus = function(){
+              memberF();
+          }
+          oName.onkeyup = function(){
+              memberKeyup();
+          }
+          oName.onblur = function(){
+              memberB(this);
+          }
+          function pwdF(){
+              pwd_msg.style.visibility = 'visible';
+              pwd_msg.innerHTML = '<i class="ati"></i>6-16个字符，请使用字母加数字或符号的组合密码，不能单独使用字母、数字或符号。';
+          }
+          function pwdKeyup(elem2){//强中弱
+            //大于5字符为“中”,并且下面的确认密码可以使用
+            if(elem2.value.length>5){
+              aEm[1].className = 'active';
+              pwd2.disabled =false;
+              pwd2.className ='';
+            }else{//
+              aEm[1].className = '';
+              pwd2.disabled =true;
+              pwd2.className ='quepwd';
+            }
+            //大于10字符为“强”
+            if(elem2.value.length>10){
+               aEm[2].className = 'active';
+            }else{
+              aEm[2].className = '';
+            }
+          }
+          function pwdB(elem3){
+            var m = findStr(elem3.value, elem3.value[0]);//相同字符
+            var reg_n = /[^\d]/g;//不能全是数字
+            var reg_c = /[^a-zA-Z]/g;//不能全为字母
 
-        //不能为空
-        if(elem3.value.length==''){
-           pwd_msg.innerHTML = '<i class="err"></i>密码不能为空！';
-           return false; 
-        }
-        //不能用相同字符
-        else if( m == elem3.value.length){
-          pwd_msg.innerHTML = '<i class="err"></i>密码不能为相同字符！';
-           return false;
-        }
-        //长度应为6-16个字符
-        else if(elem3.value.length<6 || elem3.value.length>16  ){
-          pwd_msg.innerHTML = '<i class="err"></i>密码长度为6-16个字符';
-          return false; 
-        }
-        //不能全为数字
-        else if(!reg_n.test(elem3.value)){
-         pwd_msg.innerHTML = '<i class="err"></i>密码不能全为数字';
-         return false; 
-        }
-         //不能全为字母
-        else if(!reg_c.test(elem3.value)){
-          pwd_msg.innerHTML = '<i class="err"></i>密码不能全为字母';
-          return false; 
-        }
-        //OK!
-        else{
-           pwd_msg.innerHTML = '<i class="ok"></i>OK！';
-           return true; 
-        }
-    }    
-    pwd.onfocus = function(){
-        pwdF();
-    }
-    pwd.onkeyup = function(){
-        pwdKeyup(this);
-    }
-    pwd.onblur = function(){
-        pwdB(this);
-    }
-  //确认密码
-    function pwd2F(elem4){
-        if(elem4.value != pwd.value){
-          pwd2_msg.style.visibility ='visible';
-          pwd2_msg.innerHTML = '<i class="err"></i>两次输入的密码不一致！';
-          return false; 
-        }else{
-          pwd2_msg.innerHTML = '<i class="err"></i>OK！';
-          return true; 
-        }
-    }
-    pwd2.onblur = function(){
-        pwd2F(this)
-    }
+              //不能为空
+              if(elem3.value.length==''){
+                 pwd_msg.innerHTML = '<i class="err"></i>密码不能为空！';
+                 return false; 
+              }
+              //不能用相同字符
+              else if( m == elem3.value.length){
+                pwd_msg.innerHTML = '<i class="err"></i>密码不能为相同字符！';
+                 return false;
+              }
+              //长度应为6-16个字符
+              else if(elem3.value.length<6 || elem3.value.length>16  ){
+                pwd_msg.innerHTML = '<i class="err"></i>密码长度为6-16个字符';
+                return false; 
+              }
+              //不能全为数字
+              else if(!reg_n.test(elem3.value)){
+               pwd_msg.innerHTML = '<i class="err"></i>密码不能全为数字';
+               return false; 
+              }
+               //不能全为字母
+              else if(!reg_c.test(elem3.value)){
+                pwd_msg.innerHTML = '<i class="err"></i>密码不能全为字母';
+                return false; 
+              }
+              //OK!
+              else{
+                 pwd_msg.innerHTML = '<i class="ok"></i>OK！';
+                 return true; 
+              }
+          }    
+          pwd.onfocus = function(){
+              pwdF();
+          }
+          pwd.onkeyup = function(){
+              pwdKeyup(this);
+          }
+          pwd.onblur = function(){
+              pwdB(this);
+          }
+        //确认密码
+          function pwd2F(elem4){
+              if(elem4.value != pwd.value){
+                pwd2_msg.style.visibility ='visible';
+                pwd2_msg.innerHTML = '<i class="err"></i>两次输入的密码不一致！';
+                return false; 
+              }else{
+                pwd2_msg.innerHTML = '<i class="err"></i>OK！';
+                return true; 
+              }
+          }
+          pwd2.onblur = function(){
+              pwd2F(this)
+          }
 
-    function checkForm(){
-       var memB = memberB(oName);
-       var p1 = pwdB(pwd);
-       var p2 = pwd2F(pwd2);
-       if(memB&&p1&&p2){
-          return true;
-       }else{
-         memberF();
-         pwdF();
-         return false;
-       }
-    }
-    oForm.onsubmit = function(){
-        return checkForm(); //注意一定要要用return 返回这个函数
-    }
+          function checkForm(){
+             var memB = memberB(oName);
+             var p1 = pwdB(pwd);
+             var p2 = pwd2F(pwd2);
+             if(memB&&p1&&p2){
+                return true;
+             }else{
+               memberF();
+               pwdF();
+               return false;
+             }
+          }
+          oForm.onsubmit = function(){
+              return checkForm(); //注意一定要要用return 返回这个函数
+          }
+   })();
+   //弹窗
+   var module2 = (function(){
+       $('.regBtn').on('click',function(){
+            $('.popBox').show();
+            $('#close').show();
+            $(this).hide();
+            $('.wrap').css({
+             'background-color':'rgba(88,85,88,0.5)'
+            });
+       });
+       $('.popBox').css({
+              top: ($(window).height()-$('.popBox').outerHeight())/2,
+              left: ($(window).width()-$('.popBox').outerWidth())/2
+           });
+       $(window).on('resize scroll',function(){
+           $('.popBox').css({
+              top: ($(window).height()-$('.popBox').outerHeight())/2+$(window).scrollTop()
+           })
+       });
+       //关闭
+       $('#close').on('click',function(){
+          $('.popBox').hide();
+          $('.regBtn').show();
+          $('.wrap').css({
+             'background-color':'#fff'
+          });
+          $(this).hide(); 
+       });
+   })();
 }    
 </script>
 </body>
