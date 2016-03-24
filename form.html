@@ -319,6 +319,12 @@ window.onload = function() {
           oForm.onsubmit = function(){
               return checkForm(); //注意一定要要用return 返回这个函数
           }
+          document.onkeyup = function(ev){
+              var ev = event || ev;
+              if(ev.keyCode===13){
+                 oForm.onsubmit(); 
+              }
+          }
    })();
    //弹窗
    var module2 = (function(){
