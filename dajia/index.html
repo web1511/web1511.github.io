@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.am.js"></script>
+    <script src="js/jquery.popup.js"></script>
+    <script src="js/velocity.js"></script>
+    <script src="js/velocity.ui.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/jquery.mobile.custom.js"></script>
+    <title>大家</title>
+</head>
+
+<body>
+        <!-- list -->
+        <div class="list">
+            <div class="am_css itembox" style="transform: translate(0px, 0px); -webkit-transform: translate(0px, 0px);">
+                <div class="cover toDown item">
+                    <div class="cover_box ">
+                        <div class="cover_text"></div>
+                        <a href="javascript:void(0)" class="btn_start ac_start tr_scale" style="opacity: 0;">开始</a>
+                    </div>
+                </div>
+                <div class="choose toDown item">
+                    <div class="choose_box tr_scale">
+                        <div class="choose_con">
+                            <p>你成了“《大家》国”的一名考生，你必须通过考试来获得你的功名！穿越了，给你一次重新做人的机会：</p>
+                        </div>
+                        <div class="btns">
+                            <a href="javascript:void(0)" class="btn_boy ac_start" sex="boys"></a>
+                            <a href="javascript:void(0)" class="btn_girl ac_start" index="2" sex="girls"></a>
+                        </div>   
+                    </div>
+                </div>
+                <div class="mainscene toDown item">
+                        <a href="javascript:void(0);" class="share_btn ac_share tr_scale"></a>
+                    <div class="mainscene_box tr_scale">
+                        <div class="mainscene_con">
+                            <div class="leaf1"></div>
+                            <div class="leaf2"></div>
+                            <div class="leaf3"></div>
+                            <div class="mainscene_zhi_hua"></div>
+                            <div class="person">
+                                <div class="boys_girls "></div>
+                            </div>
+                            <div class="table">
+                                <div class="mainscene_rui_bi"></div>
+                                <div class="mainscene_wen_zhi"></div>
+                            </div>
+                            <div class="mainscene_xing_cat"></div>
+                            <div class="mainscene_zhong_bian"></div>
+                            <div class="dangqianjibie">公公</div>
+                            <a href="javascript:void(0)" class="chakanzouzhang ac_start" index="4" style="display:none;">点击查看</a>
+                            <div class="tips"></div>
+                            <div class="tips2"></div>
+                            <div class="btns">
+                                <ul>
+                                    <li><a href="javascript:void(0);" class="zhong ac_start" daojuname="zhong" index="3"></a></li>
+                                    <li><a href="javascript:void(0);" class="zhi ac_start" daojuname="zhi" index="3"></a></li>
+                                    <li><a href="javascript:void(0);" class="wen ac_start" daojuname="wen" index="3"></a></li>
+                                    <li><a href="javascript:void(0);" class="xing ac_start" daojuname="xing" index="3"></a></li>
+                                    <li class="rui"><a href="javascript:void(0);" class="rui ac_start" daojuname="rui" index="3"></a></li>
+                                    <li class="upgrade"><a href="javascript:void(0);" class="upgrade ac_start" daojuname="renwu" index="3"></a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="answer toDown item">
+                    <div class="answer_box tr_scale">
+                        <div class="answer_con">
+                            <div class="question"></div>
+                            <div class="anoption">
+                                <ul>
+                                    <li><span></span><a href="javascript:void(0)" class="ac_choose" val="A"></a></li>
+                                    <li><span></span><a href="javascript:void(0)" class="ac_choose" val="B"></a></li>
+                                    <li><span></span><a href="javascript:void(0)" class="ac_choose" val="C"></a></li>
+                                </ul>
+                            </div>
+                            <div class="renwu_ch">当前已获称号：<span>公公</span></div>
+                            <a href="javascript:void(0);" class="giveup ac_giveup">放弃本次作答</a>
+                            <div class="page"><span class="page">1</span>/<span>3</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zouzhang toDown item">
+                    <div class="zouzhang_box">
+                        <div class="zouzhang_con">
+                            <a href="javascript:void(0)" class="next ac_start tr_scale" index="5"></a>
+                            <div class="bottom tr_scale">
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="close ac_start tr_scale" index="2"></a>
+                    </div>
+                </div>
+                <div class="zouzhang toDown item">
+                    <div class="zouzhang_box">
+                        <div class="zouzhang_con zhouzhang_2">
+                            <a href="javascript:void(0)" class="next ac_start tr_scale" index="6"></a>
+                            <div class="bottom tr_scale">
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="close ac_start tr_scale" index="2"></a>
+                    </div>
+                </div>
+                <div class="zouzhang toDown item">
+                    <div class="zouzhang_box">
+                        <div class="zouzhang_con zhouzhang_3">
+                            <a href="javascript:void(0)" class="next ac_start tr_scale" index="7"></a>
+                            <div class="bottom tr_scale">
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="close ac_start tr_scale" index="2"></a>
+                    </div>
+                </div>
+                <div class="zouzhang toDown item">
+                    <div class="zouzhang_box">
+                        <div class="zouzhang_con zhouzhang_4">
+                            <div class="bottom tr_scale">
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" class="close ac_start tr_scale" index="2"></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- <div class="cover_cloud_box">
+            <div class="cloud_scale">
+                <div class="conver_cloudy1 "></div>
+                <div class="conver_cloudy2 "></div>
+                <div class="conver_cloudy3 "></div>
+                <div class="conver_cloudy4 "></div>
+            </div>
+        </div> -->
+        <!-- list end -->
+        <!-- loading -->
+        <div class="loading">
+            <div class="loading_box tr_scale">
+                
+                <div class="loading_text">
+                    <p class="p1 size14">建议在WIFI下观看，正在加载中 <span class="dot"></span></p>
+                    <p class="p2 size20 margin20"><span class="percentage">0%</span></p>                        
+                </div>
+                <div class="loading_cloud"></div>
+            </div>
+            <p class="cp tr_scale">出品：xxx公司出品</p>
+        </div>
+        <!-- loading end -->
+        <!-- 遮罩begin -->
+        <div class="mask am_css"></div>
+        <div class="mask_white am_css"></div>
+        <!-- 遮罩 over -->
+
+        <!-- 分享提示层 begin -->
+        <div class="pop_share am_css popup">
+            <img src="css/share.png" alt="share">
+        </div>
+        <!-- 分享提示层 over -->
+        <!-- 提示层 begin -->
+        <div class="pop_answerresult am_css popup">
+            <div class="answerresult_box tr_scale">
+                <div class="title">解锁成功</div>
+                <div class="daoju"></div>
+                <div class="text"></div>
+            </div>
+        </div>
+        <div class="pop_renwu am_css popup">
+            <div class="answerresult_box tr_scale">
+                <div class="title">答对 <span>4</span> 题</div>
+                <div class="gongxi">恭喜你，人物形象升级为  </div>
+                <div class="text">贵妃</div>
+            </div>
+        </div>
+        <div class="pop_huodezouzhang am_css popup">
+            <div class="answerresult_box tr_scale">
+            </div>
+        </div>
+        <div class="pop_failed am_css popup">
+            <div class="answerresult_box tr_scale">
+                <div class="title">解锁失败</div>
+                <div class="text">你与道具擦肩而过，再试一次吧！</div>
+            </div>
+        </div>
+        <div class="pop_tips am_css popup">
+            <div class="answerresult_box tr_scale">
+                <div class="answerresult_text"></div>
+                <div class="answerresult_arrow"></div>
+            </div>
+        </div>
+        <!-- 提示层 over -->
+</body>
+<script type="text/javascript">
+;$(function(){
+    /**
+     * loadImg  图片预加载
+     */
+    var loadImg = function(pics, callback){
+        var index = 0;
+        var len = pics.length;
+        var img = new Image();
+        var flag = false;
+        var progress = function(w){
+            // console.log(w)
+            $('.p2 .percentage').html(w);
+        }
+        var load = function(){
+            img.src = pics[index];
+            //console.log( img.src)
+            img.onload = function() {
+                // 控制台显示加载图片信息
+                progress(Math.floor(((index + 1) / len) * 100) + "%");
+                index ++ ;
+                if (index < len) {
+                    load();
+                }else{
+                    callback()
+                }
+            }
+            return img;
+        }
+        if(len > 0){
+            load();
+        }else{
+            progress("100%");
+        }
+        return {
+            pics: pics,
+            load: load,
+            progress: progress
+        };
+    }
+    var pics = ['css/answer_allopen_bg.png','css/answer_bg.png','css/answer_cat.png','css/answer_correct.png','css/answer_failed_bg.png','css/answer_rui.png','css/answer_success_bg.png','css/answer_wen.png','css/answer_wrong.png','css/answer_zhi.png','css/answer_zhong.png','css/choose_bg.png','css/choose_boy.png','css/choose_girl.png','css/cover_bg.png','css/cover_clou1.png','css/cover_clou2.png','css/cover_clou3.png','css/cover_clou4.png','css/cover_text.png','css/leaf1.png','css/leaf2.png','css/leaf3.png','css/loading_bg.png','css/loading_cloud.png','css/mainscene_bg.png','css/mainscene_rui.png','css/mainscene_rui_bi.png','css/mainscene_table.png','css/mainscene_tips1.png','css/mainscene_tips2.png','css/mainscene_tips3.png','css/mainscene_tips4.png','css/mainscene_upgrade.png','css/mainscene_wen.png','css/mainscene_wen_zhi.png','css/mainscene_xing.png','css/mainscene_xing_cat.png','css/mainscene_zhi.png','css/mainscene_zhi_hua.png','css/mainscene_zhong.png','css/mainscene_zhong_bian.png','css/me_bottom.png','css/me_close.png','css/memorial_1.png','css/memorial_2.png','css/memorial_3.png','css/memorial_4.png','css/memorial_bg.png','css/memorial_up_btn.png','css/ms_chakanzouzhang.png','css/ms_guifei.png','css/ms_huangdi.png','css/ms_nvwang.png','css/ms_taijian.png','css/ms_xianling.png','css/ms_xiaojie.png','css/ms_xiaozhu.png','css/ms_yatou.png','css/ms_yayi.png','css/ms_zaixiang.png','css/pop_renwu_bg.png','css/share.png','css/share_btn.png','css/upgrade_btn.png'];
+    // var pics = ['css/answer_allopen_bg.png'];
+    // 初始化 load
+    var loadinghide_timer = null,cover_text_timer = null,cloudy_timer = null,removecloudy_timer=null;
+    loadImg(pics, function(){
+        $('.cover_cloud_box').show();
+        loadinghide_timer = setTimeout(function(){
+            $('.loading').addClass('hide');
+        }, 1200);
+        cover_text_timer = setTimeout(function(){
+            clearTimeout(loadinghide_timer);
+            $('.cover .cover_text').addClass('cover_text_am');
+        },1800);
+        cloudy_timer = setTimeout(function(){
+            clearTimeout(cover_text_timer);
+            $(".cover").velocity(
+                { 
+                  opacity: 0
+                },
+                { 
+                  duration: 2200
+                }
+            );
+            $('.conver_cloudy1').addClass('conver_cloudy1_am');
+            $('.conver_cloudy2').addClass('conver_cloudy2_am');
+            $('.conver_cloudy3').addClass('conver_cloudy3_am');
+            $('.conver_cloudy4').addClass('conver_cloudy4_am');
+        },10000);
+        removecloudy_timer = setTimeout(function(){
+            clearTimeout(cloudy_timer);
+            $('.conver_cloudy1').removeClass('conver_cloudy1_am');
+            $('.conver_cloudy2').removeClass('conver_cloudy2_am');
+            $('.conver_cloudy3').removeClass('conver_cloudy3_am');
+            $('.conver_cloudy4').removeClass('conver_cloudy4_am');
+            $('.cover_cloud_box').hide();
+            $('.cover .ac_start').click();
+        },12800);
+    });
+    $(".loading_cloud").velocity(
+        { 
+          'background-position': '100% 0%'
+        },
+        { 
+          duration: 10000,
+          loop:true
+        }
+    );
+    //缓存变量
+    var $window = $(window),
+        $list = $('.list'),
+        $itembox = $list.find('.itembox'),
+        $screen_item = $list.find('.item'),
+        $loading = $('.loading>div'),
+        $body = $('body'),
+        boy_girl = 0,
+        daoju = 0,
+        timu = [],
+        $answer_title = $('.answer .question'),
+        $options = $('.answer .anoption li'),
+        maps_options = {'0':'A','1':'B','2':'C','3':'D'},
+        $page = $('.answer .page span.page'),
+        $answer = $('.answer'),
+        choose_num = 0,
+        map_daoju = {'0':'zhong','1':'zhi','2':'wen','3':'xing','4':'rui'},
+        correct_num = 0,
+        $mainscene = $('.mainscene'),
+        map_daoju_text = {'0':'恭喜获得道具忠','1':'恭喜获得道具智','2':'恭喜获得道具文','3':'恭喜获得道具性','4':'恭喜获得道具锐'},
+        map_renwu_text = {
+            'boys':{
+                '0':{'name':'公公','enname':'taijian'},
+                '1':{'name':'衙役','enname':'yayi'},
+                '2':{'name':'县令','enname':'xianling'},
+                '3':{'name':'宰相','enname':'zaixiang'},
+                '4':{'name':'皇帝','enname':'huangdi'}
+            },
+            'girls':{
+                '0':{'name':'丫头','enname':'yatou'},
+                '1':{'name':'小姐','enname':'xiaojie'},
+                '2':{'name':'小主','enname':'xiaozhu'},
+                '3':{'name':'贵妃','enname':'guifei'},
+                '4':{'name':'女王','enname':'nvwang'}
+            }
+        },
+        rules = 0,
+        timu_timer = null,
+        renwu_fx = '公公'
+    ;
+    window.callbacktimer = null;
+    window.pop_hidetimer = null;
+    $(document).on("touchmove",'body', function(event) {
+        event.preventDefault();
+    });
+    var ty = [] ,swipeHolder = 50;
+    var timer = null;
+    $(document).on('touchstart','.zouzhang_con', function(event) {
+        event.stopPropagation();    
+        event.preventDefault();
+        ty = [];
+        timer=setTimeout(function(){
+            //location
+            // if($(event.target).closest('a').length){
+            //     location.href = $(event.target).closest('a').attr('href');
+            // }
+        },300);
+    }).on('touchmove', '.zouzhang_con', function(event) {
+        clearTimeout(timer);
+
+        if(event.originalEvent.changedTouches.length){
+            ty.push(event.originalEvent.changedTouches[0].pageY);
+        }
+    }).on('touchend','.zouzhang_con',function(event){
+        event.preventDefault(); 
+        event.stopPropagation();    
+        var movey;
+        movey = ty[ty.length -1 ] - ty[0];
+        ty = [];
+        var target = event.target || event.srcElement || event.originalTarget;
+        // if(movey > swipeHolder ){
+        //     $(target).closest('.zouzhang_box').find('.next').click();
+        //     clearTimeout(timer);
+        // }
+        // else 
+        if(movey < -1 * swipeHolder ){
+            $(target).closest('.zouzhang_con').find('.next').click();
+            clearTimeout(timer);
+        }
+    });
+    //宽高计算    
+    var w_h = $window.height();
+    // start
+    function __init_timu(i,daojuname){
+        // console.log(daojuname)
+        clearTimeout(timu_timer);
+        $answer.find('li').removeClass('disabled').removeClass('chooseing').addClass('ac_choose').end().find('.correct').removeClass('correct');
+        choose_num = 0;
+        var timuI = timu[i];
+        var options = timuI['opitions'];
+        $answer_title.html(timuI['question']);
+        $page.text(i+1);
+        if(daojuname == 'renwu'){
+            $page.next().text('10');
+        }else{
+            $page.next().text('3');
+        }
+        $answer.attr('correctanswer',timuI['correct']);
+        $options.each(function(index,item){
+            var $item = $(item);
+            // console.log($item.find('span'))
+            // console.log(index)
+            $item.find('span').text(options[maps_options[index]]);
+            $item.find('a').attr('daojuname',daojuname);
+        });
+    }
+    $(document).on('click','.ac_start',function() {
+        clearTimeout(removecloudy_timer);
+        var $t = $(this) , 
+            $item = $t.closest('.item')
+            $list = $item.closest('.itembox').find('.item'),
+            index = $t.attr('index')||$list.index($item)+1
+        ;
+        // $item.siblings().hide()
+        $item.next().show();
+        if(index == 4){
+            $('.zouzhang').show();
+        }
+        $itembox.anmWork({
+            translateY: -w_h*index
+        });
+        if($t.attr('daojuname')=='renwu'){
+            $('.renwu_ch').add('.giveup').show();
+        }else{
+            $('.renwu_ch').add('.giveup').hide();
+        }
+        $('.leaf1').show().addClass('leaf1_am');
+        $('.leaf2').show().addClass('leaf2_am');
+        $('.leaf3').show().addClass('leaf3_am');
+        //__boy_girls
+        function __boy_girls(){
+            boy_girl = $t.attr('sex');
+            $('.pop_tips').popUp({'mask':'.mask'});
+            $('.answerresult_arrow').addClass('answerresult_arrow_am');
+            var tipstimer1 = null , tipstimer2 = null , tipstimer3 = null;
+            tipstimer1 = setTimeout(function(){
+                $('.mask').click();
+                $('.answerresult_arrow').removeClass('answerresult_arrow_am');
+            },2500);
+            tipstimer2 = setTimeout(function(){
+                clearTimeout(tipstimer1);
+                $('.tips2').addClass('tips2_am');
+            },2600);
+            tipstimer3 = setTimeout(function(){
+                clearTimeout(tipstimer2);
+                $('.tips2').removeClass('tips2_am');
+                $('.tips').add('.tips2').fadeOut('slow',function(){
+                    clearTimeout(tipstimer3);
+                });
+            },5200);
+        }
+        // console.log($t.attr('sex'));
+        if($t.attr('sex')=='boys'){
+            $('.boys_girls').framesAnimation();
+            // $(".boys_girls").velocity(
+            //     { 
+            //       'background-position': '100% 0%'
+            //     },
+            //     { 
+            //       duration: 600,
+            //       loop:true
+            //     }
+            // );
+            __boy_girls();
+
+        }else if($t.attr('sex')=='girls'){
+            $('.boys_girls').addClass('yatou').framesAnimation();
+            $('.dangqianjibie').add('.renwu_ch span').text('丫头');
+            __boy_girls();
+        }
+
+        if(index == 3){
+            var daoju_name = $t.attr('daojuname');
+            timu = data['daoju'][daoju_name];
+            __init_timu(0,daoju_name);
+            if($t.hasClass('zhong')){
+                daoju = 1;
+                // console.log(timu);
+            }
+            if($t.hasClass('zhi')){
+                daoju = 2;
+            }
+            if($t.hasClass('wen')){
+                daoju = 3;
+            }
+            if($t.hasClass('xing')){
+                daoju = 4;
+            }
+            if($t.hasClass('rui')){
+                daoju = 5;
+            }
+            if($t.hasClass('upgrade')){
+                daoju = 6;
+            }
+        }
+
+        if(index == 0){
+            boy_girl = 0;
+            daoju = 0;
+            wxTitle = '';
+            wxDesc = '';
+        }
+        // setTimeout(function(){if(index == 2){showPop($pop_introduce);}},500);
+
+    });
+    /*
+    ****answer choose****
+    */
+    //give up
+    $('.ac_giveup').click(function(){
+        __iscorrect();
+    });
+    //correct_rules
+    function __correct_rules(){
+        if(correct_num==0 ||correct_num==1 || correct_num == 2){
+            rules = 0;
+        }else if(correct_num==3 || correct_num == 4){
+            rules = 1;
+        }else if(correct_num==5 || correct_num == 6){
+            rules = 2;
+        }else if(correct_num==7 || correct_num == 8){
+            rules = 3;
+        }else if(correct_num==9 || correct_num == 10){
+            rules = 4;
+        }
+        $('.renwu_ch span').text(map_renwu_text[boy_girl][rules]['name']);
+    }
+    //renwuup is correct
+    function __iscorrect(){
+        $('.pop_renwu .title span').text(correct_num);
+        // __correct_rules();
+        $('.pop_renwu').popUp({
+            mask:'.mask_white',
+            hidecall:function(box,opt){
+                $itembox.anmWork({
+                    translateY: -w_h*2
+                });
+                callbacktimer = setTimeout(function(){
+                    $('.boys_girls',$mainscene).fadeOut('slow',function(){
+                        var $t = $(this);
+                        $t.attr('class','boys_girls '+map_renwu_text[boy_girl][rules]['enname']).fadeIn();
+                    });
+                    
+                    $('.dangqianjibie').text(map_renwu_text[boy_girl][rules]['name']);
+                    $answer.find('a').removeClass('correct');
+                },900);
+            }
+        })
+        .find('.text').text(map_renwu_text[boy_girl][rules]['name']);
+        pop_hidetimer = setTimeout(function(){
+            $('.mask_white').click();
+        },3000);
+        // daoju = 0;
+        renwu_fx = map_renwu_text[boy_girl][rules]['name'];
+        wxTitle = '太牛了！我穿越后获得了'+renwu_fx+'身份，你也来测测你是什么水平吧？';
+        timu = [];
+        choose_num = 0;
+        correct_num = 0;
+    }
+    function __isdaojucorrect(){
+        $('.pop_answerresult').popUp({
+            mask:'.mask_white',
+            hidecall:function(box,opt){
+                $itembox.anmWork({
+                    translateY: -w_h*2
+                });
+                callbacktimer = setTimeout(function(){
+                    if(daoju == 1){
+                        $('.zhong',$mainscene).addClass('current').removeClass('ac_start');
+                        $('.mainscene_zhong_bian',$mainscene).fadeIn();
+                    }
+                    if(daoju == 2){
+                        $('.zhi',$mainscene).addClass('current').removeClass('ac_start');
+                        $('.mainscene_zhi_hua',$mainscene).fadeIn();
+                    }
+                    if(daoju == 3){
+                        $('.wen',$mainscene).addClass('current').removeClass('ac_start');
+                        $('.mainscene_wen_zhi',$mainscene).fadeIn();
+                    }
+                    if(daoju == 4){
+                        $('.xing',$mainscene).addClass('current').removeClass('ac_start');
+                        $('.mainscene_xing_cat',$mainscene).fadeIn(1000,function(){
+                            var $t = $(this) ;
+                            function __cat_am(){
+                                $t.css({
+                                    'background-position':'left center'
+                                });
+                                setTimeout(function(){
+                                    $t.css({
+                                        'background-position':'right center'
+                                    });
+                                },700);
+                                setTimeout(function(){
+                                    __cat_am();
+                                },1400);
+                            }
+                            __cat_am();
+                        });
+                    }
+                    if(daoju == 5){
+                        $('.rui',$mainscene).addClass('current').removeClass('ac_start');
+                        $('.mainscene_rui_bi',$mainscene).fadeIn();
+                    }
+                    $answer.find('a').removeClass('correct');
+                },900);
+            }
+        }).find('.daoju').addClass(map_daoju[daoju-1]).end().find('.text').text(map_daoju_text[daoju-1]);
+        pop_hidetimer = setTimeout(function(){
+            $('.mask_white').click();
+            $('.pop_answerresult .daoju').removeClass(map_daoju[daoju-1]);
+        },3000);
+    }
+    //daoju up
+    $('.ac_choose').parent().click(function(){
+        var $t = $(this) , 
+            $t_c = $t.children('a')
+        ;
+        if($t.hasClass('disabled')||$t.hasClass('chooseing')) return false;
+        $t.siblings().addClass('chooseing');
+        choose_num+=1;
+        // $('.chakanzouzhang').hide();
+        if($t_c.attr('daojuname')=='renwu'){
+            $('.renwu_ch').add('.giveup').show();
+            //renwu begin
+            if(choose_num>=2){
+                choose_num = 0;
+                if($t_c.attr('val')==$answer.attr('correctanswer')){
+                    choose_num = 0;
+                    $t_c.addClass('correct').fadeIn(1000,function(){
+                        $t_c.removeClass('correct').fadeOut();
+                    });
+                    correct_num+=1;
+                    __correct_rules();
+                }else{
+                    $t_c.addClass('wrong').fadeIn(1000,function(){
+                        $t_c.removeClass('wrong').fadeOut();
+                    });
+                    $t.addClass('disabled');
+                    $t.siblings(':not(".disabled")').children('a').removeClass('ac_choose').addClass('correct').fadeIn(1000,function(){
+                        $(this).fadeOut();
+                    });
+                }
+                if(parseInt($page.text())<10){
+                    var timu_timer = setTimeout(function(){
+                        __init_timu(parseInt($page.text()));
+                    },1200);
+                    return false;
+                }else{
+                        // console.log(correct_num)
+                    __iscorrect();
+                }
+            }else{
+                if($t_c.attr('val')==$answer.attr('correctanswer')){
+                    choose_num = 0;
+                    $t_c.addClass('correct').fadeIn(1000,function(){
+                        $t_c.removeClass('correct').fadeOut();
+                    });
+                    correct_num+=1;
+                    __correct_rules();
+                    if(parseInt($page.text())<10){
+                        var timu_timer = setTimeout(function(){
+                            __init_timu(parseInt($page.text()));
+                        },1200);
+                        return false;
+                    }else{
+                        // console.log(correct_num)
+                        __iscorrect();
+                    }
+                }else{
+                    $t_c.addClass('wrong').fadeIn(1000,function(){
+                        $t_c.removeClass('wrong').fadeOut();
+                    });
+                    $t.addClass('disabled');
+                } 
+            }
+            //renwu end
+        }else{
+            $('.renwu_ch').add('.giveup').hide();
+            //daoju begin
+            if(choose_num>=2){
+                choose_num = 0;
+                if($t_c.attr('val')==$answer.attr('correctanswer')){
+                    choose_num = 0;
+                    $t_c.addClass('correct').fadeIn(1000,function(){
+                        $t_c.removeClass('correct').fadeOut();
+                    });
+                    correct_num+=1;
+                }else{
+                    $t_c.addClass('wrong').fadeIn(1000,function(){
+                        $t_c.removeClass('wrong').fadeOut();
+                    });
+                    $t.addClass('disabled');
+                    $t.siblings(':not(".disabled")').children('a').removeClass('ac_choose').addClass('correct').fadeIn(1000,function(){
+                        $(this).fadeOut();
+                    });
+                }
+                if(parseInt($page.text())<3){
+                    var timu_timer = setTimeout(function(){
+                        __init_timu(parseInt($page.text()));
+                    },2000);
+                    return false;
+                }else{
+                        // console.log(correct_num)
+                    if(correct_num>=2){
+                        __isdaojucorrect();
+                    }else{
+                        $('.pop_failed').popUp({
+                            mask:'.mask_white',
+                            hidecall:function(box,opt){
+                                $itembox.anmWork({
+                                    translateY: -w_h*2
+                                });
+                                callbacktimer = setTimeout(function(){
+                                    $t_c.removeClass('wrong').fadeOut();
+                                },900);
+                            }
+                        });
+                        pop_hidetimer =  setTimeout(function(){
+                            $('.mask_white').click();
+                        },3000);
+                    }
+                    // daoju = 0;
+                    timu = [];
+                    choose_num = 0;
+                    correct_num = 0;
+                }
+            }else{
+                if($t_c.attr('val')==$answer.attr('correctanswer')){
+                    choose_num = 0;
+                    $t_c.addClass('correct').fadeIn(1000,function(){
+                        $t_c.removeClass('correct').fadeOut();
+                    });
+                    correct_num+=1;
+                    if(parseInt($page.text())<3){
+                        var timu_timer = setTimeout(function(){
+                            __init_timu(parseInt($page.text()));
+                        },1200);
+                        return false;
+                    }else{
+                        // console.log(correct_num)
+                        if(correct_num>=2){
+                            __isdaojucorrect();
+                        }else{
+                            $('.pop_failed').popUp({
+                                mask:'.mask_white',
+                                hidecall:function(box,opt){
+                                    $itembox.anmWork({
+                                        translateY: -w_h*2
+                                    });
+                                    callbacktimer = setTimeout(function(){
+                                        $t_c.removeClass('wrong').fadeOut();
+                                    },900);
+                                }
+                            });
+                            pop_hidetimer = setTimeout(function(){
+                                $('.mask_white').click();
+                            },3000);
+                        }
+                        // daoju = 0;
+                        timu = [];
+                        choose_num = 0;
+                        correct_num = 0;
+                    }
+                }else{
+                    $t_c.addClass('wrong').fadeIn(1000,function(){
+                        $t_c.removeClass('wrong').fadeOut();
+                    });
+                    $t.addClass('disabled');
+                } 
+            }
+            //daoju end            
+        }
+        $t.siblings().removeClass('chooseing');
+// var tmp;
+    });
+    // 默认文案
+    var wxTitle = '太牛了！我穿越后获得了'+renwu_fx+'身份，你也来测测你是什么水平吧？';
+    var wxDesc = '穿越后，你会变成谁';
+    var wxImg = 'css/share.jpg';
+    var shareLink = location.href;
+    //share
+    function stripscript(s) {  
+        return s.replace(/<script.*?>.*?<\/script>/ig, '');  
+    }
+    // 微信分享
+    var onBridgeReady = function() {
+        // 分享到朋友圈;
+        WeixinJSBridge.on('menu:share:timeline', function(argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": wxImg,
+                "img_width": "160",
+                "img_height": "160",
+                "link": shareLink,
+                "desc": wxDesc,
+                "title": wxTitle
+            }, function() {});
+        })
+        WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "img_url": wxImg,
+                "link": shareLink,
+                "desc": wxDesc,
+                "title": wxTitle
+            }, function() {})
+        })
+        WeixinJSBridge.on('menu:share:weibo', function(argv) {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "desc": wxDesc,
+                "url": shareLink,
+            }, function(res) {});
+        })
+    }
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+
+    // 分享begin
+    /* ua */
+    var UA = function(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        return {
+            ipad: /ipad/.test(userAgent),
+            iphone: /iphone/.test(userAgent),
+            android: /android/.test(userAgent),
+            qqnews: /qqnews/.test(userAgent),
+            weixin: /micromessenger/.test(userAgent),
+            qqnews_version: userAgent.match(/qqnews/i) == "qqnews" ? userAgent.split('qqnews/')[1] : ''
+        };
+    };
+    function shareQQNews() {
+        var ua = UA();
+        switch(true){
+          case ua.qqnews:
+            if(window.TencentNews && window.TencentNews.setShareArticleInfo){
+                window.TencentNews.setShareArticleInfo(wxTitle, wxDesc, wxDesc, shareLink, wxImg);
+            }
+            if(window.TencentNews && window.TencentNews.showShareMenu) {
+                window.TencentNews.showShareMenu(shareLink, wxTitle, wxDesc, wxImg,"news_news_wc");
+            }else{
+                window.TencentNews.shareFromWebView(wxTitle, wxDesc, wxImg);
+            }
+            break;
+          case ua.weixin:
+            $('.pop_share').popUp();
+            break;
+          default:
+            // showSharePop();
+            // return false;
+            window.location = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801378464&url="
+            + shareLink + "&title="
+            + wxTitle +"&pic="
+            + wxImg + "&des="
+            + wxDesc;
+            break;
+        };
+    }
+    /*分享over*/
+    // 点击分享
+    $('.ac_share').click(function(){
+        shareQQNews();
+    });
+    //用于计算scale
+    var autoScale = function() {
+
+    var ratio = 320/520, 
+
+    winW = document.documentElement.clientWidth,
+
+    winH = document.documentElement.clientHeight,
+
+    ratio2 = winW/winH,
+
+    scale;
+
+    if (ratio < ratio2) {
+
+    scale = (winH/520).toString().substring(0, 6);
+
+    } else {
+
+    scale = (winW/320).toString().substring(0, 6);
+
+    }
+
+    var cssText = '-webkit-transform: scale('+ scale +'); -webkit-transform-origin:center center; opacity:1;';
+
+    $('.tr_scale').attr('style', cssText);
+
+
+    };
+    // autoScale();
+});
+</script>
+
+</html>
