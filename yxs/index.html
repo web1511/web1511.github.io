@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device,initial-scale=1,user-scalable=no">
+	<title>英雄杀官网</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script>
+	 (function jump(){
+	 	var o = navigator.userAgent;
+	 	if(o.indexOf('iPhone') !=-1|| o.indexOf("iPad") != -1 || o.indexOf("Android") != -1){
+	 		window.location.href = 'http://yxsm.qq.com/m/';
+	 	}
+	 })();
+	 (function(){
+	 	if(window!=window.top){
+			window.top.location.href = window.location.href;
+		}
+	 })();
+	</script>
+</head>
+<body class="bg">
+	<!--广告-->
+	<div class="navigation" id="pfix">
+		<ul class="navigation_inner fix">
+			<li class="navigation_logo ost-bg fl">
+				<a href="javascript:;" target="_blank" title="腾讯游戏十周年">
+					腾讯游戏十周年
+				</a>
+			</li>
+			<li class="navigation_ad fl">
+			   <img src="img/gk.jpg" alt="" id="ad1" style="display:-none">
+			   <img src="img/gkb.jpg" alt="" id="ad2">
+			</li>
+			<li class="fr navigation_total">
+			   <h3 class="navigation_title">
+			   	  腾讯游戏排行榜
+			   	  <i class="navigation_icon ost-bg"></i>
+			   </h3>
+			   <!-- <div class="ost_pop" id="ost_p" style="display: -none;"><iframe id="gameRank" name="gameRank" allowtransparency="true" style="background:transparent;" src="http://ossweb-img.qq.com/images/js/topfiles/ost1410/game_rank.htm?rd=0.20347224175930023" width="700" height="465" frameborder="0" scrolling="no"></iframe></div> -->
+			</li>
+			<li class="fr">
+			  <ul class="fix">
+			  	<li class="fl">
+			  		<a href="javascript:;" class="tdn">
+			  		 <em class="ost-bg gf_icon"></em>	
+				  	  <em class="gf_content iezoom">官方社区</em>
+			  		</a>
+			  	</li>
+			  	<li class="fl">
+				  	<a href="javascript:;" class="tdn">
+				  	  <em class="ost-bg lb_icon"></em>	
+				  	  <em class="lb_content iezoom">礼包</em>
+				  	</a>
+			  	</li>
+			  </ul>
+			</li>
+		</ul>
+	</div>
+	<!--广告-->
+	<!--main-->
+	<div class="wraper wraper_bg">
+		<!--head-->
+		<div class="header">
+			<h1 class="dn">英雄杀 说英雄 谁是英雄</h1>
+			<ul class="nav fix" id="navlist">
+				<li class="fl">
+				<a href="javascript:;" title="进入首页">首页</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;" title="查看游戏资料">游戏资料</a>
+					<div class="nav_sub nav_sub_bg">
+						<a href="javascript:;">
+							新手指导
+						</a>
+						<a href="javascript:;">
+							身份场规则
+						</a>
+						<a href="javascript:;">
+							3V3规则
+						</a>
+						<a href="javascript:;">
+							三足鼎立规则
+						</a>
+						<a href="javascript:;">
+							游戏积分
+						</a>
+						<a href="javascript:;">功勋官职
+						</a>
+						<a href="javascript:;"
+						>英雄魂
+						</a>
+					</div>
+				</li>
+				<li class="fl mr150">
+				<a href="javascript:;" title="进入下载中心">下载中心</a>
+				</li>
+				<li class="fl">
+					<a href="javascript:;"  title="玩家互动">
+					玩家互动
+					</a>
+					<div class="nav_sub nav_sub_bg">
+						<a href="javascript:;">
+							论坛
+						</a>
+						<a href="javascript:;">
+							官方微博
+						</a>
+						<a href="javascript:;">
+							实牌微博
+						</a>
+						<a href="javascript:;">
+							17杀论坛
+						</a>
+					</div>
+				</li>
+				<li class="fl">
+					<a href="javascript:;" title="版本回顾">版本回顾</a>
+					<div class="nav_sub nav_sub_bg">
+						<a href="javascript:;">
+							英雄植树
+						</a>
+					</div>
+				</li>
+				<li class="fl">
+				<a href="javascript:;" title="论坛">论坛</a>
+				</li>
+			</ul>
+		</div>
+		<!--head-->
+		<!--main-->
+		<div class="main main_bg fix">
+			<div class="content fr">
+				<a href="javascript:;" title="查看详情" class="db btn">
+					查看详情
+				</a>
+				<!--轮播-->
+				<div class="roll fl">
+					<ul class="roll-img" id="roll-box">
+						<li>
+						<a href="javascript:;">
+							<img src="img/banner3.jpg" alt="轮播3">
+						</a>
+						</li>
+						<li>
+							<a href="">
+								<img src="img/banner2.jpg" alt="轮播3">
+							</a>
+						</li>
+						<li>
+						<a href=""><img src="img/banner1.jpg" alt="轮播3"></a>
+						</li>
+					</ul>
+					<ul class="roll-btn" id="roll-btn">
+						<li class="roll-btn-bg cur">1</li>
+						<li class="roll-btn-bg">2</li>
+						<li class="roll-btn-bg">3</li>
+					</ul>
+				</div>
+				<!--轮播-->
+				<!--选项卡-->
+				<div class="news fr">
+					<div class="news-inner" id="news-in">
+						<div class="news-tab fix" id="tab-btn">
+							<a href="javascript:;" class="last-item tab-on1">最新</a>
+							<a href="javascript:;" class="news-item tab-on2">新闻</a>
+							<a href="javascript:;" class="af-item tab-on3">公告</a>
+							<a href="javascript:;" class="act-item tab-on4">活动</a>
+							<a href="javascript:;" class="more-item">更多</a>
+						</div>
+						<div class="news-content db">
+							<ul class="">
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>最新</i>
+									  	      ]
+									  	 <b>英雄双节皮肤五折购</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>最新</i>
+									  	      ]
+									  	 <b>英雄杀吧第二届同人文大赛来袭！</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>最新</i>
+									  	      ]
+									  	 <b>限定专属孙武皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>最新</i>
+									  	      ]
+									  	 <b>元宵节军装皮肤火热来袭</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox2">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>最新</i>
+									  	      ]
+									  	 <b>限定专属 貂蝉 皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+							</ul>
+						</div>
+						<div class="news-content">
+							<ul class="">
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>新闻</i>
+									  	      ]
+									  	 <b>首届高校赛震撼开启 万元大奖等你拿</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>新闻</i>
+									  	      ]
+									  	 <b>英雄杀手游8月6日燎原公测</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>新闻</i>
+									  	      ]
+									  	 <b>手游英雄杀双雄内测玩家招募</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>新闻</i>
+									  	      ]
+									  	 <b title="英雄系列感恩活动之“双雄携手">英雄系列感恩活动之“双雄携手</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox2">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>新闻</i>
+									  	      ]
+									  	 <b title="比基尼皮肤促销火热来袭">比基尼皮肤促销火热来袭</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+							</ul>
+						</div>
+						<div class="news-content">
+							<ul class="">
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>公告</i>
+									  	      ]
+									  	 <b>英雄双节皮肤五折购</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>公告</i>
+									  	      ]
+									  	 <b>英雄杀吧第二届同人文大赛来袭！</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>公告</i>
+									  	      ]
+									  	 <b>限定专属孙武皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>公告</i>
+									  	      ]
+									  	 <b>元宵节军装皮肤火热来袭</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox2">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>公告</i>
+									  	      ]
+									  	 <b>限定专属 貂蝉 皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+							</ul>
+						</div>
+						<div class="news-content">
+							<ul class="">
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>活动</i>
+									  	      ]
+									  	 <b>英雄双节皮肤五折购</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>活动</i>
+									  	      ]
+									  	 <b>英雄杀吧第二届同人文大赛来袭！</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>活动</i>
+									  	      ]
+									  	 <b>限定专属孙武皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>活动</i>
+									  	      ]
+									  	 <b>元宵节军装皮肤火热来袭</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox2">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>活动</i>
+									  	      ]
+									  	 <b>限定专属 貂蝉 皮肤免费发放</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+							</ul>
+						</div>
+						<div class="news-content">
+							<ul class="">
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>更多</i>
+									  	      ]
+									  	 <b>首届高校赛震撼开启 万元大奖等你拿</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>更多</i>
+									  	      ]
+									  	 <b>英雄杀手游8月6日燎原公测</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>更多</i>
+									  	      ]
+									  	 <b>手游英雄杀双雄内测玩家招募</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>更多</i>
+									  	      ]
+									  	 <b title="英雄系列感恩活动之“双雄携手">英雄系列感恩活动之“双雄携手</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+								<li class="fix">
+								  <div class="contentbox2">
+								  		<a href="" class="fl tdn ell">
+									  	 <em>.</em>
+									  	 		[
+									  	 <i>更多</i>
+									  	      ]
+									  	 <b title="比基尼皮肤促销火热来袭">比基尼皮肤促销火热来袭</b>
+								  </a>
+								  <span class="fr ">03/08</span>
+								  </div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slide fl">
+				<div class="slide_left">
+					<a href="javascript:;" class="slide_user">客户端</a>
+				</div>
+			</div>
+		</div>
+		<!--main-->
+		<div class="footer">
+			<div class="footer-box fix">
+				<div class="footer-img fl">
+					<a href="" class="roll-btn-bg footer-game" title="腾讯游戏">腾讯游戏</a>
+					<a href="" class="roll-btn-bg footer-qq" title="QQ游戏">QQ游戏</a>
+				</div>
+				<div class="footer-txt fl">
+					<p class="ft-nav mb5">
+						<a target="_blank" href="">关于腾讯游戏</a>|<a target="_blank" href="">服务条款</a>|<a target="_blank" href="">广告服务</a>|<a target="_blank" href="http://game.qq.com/hr/">腾讯游戏招聘</a>|<a target="_blank" href="">腾讯游戏客服</a>|<a target="_blank" href="">商务合作</a>|<a target="_blank" href="">网站导航</a>
+					</p>
+					<p class="fix ft-nav2">
+						<span class="fl">Copyright © 2010-2013 Tencent. All Rights Reserved. </span><a target="_blank"  class="fr">腾讯公司版权所有</a>
+					</p>
+					<p class="mark fl">
+						<a  target="_blank">粤网文[2012]0483-070号</a>
+					</p>
+				</div>
+			</div>
+	    </div>
+	</div>
+	<!--main-->
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/delayImage.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
