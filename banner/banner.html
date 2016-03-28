@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自适应轮播</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		ul{list-style:none;}
+		.roll{
+			min-width:1100px;
+			height: 400px;
+			position: relative;
+			background-color: #472f26;
+			overflow: hidden;
+		}
+		.roll .roll-img{
+			position:absolute;
+			top:0;
+			left:0;
+		}
+		.roll-img li{
+			float:left;
+		}
+		.roll-img img{
+			position:relative;
+		}
+		.roll .roll-btn{
+			width:auto;
+		    position: absolute;
+		    bottom: 10px;
+		    left: 50%;
+		    margin-left: -26px;
+		    font-weight: bold;
+		    font-family: \5b8b\4f53;
+		    overflow:hidden;
+		}
+		.roll-btn li{
+			display:inline-block;
+			width: 12px;
+		    height: 12px;
+		    text-align: center;
+		    line-height:0px;
+		    cursor:pointer;
+		    font-size:0px;
+		    *display:inline;
+		    *zoom:1;
+		    border-radius:50%;
+		    background: aqua;
+		    *margin-right:6px;
+		}
+		.roll-btn li.cur{
+			background-color:orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="roll">
+		<ul class="roll-img" id="roll-box">
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img1.jpg" alt="轮播3">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img5.jpg" alt="轮播3">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img3.jpg" alt="轮播3">
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="roll-btn" id="roll-btn">
+			<li class="cur">1</li>
+			<li class="">2</li>
+			<li class="">3</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$(window).load(function(){
+			var banner = (function(){
+			  var timer = null;
+			  var $rollBox = $('#roll-box');
+			  var $aLiBtn = $('#roll-btn').find('li');
+			  var $liClone= $rollBox.find('li').eq(0).clone(true);
+			  var num = 0,m=0;
+			  var onOff = true;
+			  /*init*/
+			  var $aLi = $rollBox.find('li');
+			  var $aImg = $rollBox.find('img');
+			  var $aLiWidth = $aLi.eq(0).outerWidth() || 2500;
+			  var lenNum = $aLi.length;
+			  $rollBox.css('width',$aLiWidth*lenNum);
+			  $rollBox.append($liClone);
+			 
+			  /*reisize*/
+			  toResize();
+			  function toResize(){
+			  	var viewWidth = $(window).width();
+			  	if(viewWidth>1000){
+			  		$rollBox.find('img').css({
+			  			left: -($aLiWidth-viewWidth)/2
+			  		})
+			  	}
+			  }
+			  $(window).resize(function(){toResize();});
+			  /*运动*/
+			 function run(){
+			 	 num ++;
+			 	 if(num>lenNum){
+			 	 	num=0;
+			 	 	$rollBox.css('left',0);
+			 	 }
+			 	 /*btn*/
+			 	 if(m >$aLiBtn.length-1 ){
+			 	 	 m =0;
+			 	 }
+			 	 $aLiBtn.removeClass('cur');
+			 	 $aLiBtn.eq(m).addClass('cur');
+			 	 timer = setTimeout(function(){
+			 	 	m = num;
+			  		$rollBox.stop().animate({
+			  			left : -$aLiWidth*num
+			  		},function(){
+			  			if(onOff){
+			  				run();
+			  			}
+			  		}) 	
+			   },2500);
+			 }
+			 /*图片大于2张才执行*/
+			 if(onOff&&$aImg.length>2){
+			 	run();
+			 }else{
+			 	onOff = false;//放在窗口大小改变会执行run();
+			 	$('#roll-btn').html('');
+			 }
+			 /***/
+			 $aLiBtn.mouseover(function(){
+			 	clearTimeout(timer)
+			 	onOff = false; //判断定时器是否运动
+			 	 var index= $(this).index();
+			 	 $(this).addClass('cur').siblings('li').removeClass('cur');
+			 	  m = index;
+			 	  /*点击当前的时候运动到指定的图片*/
+			 	  $rollBox.stop().animate({
+			  			left : -$aLiWidth*m
+			  	  }); 	
+			 });
+			 $('.roll').hover(function(){
+			 	clearTimeout(timer);
+			 	onOff = false;
+			 },function(){
+			 	onOff = true;
+			 	num =$aLiBtn.eq(m).index();
+			 	run();
+			 })
+    })();
+})
+	</script>
+</body>
+</html>
