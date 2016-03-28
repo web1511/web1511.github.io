@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自适应轮播</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		ul{list-style:none;}
+		.roll{
+			min-width:1100px;
+			height: 400px;
+			position: relative;
+			background-color: #472f26;
+			overflow: hidden;
+		}
+		.roll .roll-img{
+			position:absolute;
+			top:0;
+			left:0;
+		}
+		.roll-img li{
+			/* float:left; */
+		}
+		.roll-img img{
+			position:relative;
+		}
+		.roll .roll-btn{
+			width:auto;
+		    position: absolute;
+		    bottom: 10px;
+		    left: 50%;
+		    margin-left: -26px;
+		    font-weight: bold;
+		    font-family: \5b8b\4f53;
+		    overflow:hidden;
+		}
+		.roll-btn li{
+			display:inline-block;
+			width: 12px;
+		    height: 12px;
+		    text-align: center;
+		    line-height:0px;
+		    cursor:pointer;
+		    font-size:0px;
+		    *display:inline;
+		    *zoom:1;
+		    border-radius:50%;
+		    background: aqua;
+		    *margin-right:6px;
+		}
+		.roll-btn li.cur{
+			background-color:orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="roll" id="roll">
+		<ul class="roll-img" id="roll-box">
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img1.jpg" alt="轮播3">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img5.jpg" alt="轮播3">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img3.jpg" alt="轮播3">
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img4.jpg" alt="轮播3">
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="roll-btn" id="roll-btn">
+			<li class="cur">1</li>
+			<li class="">2</li>
+			<li class="">3</li>
+			<li class="">4</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$(window).load(function(){
+			var $rollBox = $('#roll-box'),
+				$rollBtn = $('#roll-btn'),
+				$rollBoxLi = $rollBox.find('li'),
+				$rollBoximg = $rollBox.find('img'),
+				$rollBtnLi = $rollBtn.find('li'),
+				$rollBoxLiHeight = $rollBoxLi.eq(0).outerHeight(),
+				$length = $rollBoxLi.length;
+			$rollBox.css('height',$rollBoxLiHeight* $length );
+				console.log($length );
+			var iNow = 0,
+				iNow2 =0,
+				timer =null;
+				/*toResize*/
+				toResize();
+				function toResize(){
+					var viewWidth= $(window).width();
+					if(viewWidth>1000){
+						$rollBoximg.css({
+							left:-($rollBoximg.outerWidth()-viewWidth)/2
+						});
+					}
+				}
+				$(window).resize(function(){toResize();});
+				/*tab*/
+				$rollBtnLi.hover(function(){
+					var index = $(this).index();
+					/*颜色状态改变*/
+					$(this).addClass('cur').siblings('li').removeClass('cur');
+					/*点击切换*/
+					$rollBox.stop().animate({
+						top : -index *$rollBoxLiHeight
+					});
+					iNow = index;//存一下这个值
+					iNow2 = index;
+					/*同时鼠标划过按钮时，也要改变定位状态*/
+					if(iNow==0){
+						$rollBoxLi.eq(0).css('position','static');
+					    $rollBox.css('top',0);
+					    iNow2 = 0;
+					}
+				});
+				/*toRun*/
+				timer = setInterval(toRun,1000);
+				/*清空定时器*/
+				$('#roll').hover(function(){
+					clearInterval(timer);
+				},function(){
+					timer = setInterval(toRun,1000);
+				});
+				function toRun(){
+					if(iNow==0){//取消定位的状态;并且iNow2 也为0
+						iNow2 =0
+						$rollBoxLi.eq(0).css('position','static');
+						$rollBox.css('top',0);
+					}
+					if(iNow==$length-1){//改变$rollBox的定位值
+						iNow=0;
+						$rollBoxLi.eq(0).css('position','relative');
+						$rollBoxLi.css('top',$rollBoxLiHeight*$length);
+					}else{
+						iNow++;//控制每个按钮的数值
+					}
+					iNow2++;//控制每张图片运动的数值
+					$rollBtnLi.eq(iNow).addClass('cur').siblings('li').removeClass('cur');
+					$rollBox.stop().animate({
+						top : -iNow2 *$rollBoxLiHeight
+					});
+				}
+
+        });
+	</script>
+</body>
+</html>
