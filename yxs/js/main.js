@@ -80,14 +80,14 @@ $(function(){
 			  var $liWidth= $rollBox.find('li').eq(0).clone(true);
 			  var num = 0,m=0;
 			  var onOff = true;
-			  /*init*/
 			  $rollBox.append($liWidth);
+			  /*init*/
 			  var $aLi = $rollBox.find('li');
 			  var lenNum = $aLi.length;
 			  $rollBox.css('width',$aLi.eq(0).outerWidth()*lenNum);
 			 function run(){
 			 	 num ++;
-			 	 if(num>lenNum){
+			 	 if(num>=lenNum){
 			 	 	num=0;
 			 	 	$rollBox.css('left',0);
 			 	 }
