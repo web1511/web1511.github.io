@@ -1,4 +1,30 @@
+$(window).load(function(){
+	var arr = ['../img/banner3.jpg','../img/banner2.jpg','../img/banner1.jpg','../img/body_bg.jpg','../img/gk.jpg','../img/gkb.jpg','../img/head_bg.jpg','../img/spr01.png','../img/spr02.jpg','../img/ost-bg.png'];
+	var num =0;
+	var count = num / arr.length*100;
+	function imgLoad(){
+	  	var img = new Image();
+	  	img.src = arr[num];
+	  	img.onload = function(){
+	  		num ++;
+	  		if(num<=arr.length){
+	  			imgLoad(); // 递归 的使用方法
+	  			//arguments.callee();
+	  		}
+	  	}
+	  if(num == 100){
+	  	 $('#whiteOverlay').fadeOut();
+	  	 $('#loading').fadeOut();
+	  }	
+  	  $('#number').html(count);
+  }
+  imgLoad();
+});  
 $(function(){
+	/*img_loading*/
+
+	/*loading*/
+	$('#whiteOverlay').css('height',$(document).height())
 	/*悬浮框*/
 	$(window).scroll(function(){
 		var _top= $(window).scrollTop();
