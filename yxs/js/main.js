@@ -77,38 +77,50 @@ $(function(){
 			  var timer = null;
 			  var $rollBox = $('#roll-box');
 			  var $aLiBtn = $('#roll-btn').find('li');
-			  var $liWidth= $rollBox.find('li').eq(0).clone(true);
+			  var $liClone= $rollBox.find('li').eq(0).clone(true);
+			  $rollBox.append($liClone);
 			  var num = 0,m=0;
 			  var onOff = true;
 			  /*init*/
-			  $rollBox.append($liWidth);
 			  var $aLi = $rollBox.find('li');
+			  var $aImg = $rollBox.find('img');
+			  var $aLiWidth = $aLi.eq(0).outerWidth();
 			  var lenNum = $aLi.length;
-			  $rollBox.css('width',$aLi.eq(0).outerWidth()*lenNum);
+			  //console.log(lenNum);
+			  $rollBox.css('width',$aLiWidth*lenNum);
+			  /*reisize*/
+			  /*运动*/
 			 function run(){
 			 	 num ++;
-			 	 if(num>lenNum){
+			 	 if(num>=$aLi.length){
 			 	 	num=0;
 			 	 	$rollBox.css('left',0);
 			 	 }
 			 	 /*btn*/
 			 	 if(m >$aLiBtn.length-1 ){
-			 	 	 m =0
+			 	 	 m =0;
 			 	 }
 			 	 $aLiBtn.removeClass('cur');
 			 	 $aLiBtn.eq(m).addClass('cur');
 			 	 timer = setTimeout(function(){
 			 	 	m = num;
 			  		$rollBox.stop().animate({
-			  			left : -$aLi.eq(0).outerWidth()*num
+			  			left : -$aLiWidth*num
 			  		},function(){
 			  			if(onOff){
 			  				run();
 			  			}
 			  		}) 	
-			   },1000)
+			   },2500);
 			 }
-			 if(onOff)run();
+			 /*图片大于2张才执行*/
+			 if(onOff&&$aImg.length>2){
+			 	run();
+			 }else{
+			 	onOff = false;//放在窗口大小改变会执行run();
+			 	$('#roll-btn').html('');
+			 }
+			 /***/
 			 $aLiBtn.mouseover(function(){
 			 	clearTimeout(timer)
 			 	onOff = false; //判断定时器是否运动
@@ -117,7 +129,7 @@ $(function(){
 			 	  m = index;
 			 	  /*点击当前的时候运动到指定的图片*/
 			 	  $rollBox.stop().animate({
-			  			left : -$aLi.eq(0).outerWidth()*m
+			  			left : -$aLiWidth*m
 			  	  }); 	
 			 });
 			 $('.roll').hover(function(){
