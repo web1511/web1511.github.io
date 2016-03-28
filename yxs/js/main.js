@@ -39,7 +39,7 @@ $(function(){
 	$(window).scroll(function(){
 		var _top= $(window).scrollTop();
 		document.title = _top;
-		if(_top>200){
+		if(_top>40){
 			$('#pfix').css({
 				'position':'fixed'
 			});
