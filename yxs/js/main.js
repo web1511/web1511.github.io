@@ -1,28 +1,38 @@
 $(window).load(function(){
-	var arr = ['../img/banner3.jpg','../img/banner2.jpg','../img/banner1.jpg','../img/body_bg.jpg','../img/gk.jpg','../img/gkb.jpg','../img/head_bg.jpg','../img/spr01.png','../img/spr02.jpg','../img/ost-bg.png'];
-	var num =0;
-	var count = num / arr.length*100;
-	function imgLoad(){
-	  	var img = new Image();
-	  	img.src = arr[num];
-	  	img.onload = function(){
-	  		num ++;
-	  		if(num<=arr.length){
-	  			imgLoad(); // 递归 的使用方法
-	  			//arguments.callee();
-	  		}
-	  	}
-	  if(num == 100){
-	  	 $('#whiteOverlay').fadeOut();
-	  	 $('#loading').fadeOut();
-	  }	
-  	  $('#number').html(count);
-  }
-  imgLoad();
+	/*setTimeout(function(){
+		$('#whiteOverlay').fadeOut();
+	    $('#loading').fadeOut();
+	},2000);
+	*/ 
 });  
 $(function(){
 	/*img_loading*/
-
+	var arr = [
+	'http://pic31.nipic.com/20130730/8764759_173028518000_2.jpg',
+	'http://pic18.nipic.com/20111217/9011561_134438748113_2.jpg',
+	'http://img3.redocn.com/20100515/Redocn_2010051509280220.jpg',
+	'http://pic1.cxtuku.com/00/08/47/b74877489abe.jpg','http://pic51.huitu.com/res/20160130/332361_20160130185055706600_1.jpg'
+	];
+	var pic = arr.length;
+	var num =0;
+	loadImg();
+	function loadImg(){
+		var img = new Image();
+		img.src = arr[num];
+		img.onload =function(){
+			num ++;
+			if(num<=arr.length){
+				loadImg();
+				$('#number').html(num/arr.length*100+'%');
+			}
+		}
+		if(num == arr.length){
+			setTimeout(function(){
+				$('#whiteOverlay').fadeOut();
+			    $('#loading').fadeOut();
+			},100)
+		}
+	}
 	/*loading*/
 	$('#whiteOverlay').css('height',$(document).height())
 	/*悬浮框*/
