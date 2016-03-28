@@ -87,8 +87,8 @@ $(function(){
 			  $rollBox.css('width',$aLi.eq(0).outerWidth()*lenNum);
 			 function run(){
 			 	 num ++;
-			 	 if(num>=lenNum){
-			 	 	num=1;
+			 	 if(num>lenNum){
+			 	 	num=0;
 			 	 	$rollBox.css('left',0);
 			 	 }
 			 	 /*btn*/
