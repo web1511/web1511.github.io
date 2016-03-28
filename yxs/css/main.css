@@ -381,6 +381,9 @@ body {
 .mark {
 	padding-top:6px;
 }
+.mark a,.ft-nav2 a{
+	color:#626060;
+}
 #loading{
     position: absolute;
     z-index: 1001;
