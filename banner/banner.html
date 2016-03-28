@@ -72,12 +72,18 @@
 					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img3.jpg" alt="轮播3">
 				</a>
 			</li>
+			<li>
+				<a href="javascript:;">
+					<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img4.jpg" alt="轮播3">
+				</a>
+			</li>
 			
 		</ul>
 		<ul class="roll-btn" id="roll-btn">
 			<li class="cur">1</li>
 			<li class="">2</li>
 			<li class="">3</li>
+			<li class="">4</li>
 		</ul>
 	</div>
 	<script type="text/javascript">
@@ -90,12 +96,13 @@
 			  var num = 0,m=0;
 			  var onOff = true;
 			  /*init*/
+			  $rollBox.append($liClone);
 			  var $aLi = $rollBox.find('li');
 			  var $aImg = $rollBox.find('img');
 			  var $aLiWidth = $aLi.eq(0).outerWidth() || 2500;
 			  var lenNum = $aLi.length;
 			  $rollBox.css('width',$aLiWidth*lenNum);
-			  $rollBox.append($liClone);
+			  console.log( lenNum)
 			 
 			  /*reisize*/
 			  toResize();
