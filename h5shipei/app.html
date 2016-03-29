@@ -74,10 +74,36 @@
         	top:0;
         	background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABACAMAAACpzkDwAAAAY1BMVEX////kNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyDkNyD99vXkNyDkNyDkNyDkNyD1xcHkNyD////99vX76+r64d/41tT2y8j0wLzztK/xqKLvm5TtjYXrf3bqcGToX1HmTTzkNyDPEQg9AAAAEXRSTlMAESIzRFVmd4iZqqq7zN3u7uYy9NoAAAHASURBVHja1dXbkoIwEATQJtyXyxJFIKiE///KJSJCVhQ3ZB62H7Sssk6Nk8agt54ijXwG2EXzJHAxxuKkScAwx5KaRS702FBTbdQnuKtrI9V3sJbFV0rezR9aIWouNzcQrKs6fOHi9i74FPG+AiHD60zmnBFuhHjPJh7eZhVuN6sVMeATuO+bRr3Ksu234TzAdh4wV5048WYTznzgD3BfV93gnvsNOPWAz+FusWJev4GzT9kX8COdKav1uL1P+gLOfWAv3KofoT/gRejAABZPPf4FJwzYDTeqGxpc+IAZrK2i5hcdjh0Yw7IUChbV9C83w7kHmMOC3+BmePIkP/QLOHGwA+74cVxFxdszr2bYZLtLuFJrVbA8XU+3VY9wxrAPburH4V34QU5wDOyE720YYHkc740BNl/DEj6oCl/VKR7lCH+7sAGX0xVXXe/H+QUr8NOV5oAEjgESOAINHIIGDkAD25h3DbbjguLcVuEYNHACGjhzaOCcgQQuXNDAAWjgGDSwxYPTYRc0cAgaOAURzIhg24uY4BxEsEcEx6CBC4cIjkADkwwMkqqNMM3AoBoYVAODphIKZkRwSuTCxz/LDzuIyYMbR8EsAAAAAElFTkSuQmCC') no-repeat;
         }
+        /* .borderGreen,.borderRed{
+            position:relative;
+            border:1px solid red;
+        } */
+        .borderGreen,.borderRed{
+            position:relative;
+            border-radius:5px;
+        }
+        .borderGreen:after,.borderRed:after{
+            content:"";
+            position:absolute;
+            -webkit-transform:scale(0.5) ;
+            transform:scale(0.5) ;
+            left:-50%; 
+            top:-50%; 
+            right:-50%; 
+            bottom:-50%;
+            border-radius:10px;
+        }
+        .borderGreen:after{
+            border:1px solid green;
+        }
+        .borderRed:after{
+            border:1px solid red;
+        } 
+        .mr10{margin-top:10px;}
 	</style>
 </head>
 <body>
-	<div class="app">
+	<div class="app borderGreen">
 		<div class="app_icon">
 			<img src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png" alt="手游" class="app_img">
 		</div>
@@ -88,5 +114,38 @@
 		<a class="app_button" href="#">下载</a>
 		<i class="app_label"></i>
 	</div>
+    <div class="app mr10 borderRed">
+        <div class="app_icon">
+            <img src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png" alt="手游" class="app_img">
+        </div>
+        <div class="app_text">
+            <h2 class="app_text_title">忍者必须死Ⅱ</h2>
+            <p class="app_text_summary">史上最萌的手游，安装量过10万。</p>
+        </div>
+        <a class="app_button" href="#">下载</a>
+        <i class="app_label"></i>
+    </div>
+    <div class="app borderGreen mr10">
+        <div class="app_icon">
+            <img src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png" alt="手游" class="app_img">
+        </div>
+        <div class="app_text">
+            <h2 class="app_text_title">忍者必须死Ⅱ</h2>
+            <p class="app_text_summary">史上最萌的手游，安装量过10万。</p>
+        </div>
+        <a class="app_button" href="#">下载</a>
+        <i class="app_label"></i>
+    </div>
+    <div class="app mr10 borderRed">
+        <div class="app_icon">
+            <img src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png" alt="手游" class="app_img">
+        </div>
+        <div class="app_text">
+            <h2 class="app_text_title">忍者必须死Ⅱ</h2>
+            <p class="app_text_summary">史上最萌的手游，安装量过10万。</p>
+        </div>
+        <a class="app_button" href="#">下载</a>
+        <i class="app_label"></i>
+    </div>
 </body>
 </html>

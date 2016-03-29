@@ -81,6 +81,10 @@ $(function(){
 			  $rollBox.append($liClone);
 			  var num = 0,m=0;
 			  var onOff = true;
+<<<<<<< HEAD
+=======
+			  $rollBox.append($liWidth);
+>>>>>>> 58a7fa2d385ad05f9272f9aad56e1f7b7f2de2d2
 			  /*init*/
 			  var $aLi = $rollBox.find('li');
 			  var $aImg = $rollBox.find('img');
@@ -92,7 +96,11 @@ $(function(){
 			  /*运动*/
 			 function run(){
 			 	 num ++;
+<<<<<<< HEAD
 			 	 if(num>=$aLi.length){
+=======
+			 	 if(num>=lenNum){
+>>>>>>> 58a7fa2d385ad05f9272f9aad56e1f7b7f2de2d2
 			 	 	num=0;
 			 	 	$rollBox.css('left',0);
 			 	 }
