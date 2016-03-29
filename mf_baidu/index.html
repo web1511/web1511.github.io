@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="js/phone.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="http://apps.bdimg.com/libs/zepto/1.0rc/zepto.min.js"></script>
+	<style type="text/css">
+		/*
+		*  1rem = 10px;
+		    1px = 0.1rem	
+		*	
+		*/
+	</style>
+	<script type="text/javascript">
+		Zepto(function($){
+   	  	  	$('#list').find('a').tap(function(){
+   	  	  		$('#list').find('span').attr('class','');
+   	  	  		$(this).find('span').attr('class','border');
+   	  	  	});
+   	  })
+	</script>
+</head>
+<body>
+	<header>
+		<a href="javascript:;" class="back">
+			<img src="css/back.png">
+			返回
+		</a>
+		<span class="title">这是标题</span>
+	</header>
+	<nav>
+		<ul class="navigation clearfix" id="list">
+			<li><a href="javascript:;">导航
+				<span class="border"></span>
+			</a></li>
+			<li><a href="javascript:;">导航
+				<span class=""></span>
+			</a></li>
+			<li><a href="javascript:;">导航
+				<span></span>
+			</a></li>
+			<li><a href="javascript:;">导航
+				<span ></span>
+			</a></li>
+			<li><a href="javascript:;">导航
+			<span></span>
+			</a></li>	
+		</ul>
+	</nav>
+	<section id="banner">
+		<img src="css/bear.png">
+	</section>
+</body>
+</html>
