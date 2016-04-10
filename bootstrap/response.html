@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>响应式导航</title>
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+<link rel="stylesheet" href="css2/main.css">
+<style>
+  .nav-bg{
+  	background-color:#1E3040 !important;
+  }
+ #box .cloor-w{
+  	color:#fff
+  }
+  .nav-bg li a:hover{
+  	background-color:#1F2141 !important; 
+  }
+ #box .navbar-default  .aBtn:hover,#box .navbar-default  .aBtn:focus{
+  	 background-color:#1E3058;
+  }
+  /*轮播*/
+  #myCarousel{
+  	margin-top:50px;
+  }
+  #Carousel-iner .item > a > img{
+  	height:80%; 
+  }
+  /* .carousel-control {
+  	font-size: 60px;
+  }	 */
+  /*内容*/
+
+ .tab-h2 {
+	font-size: 20px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #0059b2;
+}
+.tab-p {
+	font-size: 15px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #999;
+	margin: 20px 0 40px 0;
+}
+.tab1 {
+	margin: 30px 0;
+	color: #666;
+}
+.tab1 .text-muted {
+	color: #999;
+	text-decoration: line-through;
+}
+.tab1 .media-heading {
+	margin: 5px 0 20px 0;
+}
+.tab1 .col {
+	padding: 20px;
+}
+.tab2 {
+	background-color: #1E3040;
+	padding: 60px 20px;
+	text-align: center;
+	color:#fff
+}
+.tab2 img {
+	width: 40%;
+	height: 40%;
+}
+.tab3 {
+	padding: 60px 20px;
+	text-align: center;
+}
+.tab3 img {
+	width: 65%;
+	height: 65%;
+}
+.text h3 {
+	font-size: 20px;
+}
+.text p {
+	font-size: 14px;
+}
+#footer {
+	background-color: #1E3040;
+    color: #fff;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+/*没有小于768px，是因为Bootstrap3以移动端优先设计*/
+
+/* 小屏幕（平板，大于等于768px） */
+@media (min-width: 768px) {
+	.tab-h2 {
+		font-size: 26px;
+	}
+	.tab-p {
+		font-size: 16px;
+	}
+	.text h3 {
+		font-size: 22px;
+	}
+	.text p {
+		font-size: 15px;
+	}
+	.tab2-text {
+		float: left;
+	}
+	.tab2-img {
+		float: right;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于992px） */
+@media (min-width: 992px) {
+	.tab-h2 {
+		font-size: 28px;
+	}
+	.tab-p {
+		font-size: 17px;
+	}
+	.text h3 {
+		font-size: 24px;
+	}
+	.text p {
+		font-size: 16px;
+	}
+}
+
+/* 大屏幕（大桌面显示器，大于等于1200px） */
+@media (min-width: 1200px) {
+	.tab-h2 {
+		font-size: 30px;
+	}
+	.tab-p {
+		font-size: 18px;
+	}
+	.text h3 {
+		font-size: 26px;
+	}
+	.text p {
+		font-size: 18px;
+	}
+}
+</style>
+<script>
+
+</script>
+</head>
+
+<body class="" id="box">
+    <!--导航-->
+   <div class="navbar navbar-default navbar-fixed-top nav-bg">
+   	 <div class="container">
+   	 	<div class="navbar-header">
+   	 		<a href="" class="navbar-brand cloor-w">品牌LOGO</a><!--如果里面是一张图片，注意给a弄掉默认的padding:0-->
+   	 		<button type="button" class="navbar-toggle collapsed aBtn" data-toggle="collapse" data-target="#a" > 
+   	 		<!--注意这里的 data-target="#a" 对应的是下面div的id="a;名字可以随便更改，但是一定要意义对应,只有这样在缩小屏幕点击的时候才会有反应-->
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	       </button>
+   	 	</div>
+   	 	<div class="collapse navbar-collapse" id="a">
+	   	 	<ul class="nav navbar-nav navbar-right" id="list"><!--浮动到右边-->
+	   	 		<li>
+		   	 		<a href="javascript:;" class="cloor-w">
+		   	 		  <span class="glyphicon glyphicon-home "></span> 首页
+		   	 		</a>
+	   	 		</li>
+	   	 		<li class="dropdown">
+	   	 		   <a href="javascript:;" class="dropdown-toggle cloor-w nav-bg" data-toggle="dropdown">
+	   	 		     <span class="glyphicon glyphicon-th-list cloor-w"></span> 
+	   	 		     咨询
+	   	 		     <span class="caret"></span>
+	   	 		   </a>
+	   	 		   <ul class="dropdown-menu nav-bg">
+			            <li><a href="javascript:;" class="cloor-w">Action</a></li>
+			            <li><a href="javascript:;" class="cloor-w">Another action</a></li>
+			            <li><a href="javascript:;" class="cloor-w">Something else here</a></li>
+			            <li><a href="javascript:;" class="cloor-w">Separated link</a></li>
+			            <li><a href="javascript:;" class="cloor-w">One more separated link</a></li>
+	               </ul>
+	   	 		</li>
+	   	 		<li>
+		   	 		<a href="javascript:;" class="cloor-w">
+					  <span class="glyphicon glyphicon-fire"></span>
+		   	 		  案例
+		   	 		</a>
+	   	 		</li>
+	   	 		<li>
+	   	 		<a href="javascript:;" class="cloor-w">
+	   	 		  <span class="glyphicon glyphicon-question-sign"></span>
+	   	 		  关于
+	   	 		</a>
+	   	 		</li>
+	   	 	</ul>
+	   	</div>
+   	 </div>
+   </div>
+   <!--轮播-->
+   <div  id="myCarousel" class="carousel slide">
+   	  <ol class="carousel-indicators">
+   	  	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+   	  	<li data-target="#myCarousel" data-slide-to="1"></li>
+   	  	<li data-target="#myCarousel" data-slide-to="2"></li>
+   	  </ol>
+   	  <div class="carousel-inner" id="Carousel-iner">
+	  	<div class="item active">
+	   	  	<a href="javascript:;">
+	   	  		<img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img4.jpg" alt="">
+	   	  	</a>
+	  	</div>
+	  	<div class="item">
+	  	     <a href=""><img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img5.jpg" alt=""></a>
+	  	</div>
+	  	<div class="item">
+	   	  	<a href=""><img src="http://www.17sucai.com/preview/22522/2014-03-25/%E7%B4%A0%E6%9D%90/images/img3.jpg" alt=""></a>
+	  	</div>
+   	  </div>
+   	  <a href="#myCarousel" data-slide="prev" class="carousel-control left">
+   	   <!-- &lsaquo; -->
+   	     <span class="glyphicon glyphicon-chevron-left"></span>
+   	  </a>
+   	  <a href="#myCarousel" data-slide="next" class="carousel-control right" >
+   	    <!-- &rsaquo; -->
+   	    <span class="glyphicon glyphicon-chevron-right"></span>
+   	  </a>
+   </div>
+   <!--内容-->
+   <div class="tab1">
+   	  <div class="container">
+   	  	 <h2 class="tab-h2">「为什么选择51rgb企业培训」</h2>
+		 <p class="tab-p">强大的师资力量，完美的实战型管理课程，让您的企业实现质的腾飞！</p>
+		 <div class="row">
+		 	<div class="col-md-6 col">
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img src="img/tab1-1.png" class="media-object" alt=""></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">课程内容</h4>
+						<p class="text-muted">其他：高校不知名的讲师编写，没有任何实战价值的教材！</p>
+						<p>我们：知名企业家、管理学大师联合编写的具有实现性教材！</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col">
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img src="img/tab1-2.png" class="media-object" alt=""></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">师资力量</h4>
+						<p class="text-muted">其他：非欧美正牌大学毕业的、业界没有知名度的讲师！</p>
+						<p>我们：美国哈佛、耶鲁等世界一流高校、享有声誉的名牌专家！</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col">
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img src="img/tab1-3.png" class="media-object" alt=""></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">课时安排</h4>
+						<p class="text-muted">其他：无法保证上课效率、没有时间表，任务无法完成！</p>
+						<p>我们：保证按时间表的上课、效率高、当天的任务当天完成！</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col">
+				<div class="media">
+					<div class="media-left">
+						<a href="#"><img src="img/tab1-4.png" class="media-object" alt=""></a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">服务团队</h4>
+						<p class="text-muted">其他：社会招聘的、服务水平参差不齐的普通员工！</p>
+						<p>我们：内部培养、经受过良好高端服务培训的高标准员工！</p>
+					</div>
+				</div>
+			</div>
+
+		 </div>
+   	  </div>
+   </div>
+   <div class="tab2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 tab2-img">
+					<img src="img/tab2.png" class="auto img-responsive center-block" alt="">
+				</div>
+				<div class="text col-md-6 col-sm-6 tab2-text">
+					<h3>强大的学习体系</h3>
+					<p>经过管理学大师层层把关、让您的企业突飞猛进。</p>
+				</div>
+			</div>
+		</div>
+   </div>
+   <div class="tab3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<img src="img/tab3.png" class="auto img-responsive center-block" alt="">
+				</div>
+				<div class="text col-md-6 col-sm-6">
+					<h3>完美的管理方式</h3>
+					<p>最新的管理培训方案，让您的企业赶超同行。</p>
+				</div>
+			</div>
+		  </div>
+   </div>
+   <!--底部-->
+   <footer id="footer">
+		<div class="container">
+			<p>企业培训 | 合作事宜 | 版权投诉</p>
+			<p>苏ICP 备12345678. © 2009-2016 51rgb企训网. Powered by Bootstrap.</p>
+		</div>
+   </footer>
+
+
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+  $(function(){
+  	  //轮播自动播放
+	$('#myCarousel').carousel({
+		//自动4秒播放
+		interval : 4000,
+	});
+	//设置垂直居中
+	/*$('.carousel-control').css('line-height', $('.carousel-inner img').height() + 'px');
+	$(window).resize(function () {
+		var $height = $('.carousel-inner img').eq(0).height() || 
+					  $('.carousel-inner img').eq(1).height() || 
+					  $('.carousel-inner img').eq(2).height();
+		$('.carousel-control').css('line-height', $height + 'px');
+	});*/
+    //设置文字垂直居中
+	$('.text').eq(0).css('margin-top', ($('.auto').eq(0).height() - $('.text').eq(0).height()) / 2 + 'px');
+	$(window).resize(function () {
+		$('.text').eq(0).css('margin-top', ($('.auto').eq(0).height() - $('.text').eq(0).height()) / 2 + 'px');
+	});
+
+	$('.text').eq(1).css('margin-top', ($('.auto').eq(1).height() - $('.text').eq(1).height()) / 2 + 'px');
+	$(window).resize(function () {
+		$('.text').eq(1).css('margin-top', ($('.auto').eq(1).height() - $('.text').eq(1).height()) / 2 + 'px');
+	});
+
+  })	
+
+</script> 
+</body>
+</html>
