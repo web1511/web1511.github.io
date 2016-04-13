@@ -1,0 +1,511 @@
+﻿/*清除默认样式*/
+body, ul, div, input, table, td, th, h2, p ,tr{
+    margin: 0;
+    padding: 0;
+
+}
+
+input {
+    outline: none
+}
+
+img {
+    border: none
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+ul, li {
+    list-style: none;
+}
+
+/*桌面*/
+#win {
+    background: url(win7bg1.jpg) repeat-x;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#win #desk {
+    float: left;
+    text-align: center;
+    margin: 20px 0 0 25px;
+    position: relative;
+
+}
+
+#win #desk li {
+    /* z-index: 1;*/
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: -120px;
+    left: 0;
+}
+
+#win #desk .onlicks {
+    border: solid 1px #bbd6ec;
+    -webkit-border-radius: 3px;
+    box-shadow: inset 0 0 1px #fff;
+    -webkit-box-shadow: inset 0 0 1px #fff;
+    background-color: #5caae8;
+}
+
+#win #desk a:hover {
+    border: solid 1px #bbd6ec;
+    -webkit-border-radius: 3px;
+    box-shadow: inset 0 0 1px #fff;
+    -webkit-box-shadow: inset 0 0 1px #fff;
+    background-color: #5caae8;
+}
+
+#win #desk a {
+    font-size: 12px;
+    border: solid 1px transparent;
+    display: block;
+    padding: 3px;
+    margin: 20px 0 0 0;
+    color: #ffffff;
+}
+
+#win #desk img {
+    width: 60px;
+    height: 60px;
+}
+
+/*开始菜单栏*/
+#win #startMenu {
+    border-radius: 3px;
+    width: 400px;
+    height: 415px;
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    background-color: #1984a3;
+    border: 1px solid #102a3e;
+    display: none;
+    z-index: 100;
+
+}
+
+#win #startMenu .programs {
+    margin: 7px 0 7px 7px;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px #365167;
+
+}
+
+#win #startMenu .programs a {
+    border: solid 1px transparent;
+    display: block;
+    padding: 3px;
+    margin: 3px;
+    font-size: 14px;
+    color: black;
+    font-family: inherit;
+
+}
+
+#win #startMenu .programs li a:hover {
+    border: solid 1px #7da2ce;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: inset 0 0 1px #ffffff;
+    -moz-box-shadow: inset 0 0 1px #ffffff;
+    -webkit-box-shadow: inset 0 0 1px #ffffff;
+    background-color: #cfe3fd;
+}
+
+#win #startMenu .programs a img {
+    vertical-align: middle;
+    margin-right: 5px;
+
+}
+
+#win #startMenu #links {
+    margin-top: 25px;
+
+}
+
+#win #startMenu #links .icon {
+    position: absolute;
+    left: 295px;
+    top: -30px;
+}
+
+#win .programs, #links {
+    float: left;
+}
+
+#win li .leftspliter {
+    margin: 5px 15px 0 15px;
+    border-top: 1px solid #add2f5;
+}
+
+#win li .rightspliter {
+    margin: 0 7px 0 7px;
+    border-top: solid 1px #33775a;
+}
+
+#links a {
+    border: solid 1px transparent;
+    display: block;
+    margin: 3px 5px;
+    position: relative;
+    color: #ffffff;
+    min-width: 120px;
+    font-size: 12px;
+}
+
+#links a:hover {
+    border: solid 1px #000;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 0 1px #ffffff;
+    -webkit-box-shadow: inset 0 0 1px #ffffff;
+    background-color: #658da0;
+    background: -webkit-gradient(linear, 0% 100%, 100% 100%, from(#517384), color-stop(50%, #79a3b8), to(#517384));
+}
+
+#links a span {
+    padding: 5px;
+    display: block;
+}
+
+#links a:hover span {
+    background: -webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(49%, transparent), color-stop(50%, rgba(2, 37, 58, 0.5)), to(rgba(63, 111, 135, 0.5)));
+}
+
+/*任务栏*/
+#taskbar {
+    height: 45px;
+    width: 100%;
+    background: url(taskbarbg.png) repeat-x;
+    margin: -45px auto;
+    position: relative;
+
+}
+
+#taskbar #taskbarImg {
+    position: absolute;
+    left: 55px;
+    top: 6px;
+}
+
+#taskbar #taskbarImg a {
+    display: inline-block;
+    text-align: center;
+    width: 57px;
+    height: 46px;
+    background: url(taskbarhover.png) 0 -46px no-repeat;
+}
+
+#taskbar #taskbarImg a:hover {
+    background-position: 0 -3px;
+}
+
+#taskbar #start {
+    position: absolute;
+    text-align: center;
+    width: 57px;
+    height: 46px;
+    background: url(start.png) 0 -4px no-repeat;
+}
+
+#taskbar span {
+    display: inline-block;
+    color: white;
+    font-size: 12px;
+    font-family: "Lucida Grande", Verdana, Lucida, Arial, Helvetica, Microsoft Yahei, simsun, sans-serif;
+    float: right;
+    width: 75px;
+    height: 40px;
+    text-align: center;
+    padding: 5px 5px 0 0;
+    cursor: default;
+    border-left: 2px solid #8497ad;
+    line-height: 18px;
+
+}
+
+#taskbar span:hover {
+    background-color: #634941;
+}
+
+/*#taskbar span{
+    display: inline-block;
+    font-style: normal;
+    line-height: 18px;
+}*/
+#taskbar a:hover {
+    background-position: 0 -3px;
+}
+
+#taskbar #start:hover {
+    background-position: 0 -112px;
+}
+
+/*右键菜单*/
+#contextmenus {
+    display: none;
+    width: 150px;
+    position: absolute;
+    background: #f0f0f0;
+    border: 1px solid #888;
+    cursor: default;
+
+}
+
+#contextmenus span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #f0f0f0 #f0f0f0 #f0f0f0 #333;
+    font-size: 0;
+    line-height: 0;
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+#contextmenus li {
+    position: relative;
+
+}
+
+#contextmenus h2.active {
+    border: 1px solid #999;
+    height: 28px;
+    line-height: 28px;
+    background: #ccc;
+    cursor: default;
+}
+
+#contextmenus h2.active span {
+    border-color: #ccc #ccc #ccc #333;
+}
+
+#contextmenus h2 {
+    font-size: 12px;
+    font-weight: normal;
+    width: 133px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 15px;
+
+}
+
+#contextmenus ul {
+    display: none;
+    width: 100%;
+    background: #f0f0f0;
+    border: 1px solid #888;
+    position: absolute;
+    top: 0;
+    left: 145px;
+}
+
+/*时钟和日历*/
+#calendar {
+    display: none;
+    background-color: white;
+    width: 330px;
+    height: 300px;
+    border: 8px solid #3E77B6;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: default;
+    position: absolute;
+    right: 10px;
+    bottom: 50px;
+    font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", arial, sans-serif;
+
+}
+
+#calendar table {
+    margin-left: 10px;
+}
+
+
+#calendar thead th {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    line-height: 15px;
+    text-align: right;
+    margin-right: 3px;
+    font-weight: normal;
+	
+}
+
+#calendar tbody td {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    line-height: 15px;
+    text-align: right;
+    padding-left: 3px;
+
+}
+#calendar tbody td:hover{
+    color: #0066FF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #cfe3fd;
+
+}
+
+
+#calendar .year {
+    display: block;
+    width: 90px;
+    margin: 15px 130px 25px 130px;
+    color: #0066CC;
+    font-size: 12px;
+}
+
+#hint {
+    position: absolute;
+    border-radius: 3px;
+    font-size: 12px;
+    width: 55px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    border: 1px solid grey;
+    padding: 3px;
+    font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", arial, sans-serif;
+    background: white;
+    display:none;
+
+}
+
+#calendar a.year:hover, .calendarBottom a:hover {
+    text-decoration: underline;
+}
+
+#calendarTop {
+    height: 15px;
+    position: relative;
+    width: 165px;
+    margin-left: 8px;
+    margin-bottom: 5px;
+}
+
+#calendarTop a {
+    width: 0;
+    height: 0;
+    border-width: 5px;
+    border-style: solid;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    top: 3px;
+
+}
+
+#calendarTop a.topLeft {
+    left: 5px;
+    border-color: #fff #333 #fff #fff;
+
+}
+
+#calendarTop a.topRight {
+    right: -3px;
+    border-color: #fff #fff #fff #333;
+}
+
+#calendarTop em {
+    font-style: normal;
+    display: inline-block;
+    font-size: 12px;
+    position: absolute;
+    left: 55px;
+}
+
+#calendarTop em:hover {
+    color: #0066CC;
+}
+
+#calendarTop span {
+    z-index: 50;
+    display: block;
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#calendarTop span.l {
+    left: 4px;
+}
+
+#calendarTop span.r {
+    right: -3px;
+}
+
+#calendar .current {
+    color: #0066FF;
+    border: 1px solid #0066FF;
+	margin-left:3px;
+	width:18px;
+
+}
+
+#calendar .active {
+    border: 1px dotted;
+    width:15px;
+}
+
+#calendar #c1 {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    right: -4px;
+    top: 45px;
+}
+
+#calendar .week {
+    position: absolute;
+    right: 50px;
+    top: 192px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#calendar .week span {
+    display: block;
+    color: grey;
+    padding-left: 6px;
+    padding-top: 5px;
+
+}
+
+#calendar .calendarBottom {
+    width: 100%;
+    height: 20px;
+    line-height: 45px;
+    text-align: center;
+    margin-top: 35px;
+    border-top: 2px solid #CCD9EA;
+    font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", arial, sans-serif;
+}
+
+#calendar .calendarBottom a {
+    font-size: 12px;
+    color: #0066CC;
+}
