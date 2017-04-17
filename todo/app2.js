@@ -102,7 +102,7 @@ var vm = new Vue({
 		editTodo(item){//编辑任务
 			this.beforeTitle = item.title;
 			this.edtorTodos = item;
-			console.log(this.item);
+			//console.log(this.item);
 		},
 		editTodoed(){//编辑完成
 			this.edtorTodos = '';
