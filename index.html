@@ -1,35 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>前端资源收集</title>
-	<base target="_blank" />
-	<style type="text/css">
-		*{margin:0;padding:0;}
-		body{font-size:20px;font-family:"sans-serif";}
-		a{text-decoration:none;color:#037B1C;}
-		a:hover{color:#3ACA57;text-decoration:underline;}
-		p{line-height:36px;text-align:center;}
-	</style>
+    <meta charset="UTF-8">
+    <title>todo</title>
+    <link rel="stylesheet" href="todo/index.css">
+    <script src="todo/vue.js"></script>
 </head>
 <body>
-	<p><a href="http://www.cnblogs.com/PeunZhang/archive/2012/06/17/2552602.html">白树的博客,各种前端资源,赞！！！</a></p>
-	<p><a href="http://www.cnblogs.com/TomXu/">汤姆大叔的博客,js的进阶</a></p>
-	<p><a href="http://www.cnblogs.com/yexiaochai/p/4840512.html">叶小钗的博客</a></p>
-	<p><a href="https://tinypng.com/">png和jpg的在线压缩工具</a></p>
-	<p><a href="https://bjango.com/articles/min-device-pixel-ratio/">各种手机的设备像素比例</a></p>
-	<p><a href="http://ganquan.info/yui/?hl=zh-CN">YUI Compressor 在线压缩 JavaScript/CSS</a></p>
-	<p><a href="http://f2er.club/">醉牛前端,前端各种插件手册和工具，很全！！！</a></p>
-	<p><a href="http://www.cnblogs.com/PeunZhang/p/3407453.html">白树的移动端web资源整理</a></p>
-	<p><a href="http://jsbin.com/zodiyidayu/1/edit?html,css,js,console,output">在线设计demo，在线编辑器，很强大！！！</a></p>
-	<p><a href="http://jsfiddle.net/D7N3S/">在线测试，在线编辑器</a></p>
-	<p><a href="http://www.iconfont.cn/help/iconmake.html">iconfont图标制作说明</a></p>
-	<p><a href="http://javascript.ruanyifeng.com/htmlapi/canvas.html">Canvas API，还有各种api,很丰富,阮一峰写的</a></p>
-	<p><a href="http://tool.css-js.com/base64.html?b2">图片转base64,把图片转化成代码,主要考虑用于移动端</a></p>
-	<p><a href="http://www.fontsquirrel.com/tools/webfont-generator">@font-face字体格式生成工具</a></p>
-	<p><a href="http://css3lib.alloyteam.com/#animation/AnimatedButtons">css3ui库</a></p>
-	<p><a href="http://ued.ctrip.com/webkitcss/index.html">webkit独有的样式分析，重置手机样式的可以研究一下！！！</a></p>
-	<p><a href="https://github.com/peunzhang/mobileTech">开发手机端的各种资源,从入门到精通，值得关注！！！</a></p>
-	<p>以上便是暂时手机的资源,后期收集了会继续更新</p>
+    <div class="page-top">
+        <div class="page-content">
+            <h2>任务计划列表</h2>
+        </div>
+    </div>
+    <div class="main">
+        <h3 class="big-title">添加任务：</h3>
+        <input 
+            placeholder="例如：吃饭睡觉打豆豆；    提示：+回车即可添加任务" 
+             class="task-input" 
+            type="text"
+            v-model="todo"
+            @keyup.enter="addTodo"
+        />
+        <ul class="task-count" v-show="list.length">
+            <!-- <li>
+            {{
+                list.filter(function(item){
+                    return !item.isChecked;
+                }).length
+            }}个任务未完成</li> -->
+            <li>{{noCheckeLength}}个任务未完成</li>
+            <li class="action">
+                <a  href="#all" :class="{active:visibility === 'all' || visibility === '' }">所有任务</a>
+                <a href="#unfinished" :class="{active:visibility === 'unfinished'}">未完成的任务</a>
+                <a href="#finished" :class="{active:visibility === 'finished'}">完成的任务</a>
+            </li>
+        </ul>
+        <h3 class="big-title">任务列表：</h3>
+        <div class="tasks">
+            <span class="no-task-tip" v-show="!list.length">还没有添加任何任务</span>
+            <ul class="todo-list">
+                <li class="todo" 
+                :class="{completed:item.isChecked,editing: item === edtorTodos}" 
+                v-for="(item ,index) of filterList">
+                    <div class="view">
+                        <input class="toggle" 
+                         type="checkbox" 
+                         v-model="item.isChecked"/>
+                        <label 
+                         v-text="item.title"
+                         @dblclick="editTodo(item)" 
+                        ></label>
+                        <button class="destroy" @click="deleteTodo(index,item)"></button>
+                    </div>
+                    <input 
+                        class="edit" 
+                        type="text" 
+                        v-model = "item.title"
+                        v-focus = "edtorTodos === item"
+                        @blur ="editTodoed"
+                        @keyup.enter = "editTodoed"
+                        @keyup.esc = "cancelTodo(item)"
+                    />
+                </li>
+                <!-- <li class="todo" >
+                    <div class="view">
+                        <input class="toggle" type="checkbox"  />
+                        <label>javascript的学习计划</label>
+                        <button class="destroy"></button>
+                    </div>
+                    <input 
+                        class="edit" 
+                        type="text" 
+                    />
+                </li>
+                <li class="todo">
+                    <div class="view">
+                        <input class="toggle" type="checkbox"  />
+                        <label>php的学习计划</label>
+                        <button class="destroy"></button>
+                    </div>
+                    <input 
+                        class="edit" 
+                        type="text" 
+                    />
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="todo/app2.js"></script>
 </body>
 </html>
