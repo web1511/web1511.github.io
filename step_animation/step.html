@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+	    h2{
+	    	text-align:center;
+	    }
+		.box {
+		        width: 88.83333333333333px;
+		        height: 54px;
+		        margin: 10px auto;
+		        background: url(step.png) no-repeat;
+		        animation: step .5s steps(6) both infinite;
+		        -webkit-animation: step 3s steps(6) both infinite;
+		    }
+		    @keyframes step {
+		        100% {
+		            background-position: -533px 0;
+		        }
+		    }
+		    @-webkit-keyframes step {
+		           100% {
+		               background-position: -533px 0;
+		           }
+		   }
+		   .box2 {
+		           width: 88.83333333333333px;
+		           height: 54px;
+		           margin: 10px auto;
+		           background: url(step.png) no-repeat;
+		           animation: step1 .5s steps(1) both infinite;
+		           -webkit-animation: step1 .5s steps(1) both infinite;
+		       }
+		       @keyframes step1 {
+		           0% {
+		               background-position: 0;
+		           }
+		           16.7% {
+		               background-position: -90px 0;
+		           }
+		           33.4% {
+		               background-position: -180px 0;
+		           }
+		           50.1% {
+		               background-position: -270px 0;
+		           }
+		           67.8% {
+		               background-position: -360px 0;
+		           }
+		           84.5% {
+		               background-position: -450px 0;
+		           }
+		           100% {
+		               background-position: -533px 0;
+		           }
+		       }    
+		       @-webkit-keyframes step1 {
+		           0% {
+		               background-position: 0;
+		           }
+		           16.7% {
+		               background-position: -90px 0;
+		           }
+		           33.4% {
+		               background-position: -180px 0;
+		           }
+		           50.1% {
+		               background-position: -270px 0;
+		           }
+		           67.8% {
+		               background-position: -360px 0;
+		           }
+		           84.5% {
+		               background-position: -450px 0;
+		           }
+		           100% {
+		               background-position: -533px 0;
+		           }
+		       }  
+
+		       .step_end {
+		               width: 88.83333333333333px;
+		               height: 54px;
+		               margin: 10px auto;
+		               background: url(step.png) no-repeat;
+		               animation: step_end .5s steps(6, end) both infinite;
+		               -webkit-animation: step_end .5s steps(6, end) both infinite;
+		           }
+		           @keyframes step_end {
+		               100% {
+		                   background-position: -533px 0;
+		               }
+		           }   
+		           @-webkit-keyframes step_end {
+		               100% {
+		                   background-position: -533px 0;
+		               }
+		           }
+		           .step_start {
+		                   width: 88.83333333333333px;
+		                   height: 54px;
+		                   margin: 10px auto;
+		                   background: url(step.png) no-repeat;
+		                   background-position: -0 0;
+		                   animation: step_start 0.5s steps(6, start) both infinite;
+		                   -webkit-animation: step_start 0.5s steps(6, start) both infinite;
+		               }
+		               @keyframes step_start {
+		                   100% {
+		                       background-position: -533px 0;
+		                   }
+		               }    
+		               @-webkit-keyframes step_start {
+		                   100% {
+		                       background-position: -533px 0;
+		                   }
+		               }  
+	</style>
+</head>
+<body>
+	<h2>step的第一个参数为6</h2>
+	<div class="box"></div>
+	<h2>step的第一个参数为1</h2>
+	<div class="box2"></div>
+	<h2>step函数的第二个参数是end</h2>
+	<div class="step_end"></div>
+    <h2>step函数的第二个参数是start</h2>
+    <div class="step_start"></div>
+</body>
+</html>
