@@ -1,0 +1,68 @@
+@charset "UTF-8";
+#section2{
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg1.jpg") no-repeat;
+    background-size:100%;
+}
+.text-box{
+    width: 600px;
+    position: absolute;
+    top:25%;
+    left: 15%;
+}
+.section2-tit{
+    font-family: 'Engravers MT',"Microsoft YaHei",Arial,Helvetica,sans-serif;
+    font-size: 120px;
+    letter-spacing: 10px;
+    font-smooth:antialiased;
+    -webkit-font-smoothing: antialiased;
+    filter:progid:DXImageTransform.Microsoft.Blur(pixelRadius=2);
+}
+.slogan-box{
+    width: 489px;
+    height: 73px;
+    background: url("../img/irregular_03.png") no-repeat;
+    margin-top: 25px;
+    color: #fff;
+    font-size: 36px;
+    line-height: 73px;
+    padding-left: 15px;
+    letter-spacing: 5px;
+}
+.slogan-box:after{
+    content: '';
+    width: 28px;
+    height: 22px;
+    background: url("../img/more_03.png") no-repeat;
+    display: block;
+    float: right;
+    margin: 27px 85px 0 0;
+}
+.small-tit{
+    width: 100%;
+    font-size: 30px;
+    padding-top: 40px;
+    letter-spacing: 5px;
+    overflow: hidden;
+}
+.describe{
+    color: #999;
+    font-size: 14px;
+    line-height: 30px;
+    padding-top: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
