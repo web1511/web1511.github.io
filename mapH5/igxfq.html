@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>智能消火栓</title>
+		<script src="js/util.js"></script>
+		<link href="css/reset.css" type="text/css" rel="stylesheet" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" />
+		<link href="plugin/citySelect/cityPicker.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+	   <div class="js_comS igshowAct">
+		   <header class="igHead">
+		   	   <input type="text" placeholder="输入设备编号/名称查询"/>
+		   	   <a href="javascript:;">搜索</a>
+		   	   <a href="javascript:;">取消</a>
+		   </header>
+		   <!-- 设备信息 -->
+		   <section class="igCont igContShow">
+		   	  <!-- 省市区 -->
+		   	  <div class="cityW clearfix" id="cityBtn">
+		   	  	  <span>深圳市</span>
+		   	  	  <span>龙华区</span>
+		   	  	  <span>清湖街道</span> 
+		   	  </div>
+		   	  <!-- contet -->
+			  <ul class="cityMes">
+			  	  <li>
+			  	  	 <a href="dcdetail.html">滨江新村</a>
+			  	  	 <span>设备编号：<em>7777</em></span>
+			  	  	 <span>状态：<em>正常</em></span>
+			  	  	 <span>水压：<em>-1.000 Mpa</em></span>
+			  	  	 <span>最后通讯：<em>刚刚</em></span>
+			  	  	 <i class="iconSwich"></i>
+			  	  </li>
+			  	  <li>
+			  	  	 <a href="dcdetail.html">宝能科技园</a>
+			  	  	 <span>设备编号：<em>7777</em></span>
+			  	  	 <span>状态：<em class="colAct">被盗</em></span>
+			  	  	 <span>水压：<em>-1.000 Mpa</em></span>
+			  	  	 <span>最后通讯：<em>刚刚</em></span>
+			  	  	 <i class="iconSwich iconSwichClose"></i>
+			  	  </li>
+			  	  <li>
+			  	  	 <a href="dcdetail.html">北环立交</a>
+			  	  	 <span>设备编号：<em>7777</em></span>
+			  	  	 <span>状态：<em class="colAct">撞倒、水压异常、非法用水</em></span>
+			  	  	 <span>水压：<em>-1.000 Mpa</em></span>
+			  	  	 <span>最后通讯：<em>15分钟前</em></span>
+			  	  	 <i class="iconSwich"></i>
+			  	  </li>
+			  	  <li>
+			  	  	 <a href="dcdetail.html">宝能科技园</a>
+			  	  	 <span>设备编号：<em>7777</em></span>
+			  	  	 <span>状态：<em class="colAct">电压异常</em></span>
+			  	  	 <span>水压：<em>-1.000 Mpa</em></span>
+			  	  	 <span>最后通讯：<em>2017-11-20 15:59:58</em></span>
+			  	  	 <i class="iconSwich"></i>
+			  	  </li>
+			  </ul>	
+		   </section>
+	   </div>	   
+	   <!-- 地图显示 -->
+	   <div class="js_comS igMap">
+		   <section class="igCont">
+		   	   <div id="mapBtn" style="width:100%;  height:618px;">
+		   	   </div>
+		   	   <i class="geoIcon" id="geoBtn"></i>
+		   	   <i class="mapSearIcon" id="msBtn"></i>
+		   	   <i class="eqIcon" id="eqBtn"></i>
+		   	   <!-- 搜索地址 -->
+			   <div class="mapSearchW" id="mapSw">
+			   	  <input type="text" placeholder="输入地址"/>
+			   	  <a href="javascript:;">搜索</a>
+			   </div>	
+			    
+			   <!-- 搜索设备  -->
+			   <div class="mapSearchW" id="mapEqSw">
+			   	  <input type="text" placeholder="输入设备编号/名称查询"/>
+			   	  <a href="javascript:;">搜索</a>
+			   	  <!-- 省市区 -->
+			   	  <div class="cityW clearfix" id="cityBtn2">
+			   	  	  <span>深圳市</span>
+			   	  	  <span>龙华区</span>
+			   	  	  <span>清湖街道</span> 
+			   	  </div>
+			   </div>
+
+		   </section>
+	   </div>
+	   <!-- 报警信息 -->
+	   <div class="js_comS">
+		   <header class="igHead">
+		   	   <input type="text" placeholder="输入设备编号/名称查询"/>
+		   	   <a href="javascript:;">搜索</a>
+		   	   <a href="javascript:;">取消</a>
+		   </header>
+		   <section class="igCont">
+		   	   <div class="warnMes">
+		   	   		<div class="warnTime clearfix">
+		   	   			<span class="fl">
+		   	   				开始时间：<em>2017-11-20</em>
+		   	   			</span>
+		   	   			<span class="fr">
+		   	   				结束时间：<em>2017-11-20</em>
+		   	   			</span>
+		   	   		</div>
+		   	   		<div class="question">
+						<span>被盗</span>
+						<span>撞倒</span>
+						<span>非法用水</span>
+						<span>电压异常</span>
+						<span>水压异常</span>
+					</div>
+		   	   </div>
+		   	   <!-- 报警具体信息 -->
+		   	   <div class="warnCont">
+		   	     <div class="js_dcMes">
+		   	   	   <div class="quCont">
+			   	   	   	<div class="com_cont">
+			   	   	   		<div class="clearfix qu_title">
+			   	   	   			<a href="javascript:;" class="fl">滨江新村</a>
+			   	   	   			<span class="fr">撞倒</span>
+			   	   	   		</div>
+			   	   	   		<div class="quCont_time clearfix">
+			   	   	   			<span class="fl">设备编号：<em>7777</em></span>
+			   	   	   			<span class="fr">2017-11-20 18:30:04</span>
+			   	   	   		</div>
+			   	   	   	</div>
+			   	   	   	<div class="com_cont">
+			   	   	   		<div class="clearfix qu_title">
+			   	   	   			<a href="javascript:;" class="fl">滨江新村</a>
+			   	   	   			<span class="fr">非法用水</span>
+			   	   	   		</div>
+			   	   	   		<div class="quCont_time clearfix">
+			   	   	   			<span class="fl">设备编号：<em>7777</em></span>
+			   	   	   			<span class="fr">2017-11-20 18:30:04</span>
+			   	   	   		</div>
+			   	   	   	</div>
+			   	   	   	<div class="com_cont">
+			   	   	   		<div class="clearfix qu_title">
+			   	   	   			<a href="javascript:;" class="fl">滨江新村</a>
+			   	   	   			<span class="fr">撞倒</span>
+			   	   	   		</div>
+			   	   	   		<div class="quCont_time clearfix">
+			   	   	   			<span class="fl">设备编号：<em>7777</em></span>
+			   	   	   			<span class="fr">2017-11-20 18:30:04</span>
+			   	   	   		</div>
+			   	   	   	</div>
+			   	   	   	<div class="com_cont">
+			   	   	   		<div class="clearfix qu_title">
+			   	   	   			<a href="javascript:;" class="fl">滨江新村</a>
+			   	   	   			<span class="fr">电压异常</span>
+			   	   	   		</div>
+			   	   	   		<div class="quCont_time clearfix">
+			   	   	   			<span class="fl">设备编号：<em>7777</em></span>
+			   	   	   			<span class="fr">2017-11-20 18:30:04</span>
+			   	   	   		</div>
+			   	   	   	</div>
+			   	   	   	<div class="com_cont">
+			   	   	   		<div class="clearfix qu_title">
+			   	   	   			<a href="javascript:;" class="fl">滨江新村</a>
+			   	   	   			<span class="fr">水压异常</span>
+			   	   	   		</div>
+			   	   	   		<div class="quCont_time clearfix">
+			   	   	   			<span class="fl">设备编号：<em>7777</em></span>
+			   	   	   			<span class="fr">2017-11-20 18:30:04</span>
+			   	   	   		</div>
+			   	   	   	</div>
+		   	   	   </div>
+		   	   	</div>   
+		   	   </div>
+		   </section>
+	   </div>
+	   <footer class="igFooter">
+	   	  <ul class="clearfix" id="footUl">
+	   	  	<li class="colorAct">
+	   	  		<a href="javascript:;">设备列表</a>
+	   	  	</li>
+	   	  	<li>
+	   	  		<a href="javascript:;" id="mapA">
+	   	  			地图显示
+	   	  		</a>
+	   	  	</li>
+	   	  	<li>
+	   	  		<a href="javascript:;">报警信息</a>
+	   	  	</li>
+	   	  </ul>
+	   </footer>
+	   <!-- 遮罩 -->
+	   <div class="popBtn" id="pop_btn"></div>
+	   <shadow id="shade"></shadow>
+	   <script src="js/jquery-2.2.4.min.js"></script>
+	  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wDYEcxgRRheZwyC9jpN1Tt7fzr2zjosZ"></script>
+	   <script src="plugin/popup/layer.js"></script>
+	   <script src="plugin/citySelect/cityPicker.js"></script>
+	   <script src="js/main.js"></script>
+	</body>
+</html>

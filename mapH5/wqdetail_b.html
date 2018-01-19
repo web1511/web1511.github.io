@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>设备详情</title>
+		<script src="js/util.js"></script>
+		<link href="css/reset.css" type="text/css" rel="stylesheet" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+	    <!-- tab 头部 -->
+		<nav class="navTab">
+			<ul class="clearfix" id="navUl">
+				<li class="colAct">设备信息</li>
+				<li>图表信息</li>
+				<li>报警记录</li>
+			</ul>
+		</nav>	
+		<!-- 设备信息 -->
+		<section class="messW js_dcMes" style="display:block;">
+			<div class="mess_cont">
+				<h3>数据信息</h3>
+				<div class="clearfix mess_jt">
+					<span class="fl">最后通讯</span>
+					<em class="fr">2017-11-26 15:35:52</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">状态</span>
+					<em class="fr">正常</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">AI1(余氯)</span>
+					<em class="fr">0 mg/L</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">AI2(浊度)</span>
+					<em class="fr">0 NTU</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">AI3(pH)</span>
+					<em class="fr">0</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">AI4(电导率)</span>
+					<em class="fr">0 us/cm</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">电压</span>
+					<em class="fr">4.3V</em>
+				</div>	         
+			</div>
+			<div class="mess_cont" >
+				<h3>安装信息</h3>
+				<div class="clearfix mess_jt">
+					<span class="fl">设备编号</span>
+					<em class="fr">7777</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">架设地址</span>
+					<em class="fr">滨江新村</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">维护人员</span>
+					<em class="fr">李生</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">安装时间</span>
+					<em class="fr">2017-11-26 15:35:52</em>
+				</div>	
+			</div>
+			<div class="mess_cont">
+				<h3>警报信息</h3>
+				<div class="clearfix mess_jt">
+					<span class="fl">余氯报警上限</span>
+					<em class="fr">20 mg/L</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">余氯报警下限</span>
+					<em class="fr">4 mg/L</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">浊度报警上限</span>
+					<em class="fr">20 NTU</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">浊度报警下限</span>
+					<em class="fr">5 NTU</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">pH报警上限</span>
+					<em class="fr">20</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">pH报警下限</span>
+					<em class="fr">4</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">电导率报警下限</span>
+					<em class="fr">20 us/cm</em>
+				</div>
+				<div class="clearfix mess_jt">
+					<span class="fl">电导率报警上限</span>
+					<em class="fr">4 us/cm</em>
+				</div>	
+			</div>
+		</section>
+		<!-- 图表信息 -->
+		<section  class="js_dcMes">
+	        <div class="chartMes">
+				<div class="tsTime">
+					<span>1天</span>
+					<span>3天</span>
+					<span>7天</span>
+					<span>1个月</span>
+					<span>3个月</span>
+					<span>1年</span>
+				</div>
+				<div class="dbTime clearfix">
+					<span class="fl">开始时间：<em>2017-11-20</em></span>
+					<i>--</i>
+					<span class="fr">结束时间：<em>2017-11-20</em></span>
+				</div>
+				<!-- 水压、电压 -->
+				<div class="presureW" id="pressW">
+					<span class="colorAct">压力</span>
+					<span>电压</span>
+				</div>
+				
+		    </div>
+		   <!-- 水压图表具体 -->
+		   <div class="com_cmes cmeShow">
+		   	   <h3 class="swichBtn">切换为数据</h3>
+		   	   <div class="waterChart com_swMes">
+		   		  <div id="mainChart" class="com_canvas"></div>
+		   		  <div class="timeList_chart">
+		   		  	 <span id="tSapnC" class="comTimeCs">时间间隔</span>
+		   		  	 <ul id="timeWlist" class="com_timeUl">
+		   		  	 	<li>30分钟</li>
+		   		  	 	<li>1个小时</li>
+		   		  	 	<li>3个小时</li>
+		   		  	 </ul>
+		   		  </div>
+		       </div>
+		       <div class="dataTable com_swMes">
+		          <div class="tableTitle clearfix">
+		          	 <span class="fl">时间</span> 	
+		          	 <em class="fr">水压(Mpa)</em> 
+		          </div>
+		       	  <ul>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">0.395</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">0.395</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">0.395</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">0.395</i> 	
+		       	  	</li>
+		       	  </ul>
+		       </div>
+		   </div>
+		    <!-- 电压压图表具体 -->
+		   <div class="com_cmes">
+		   	   <h3 class="swichBtn">切换为数据</h3>
+		   	   <div class="waterChart com_swMes">
+		   		  <div id="dChart" class="com_canvas"></div>
+		   		  <div class="timeList_chart">
+		   		  	 <span id="tSapnC" class="comTimeCs">时间间隔</span>
+		   		  	 <ul id="timeWlist" class="com_timeUl">
+		   		  	 	<li>30分钟</li>
+		   		  	 	<li>1个小时</li>
+		   		  	 	<li>3个小时</li>
+		   		  	 </ul>
+		   		  </div>
+		       </div>
+		       <div class="dataTable com_swMes">
+		          <div class="tableTitle clearfix">
+		          	 <span class="fl">时间</span> 	
+		          	 <em class="fr">电压(V)</em> 
+		          </div>
+		       	  <ul>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">10</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">8</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">12</i> 	
+		       	  	</li>
+		       	  	<li class="clearfix">
+		       	  	   <i class="fl">2017-11-20 18:06</i> 	
+		       	  	   <i class="fr">16</i> 	
+		       	  	</li>
+		       	  </ul>
+		       </div>
+		   </div>		
+		</section>
+		<!-- 报警记录 -->
+		<section class="js_dcMes" >
+			<div class="timeMes">
+				<div class="tsTime">
+					<span>1天</span>
+					<span>3天</span>
+					<span>7天</span>
+					<span>1个月</span>
+					<span>3个月</span>
+					<span>1年</span>
+				</div>
+				<div class="timeC clearfix">
+					 <span class="fl">开始时间：<em>2017-11-20</em></span>
+					 <span class="fr">结束时间：<em>2017-11-20</em></span>
+				</div>
+				<div class="question">
+				    <span>余氯异常</span>
+					<span>浊度异常</span>
+					<span>pH异常</span>
+					<span>电导率异常</span>
+					<span>电压异常</span>
+				</div>
+			</div>
+			<div class="quCont">
+				<div class="com_cont">
+					<div class="clearfix qu_title">
+						<a href="javascript:;" class="fl">余氯异常</a>
+						<span class="fr">持续10分钟</span>
+					</div>
+					<div class="quCont_time clearfix">
+						<span class="fl">2017-11-20 18:20:04</span>
+						<em>--</em>
+						<span class="fr">2017-11-20 18:30:04</span>
+					</div>
+				</div>
+				<div class="com_cont">
+					<div class="clearfix qu_title">
+						<a href="javascript:;" class="fl">浊度异常</a>
+						<span class="fr">持续10分钟</span>
+					</div>
+					<div class="quCont_time clearfix">
+						<span class="fl">2017-11-20 18:20:04</span>
+						<em>--</em>
+						<span class="fr">2017-11-20 18:30:04</span>
+					</div>
+				</div>
+				<div class="com_cont">
+					<div class="clearfix qu_title">
+						<a href="javascript:;" class="fl">pH异常</a>
+						<span class="fr">持续10分钟</span>
+					</div>
+					<div class="quCont_time clearfix">
+						<span class="fl">2017-11-20 18:20:04</span>
+						<em>--</em>
+						<span class="fr">2017-11-20 18:30:04</span>
+					</div>
+				</div>
+				<div class="com_cont">
+					<div class="clearfix qu_title">
+						<a href="javascript:;" class="fl">电压异常</a>
+						<span class="fr">持续10分钟</span>
+					</div>
+					<div class="quCont_time clearfix">
+						<span class="fl">2017-11-20 18:20:04</span>
+						<em>--</em>
+						<span class="fr">2017-11-20 18:30:04</span>
+					</div>
+				</div>
+				<div class="com_cont">
+					<div class="clearfix qu_title">
+						<a href="javascript:;" class="fl">电压异常</a>
+						<span class="fr">持续10分钟</span>
+					</div>
+					<div class="quCont_time clearfix">
+						<span class="fl">2017-11-20 18:20:04</span>
+						<em>--</em>
+						<span class="fr">2017-11-20 18:30:04</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 遮罩 -->
+		<div class="popBtn" id="pop_btn"></div>
+		<shadow id="shade"></shadow>
+		<script src="js/jquery-2.2.4.min.js"></script>
+		<script src="plugin/echarts/echarts.simple.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
