@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(233, 231, 231);
+        }
+        .wrap button{
+            width: 120px;
+            height: 40px;
+            font: bold 16px/40px "宋体";
+            text-align: center;
+            color: #fff;
+            background: red;
+            border: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 20px;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 4px solid #000;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,.5);
+            display: none;
+        }
+        .select{
+            width: 400px;
+            height: 260px;
+            background: #fff;
+            border:20px solid #999; 
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -130px;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 10%;
+        }
+        .setList li{
+            height: 30px;
+            font: 14px / 30px "宋体";
+            margin-top: 10px;
+        }
+        .setList span{
+            float: left;
+        }
+        .setList span:not(.title){
+            width: 40px;
+            height: 30px;
+            border: 1px solid #000;
+            margin: 0 5px;
+            text-align: center;
+            background: #e7e2e286;
+            color: #333;
+        }
+        #red{
+            /* background: red; */
+        }
+        #yellow{
+            /* background: orange; */
+        }
+        #blue{
+            /* background: skyblue; */
+        }
+        /* .setList li:first-of-type span:not(.title){
+            color: #fff;
+        } */
+        .select button{
+            width: 80px;
+            height: 30px;
+            font: 14px / 30px "宋体";
+            color: #fff;
+            text-align: center;
+            background: rgb(63, 47, 153);
+            border: none;
+        }
+        .select button:first-of-type{
+            margin-left: 28%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>请为下面的div设置样式:<button id="setBtn">点击设置</button></h2>
+        <div id="box">
+
+        </div>
+    </div>
+    <div class="mask" id="maskW">
+        <div class="select" id="selectW">
+            <ul class="setList" >
+                <li>
+                    <span class="title">请选择背景色：</span>
+                    <span id="red" class="comColor">红</span>
+                    <span id="yellow" class="comColor">黄</span>
+                    <span id="blue" class="comColor">蓝</span>
+                </li>
+                <li>
+                    <span class="title">请选择宽(px)：</span>
+                    <span id="w200" class="comWidth">200</span>
+                    <span id="w300"  class="comWidth">300</span>
+                    <span id="w400" class="comWidth">400</span>
+                </li>
+                <li>
+                    <span class="title">请选择高(px)：</span>
+                    <span id="h200" class="comHeight">200</span>
+                    <span id="h300" class="comHeight">300</span>
+                    <span id="h400" class="comHeight">400</span>
+                </li>
+            </ul>
+            <button id="resetBtn">恢复</button>
+            <button id="saveBtn">确定</button>
+        </div>
+    </div>
+
+    <script>
+        
+        var setBtn = $('#setBtn');
+        var saveBtn = $('#saveBtn');
+        var resetBtn = $('#resetBtn');
+        var box = $('#box');
+        var maskW = $('#maskW');
+        var selectW = $('#selectW');
+        var colors = getClass('.comColor');
+        var comWidth = getClass('.comWidth');
+        var comHeight = getClass('.comHeight');
+        var sxObj = {
+            background:'#fff',
+            width:100,
+            height:100
+        };
+        var orCss = {
+            bg :'',
+            w:'',
+            h:''
+        }
+        var boxCss = getCssStyle( box ); //获取原始样式
+        orCss.bg = boxCss.background;
+        orCss.w = boxCss.width;
+        orCss.h = boxCss.height;
+
+        setBtn.onclick = function (ev) {
+            ev.stopPropagation();
+            maskW.style.display = 'block';
+        }
+        selectW.onclick = function (ev) {
+            ev.stopPropagation();
+        }
+        document.onclick = function() {
+            maskW.style.display = 'none';
+        }
+        
+        /**点击各种按钮**/
+        sxFn( colors , function(that){
+            that.style.background = that.id;
+            sxObj.background = that.id;
+        });
+        sxFn( comWidth , function(that){
+            that.style.background = 'pink';
+            sxObj.width = that.innerHTML + 'px';
+        });
+        sxFn( comHeight , function(that){
+            that.style.background = 'green';
+            sxObj.height = that.innerHTML + 'px';
+        });
+       
+        /***确定**/
+        saveBtn.onclick = function () {
+            maskW.style.display = 'none';
+            box.style.cssText = "width:" + sxObj.width +";height:" + sxObj.height + ";background:" + sxObj.background;
+        }
+
+        /***恢复***/
+
+        resetBtn.onclick = function() {
+            maskW.style.display = 'none';
+            resetView( colors );
+            resetView( comWidth );
+            resetView( comHeight );
+            box.style.cssText = "width:" + orCss.w +";height:" + orCss.h + ";background:" + orCss.bg;
+        }
+        /****
+            点击的函数
+        ****/
+         function sxFn( obj ,fn ) {
+            for( var i=0;i<obj.length;i++) {
+                obj[i].onclick = function () {
+                    for( var i=0;i<obj.length;i++ ) {
+                        obj[i].style.background='';
+                        obj[i].style.color='#000';
+                    }
+                    this.style.color = '#fff';
+                    fn && fn( this );
+                }
+           }
+        }
+
+        /***恢复默认样式***/
+
+        function resetView( objs ) {
+            for( var i=0 ; i<objs.length;i++ ) {
+                objs[i].style.background = '#fff';
+                objs[i].style.color = '#000';
+            }
+        }
+        function $( selector ) {
+            return document.querySelector(selector);
+        }
+        function getClass( objs) {
+            return document.querySelectorAll(objs);
+        }
+
+        function getCssStyle( obj ) {
+            return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
+        }
+    </script>
+</body>
+</html>

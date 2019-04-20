@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>擦出图片</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: rgb(211, 241, 213);
+        }
+        .wrap{
+            position: relative;
+            width: 590px;
+            margin: 100px auto;
+        }
+        .wrap div{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            /* background: url(./img/img.jpg); */
+            background-color: rgb(98, 133, 95);
+            background-size: 1000% 1000%;
+        }
+        #reset{
+            display:block;
+            width:100px;
+            height:40px;
+            line-height:40px;
+            text-decoration:none;
+            background: pink;
+            color:#fff;
+            margin:20px auto;
+            text-align: center;
+            border-radius:5px;
+            box-shadow:0 0 5px #000;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:;" id="reset">重新来过</a>
+    <div class="wrap" id="wrapDiv">
+    </div>
+
+    <script>
+        var wrapDiv = document.querySelector('#wrapDiv');
+        var reset = document.querySelector('#reset');
+        var squareS = wrapDiv.getElementsByTagName('div');
+        var len = 5;
+        var numArr = [];
+        createDiv();
+        doodFn();
+        resetFn();
+
+       
+       function resetFn ( ) {
+          reset.onclick = function () {
+            var lastNum = numArr.length; //注意要先存一下，不然放到for循环会出错，因为数组是动态的
+            for( let i=0;i< squareS.length;i++ ) {
+                if( lastNum == squareS.length ) {
+                    squareS[i].style['background-image'] = '';
+                    squareS[i].isload = true;
+                    //数组要清空
+                    numArr.splice(0,1);
+                }else{
+                    alert('图片还没拼完呢');
+                    break;
+                }    
+            }
+          }
+       }
+        function doodFn() {
+            for( let i=0;i< squareS.length;i++ ) {
+                squareS[i].isload = true;
+                squareS[i].onmouseover = function() {
+                    if( this.isload ) {
+                        this.style.backgroundImage = 'url(./img/img.jpg)';
+                        this.isload = false;
+                        numArr.push(i);
+                    }
+                }
+            }
+        }
+
+         /****用两个for循环来做***/
+        function createDiv() {
+            var str = '';
+            for( var i=0;i<len;i++ ) {
+                for( var j=0;j<len;j++ ) {
+                    str += '<div  style="left:'+j*60+'px;top:'+i*60+'px; background-position:'+(-j*60)+'px '+(-i*60)+'px"></div>';
+                }
+            }
+            wrapDiv.innerHTML = str;
+        }
+
+        /**用一个for循环  需要用到取模
+        *   left 的值就是
+        **  因为top 从0-9 索引 * 高度
+        ***/
+
+        // function createDiv() {
+        //     var str ='';
+        //     var row = -1;
+        //     for( var i=0;i< 100 ; i++) {
+        //         if( i%10 == 0) {row++};
+        //         str += `<div isload=true style="left:${(i%10) * 60 }px;top:${(row%10) * 60}px;background-position:${-(i%10) * 60}px ${-(row%10) * 60}px"></div>`;
+        //     }
+        //     wrapDiv.innerHTML = str;
+        // }
+    </script>
+</body>
+</html>

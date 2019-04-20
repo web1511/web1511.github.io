@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+                /* 变成   var test  = [
+                    {
+                        MechId: 1015,
+                        MechName: "李四",
+                        data : [
+                            {
+                                Id: 1002,
+                                Version: "V2.0"
+                            },
+                            {
+                                Id: 1004,
+                                Version: "V1.0"
+                            }
+                        ]
+                    },
+                    {
+                    MechId: 1016,
+                    MechName: "张三",
+                    data : [
+                            {
+                                Id: 1008,
+                                Version: "V2.0"
+                            },
+                            {
+                                Id: 1006,
+                                Version: "V1.0"
+                            },{Id: 1005,
+                                Version: "V1.0"}
+                        ]
+                    }
+        
+              ]; */
+               var test = [{
+                        Id: 1002,
+                        MechId: 1015,
+                        MechName: "李四",
+                        Version: "V1.1"
+                    },
+                    {
+                        Id: 1004,
+                        MechId: 1015,
+                        MechName: "李四",
+                        Version: "V2.0"
+                    },
+                    {
+                        Id: 1005,
+                        MechId: 1016,
+                        MechName: "张三",
+                        Version: "V3.0"
+                    },
+                    {
+                        Id: 1006,
+                        MechId: 1016,
+                        MechName: "张三",
+                        Version: "V1.1"
+                    },
+                    {
+                        Id: 1008,
+                        MechId: 1016,
+                        MechName: "张三",
+                        Version: "V1.16"
+                    }
+                ];
+                let newTest = [];
+                // 先做一下去重处理 把同一个人的相同的信息存进新数组
+                for( var i=0;i<test.length;i++ ) {
+                    var isReapt = false;
+                    for( var j=0; j< newTest.length; j++ ) {
+                        if( newTest[j].MechId === test[i].MechId ) {
+                            isReapt = true;
+                            break;
+                        }
+                        //console.log('你好');
+                    } 
+                    if( !isReapt ) {
+                        //delete test[i].Id;
+                        //delete test[i].Version;
+                        newTest.push( test[i]);
+                    }
+                    //console.log('我们');
+                }
+               
+                
+                
+                // // 初始化新数组中每个对象的data属性，以便使用数组的方法
+
+                for( var i=0;i < newTest.length; i++ ) {
+                    newTest[i].data = [];
+                    for( var j=0;j< test.length;j++ ) {
+                        if( newTest[i].MechId === test[j].MechId) {
+                            newTest[i].data.push( { Id:test[j].Id,Version:test[j].Version})
+                        }
+                    }
+                }
+                
+                // //再次循环遍历，筛选需要的数据               
+                 console.log(newTest)
+        //   var kk = test.map( function(item){
+        //        return item.MechId
+        //   });
+        //   //console.log(kk);
+        //   const MechIds = [...new Set(kk)];
+        //   const res = [];
+        //   MechIds.forEach(id => {
+        //         res.push({
+        //             MechId: id,
+        //             data: []
+        //         })
+        //   });
+          
+         //console.log(res);
+        //  test.forEach(item => {
+        //         const { MechId, Id, MechName, Version} = item;
+        //         res.forEach(o => {
+        //             if(o.MechId === MechId){
+        //                 o.MechName = MechName
+        //                 o.data.push({
+        //                     Id,
+        //                     Version
+        //                 })
+        //             }
+        //         })
+        //     });
+
+            //console.log(res);
+            </script>
+</body>
+</html>
