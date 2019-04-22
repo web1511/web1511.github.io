@@ -88,18 +88,23 @@
     </div>
     <script src="js/config.js"></script>
     <script>
+        /**
+         * https://www.cnblogs.com/sminocence/p/6546891.html
+         * **/
         var menu = $('#menu');
         var iframe = $('#iframe');
         var listTitle = menu.getElementsByClassName('listTitle');
         var listmsg = menu.getElementsByClassName('listmsg');
         var comUrl = menu.getElementsByClassName('comUrl');
+        var bg = '#676f82';
         createLi();
         toUrlFn();
+        autoUrl();
         function toUrlFn() {
             for( var i=0;i<listTitle.length;i++ ) {
                 listTitle[i].num = i;
                 listTitle[i].onOff = true;
-                listTitle[i].onclick = function() {
+                listTitle[i].addEventListener('click',function() {
                      for( j=0;j<listmsg.length;j++) {
                          if( j != this.num ) {
                             listmsg[j].style.display = 'none';
@@ -112,14 +117,21 @@
                         listmsg[this.num].style.display = 'none';
                      }
                     this.onOff = !this.onOff;
-                }
+                },false);
             }
 
             /**跳转**/
 
             for ( var i=0;i<comUrl.length;i++ ) {
+                comUrl[i].now = i;
                 comUrl[i].onclick = function() {
+                    for( var j=0;j<comUrl.length;j++) {
+                        comUrl[j].style.background = '';
+                    }
+                    comUrl[this.now].style.background = bg;
+                    var h = getQueryObject(this.getAttribute('_href')).type;
                     iframe.src = this.getAttribute('_href');
+                    location.hash =  h;
                 }
             }
            
@@ -130,15 +142,25 @@
             for( var i=0;i<len;i++) {
                 str += '<li> <div class="listTitle"> '+listObj[i].title+'></div><div class="listmsg">';
                 for( j=0;j<listObj[i].url.length;j++) {
-                    str += '<a href="javascript:;" _href="'+listObj[i].url[j]+'.html" class="comUrl">'+listObj[i].url[j]+'</a>';
+                    str += '<a href="javascript:;" _href="'+listObj[i].url[j].t+'.html?type='+listObj[i].url[j].type+'" class="comUrl">'+listObj[i].url[j].t+'</a>';
                 }        
                 str +='</div></li>';
             }
             menu.innerHTML = str;
         }
-        /**
-         * https://www.cnblogs.com/sminocence/p/6546891.html
-         * **/
+        
+        function autoUrl () {
+            var hash = location.hash.substr(1);
+            for ( var i=0;i<comUrl.length;i++ ) {
+                var t =  getQueryObject(comUrl[i].getAttribute('_href')).type;
+                if( t == hash ) {                  
+                   comUrl[i].parentNode.previousSibling.click();
+                   comUrl[i].style.background = bg;
+                   iframe.src = comUrl[i].getAttribute('_href');
+                   break; 
+                }
+            }
+        }
     </script>
 </body>
 </html>
