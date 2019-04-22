@@ -13,25 +13,30 @@
        .list{
            width:220px;
            border:1px solid #d2d2d2;
-           max-height:600px;
-           overflow-y:auto; 
+           height: 100%;
            padding-bottom:20px;
            background: #424a5d;
        }
        .list ul{
-           height:100%;
+           min-height: 400px;
+           max-height:600px;
+           overflow-y:auto; 
        }
        .list li{
          background: #424a5d;
          cursor: pointer;
+
        }
        .list .listTitle{
-           width: 100%;
            height:36px;
            line-height:36px;
-           text-align:center;
+           text-align:left;
+           padding-left:20px;
            background: #424a5d;
            color:#fff;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           white-space: nowrap;
        }
        .list .listmsg {
            display:none;
@@ -131,7 +136,9 @@
             }
             menu.innerHTML = str;
         }
-
+        /**
+         * https://www.cnblogs.com/sminocence/p/6546891.html
+         * **/
     </script>
 </body>
 </html>
