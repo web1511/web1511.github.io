@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{margin:0;padding: 0}
+        * {
+            margin: 0;
+            padding: 0
+        }
 
         /* .box {
             width:200px;
             height:200px;
             background: #000;
         } */
-        body{
-            position:relative;
+        body {
+            position: relative;
+        }
+        .box{
+            position: relative;
         }
         .com {
             /* display: inline-block; */
             position: absolute;
             width: 120px;
-            height:36px;
+            height: 36px;
             line-height: 36px;
-            text-align:center;
+            text-align: center;
             /* margin:2px 2px 0 0; */
-            color:#fff;
-            opacity:0;
-            transition:1s;
+            color: #fff;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        #btn {
+            display:block;
+            width: 120px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            text-decoration:none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+            border-radius: 6px;
+            background: green;
+            color: #fff;
+            margin: 20px auto;
         }
     </style>
 </head>
+
 <body>
-    <!-- <div class="box"></div> -->
+
+    <a href="javascript:;" id="btn">倒过来的</a>
+    <div class="box"></div>
     <script>
 
         /**
@@ -46,16 +70,19 @@
         //    }
         //    console.log('i:',i);
         // }
-        
-         var str = '';
-         var len = 10;
-         var colorArr = [ '#78cc64', '#58cd7e', '#4fcdad', '#4cc7dd', '#469ee8', '#465de8', '#5846e8' ];
-         var timer = null;
 
+        var str = '';
+        var len = 10;
+        var box = document.querySelector('.box');
+        var btn = document.querySelector('#btn');
+        var colorArr = ['#78cc64', '#58cd7e', '#4fcdad', '#4cc7dd', '#469ee8', '#465de8', '#5846e8'];
+        var timer = null;
+        var isLoad = true;
+        var onOff = true;
 
         /***
             倒过来的九九乘法表
-        ***/    
+        ***/
         //  for (var i = len - 1; i > 0; i--) {
         //    for( var j = 1; j < len ; j++ ) {
         //        if( j >i ) continue;
@@ -65,14 +92,31 @@
         //    }
         //    //str += '<br />';
         // }
-        for (var i = 1; i < len; i++ ) {
-           for( var j = 1; j < len ; j++ ) {
-               if( j >i ) continue;
-               var txt =j +'*'+ i + '='+ i*j;
-               str += '<div class="com" style="background:'+colorArr[ i%colorArr.length ]+'; top:'+38*(i-1)+'px;left:'+122*(j-1)+'px;">'+txt+'</div>';
-           }
-           //str += '<br />';
+        /**反过来的**/
+        function reverseFn() {
+            for (var i = len - 1; i > 0; i--) {
+                for (var j = 1; j < len; j++) {
+                    if (j > i) continue;
+                    var txt = j + '*' + i + '=' + i * j;
+                    str += '<div class="com" style="background:' + colorArr[i % colorArr.length] + '; top:' + 38 * i  + 'px;right:' + 122 * (j - 1) + 'px;">' + txt + '</div>';
+                }
+                //str += '<br />';
+            }
+
+            return str;
         }
+        function poFn() {
+            for (var i = 1; i < len; i++) {
+                for (var j = 1; j < len; j++) {
+                    if (j > i) continue;
+                    var txt = j + '*' + i + '=' + i * j;
+                    str += '<div class="com" style="background:' + colorArr[i % colorArr.length] + '; top:' + 38 * (i) + 'px;left:' + 122 * (j - 1) + 'px;">' + txt + '</div>';
+                }
+                //str += '<br />';
+            }
+            return str;
+        }
+
         // for (var i = 1; i < len; i ++ ) {
         //    for( var j = 1; j < len ; j++ ) {
         //        if( j >i ) continue;
@@ -86,9 +130,9 @@
         //    }
         //    //str += '<br />';
         // }
-        
-        document.body.innerHTML = str;
-        var comDiv = document.querySelectorAll('.com');
+
+        box.innerHTML = poFn();
+        var comDiv = document.getElementsByClassName('com');
         var start = 0;
         var num = comDiv.length;
         /*
@@ -103,18 +147,43 @@
             console.log(start);
         },100);*/
 
-        //autoShow();
-            (function autoShow() {
-                f = arguments.callee;
-                if( start < num ) { 
-                    timer = setTimeout(function(){
-                        start ++;
-                        comDiv[ start -1].style.opacity = 1;
-                        f();
-                    },100);
-               } 
-            })();
+        autoShow();
+        function autoShow() {
+            f = arguments.callee;
+            if ( start < num && isLoad ) {
+                timer = setTimeout(function () {
+                    start++;
+                    comDiv[start - 1].style.opacity = 1;
+                    f();
+                    if( start >= num ) {
+                        isLoad = false;
+                        timer = null;
+                    }
+                }, 100);
+            }
+        };
 
+        /****点击事件***/
+        btn.onclick = function () {
+            /*** isLoad 是解锁开关  当运动完之后才可以点击下一个运动**/
+            clearTimeout(timer);
+            start = 0;
+            str = '';
+
+            if( !isLoad ) {
+                if( onOff ) {
+                    box.innerHTML = reverseFn();
+                    this.innerHTML = '正面过来';
+                }else{
+                    box.innerHTML =  poFn();
+                    this.innerHTML = '倒过来的';
+                }
+                isLoad = true; //进来的开关
+                onOff = !onOff ;
+            }
+            autoShow();
+           
+        }
 
         // var myNum = 0;
         // var myTimer = null;
@@ -133,4 +202,5 @@
         // })()
     </script>
 </body>
+
 </html>
