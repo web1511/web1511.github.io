@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 20px auto;
+
+        }
+
+        .wrap .title {
+            position: relative;
+            line-height: 36px;
+            background: pink;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .wrap .title:after {
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            content: '>';
+        }
+
+        #list {
+            border: 1px solid #d2d2d2;
+            display: none;
+        }
+
+        #list li {
+            width: 100%;
+            text-align: center;
+            height: 36px;
+            line-height: 36px;
+            border-bottom: 1px solid #d2d2d2;
+            cursor: pointer;
+        }
+
+        #list li:last-child {
+            border-bottom: none;
+        }
+
+        #list li:hover {
+            background-color: #b9afb5;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="title" id="tMenu">下拉菜单</div>
+        <ul id="list">
+            <li class="comli">看书</li>
+            <li class="comli">电影</li>
+            <li class="comli">音乐</li>
+            <li class="comli">旅游</li>
+            <li class="comli">更多&gt;&gt;</li>
+        </ul>
+    </div>
+    <script>
+        var tMenu = document.querySelector('#tMenu');
+        var list = document.querySelector('#list');
+        var comli = list.querySelectorAll('.comli');
+        var onOff = true;
+        showMenu();
+        selectFn();
+        zjAppend();
+        function zjAppend() {
+            var li = document.createElement('li');
+            li.className = 'comli';
+            li.innerHTML = '我是追加进来的';
+            list.insertBefore(li,comli[0]);
+        }
+        function selectFn() {
+            comli[comli.length-1].noSelect = true; //给最后一个自定义属性
+            // for( var i=0;i<comli.length;i++ ) {
+            //     comli[i].onclick = function () {
+            //         if(  this.noSelect ) {
+            //             alert("没有更多了");
+            //             return;
+            //         };
+            //         tMenu.innerHTML = this.innerHTML;
+            //         css( list,{
+            //             display: 'none'
+            //         });
+            //         onOff = true;
+            //     }
+            // }
+            
+            /***事件委托***/
+            list.onclick = function (e) {
+                if( e.target.noSelect ) { 
+                    alert("没有更多了");
+                    return;
+                }
+                tMenu.innerHTML = e.target.innerHTML;
+                css( list,{
+                    display: 'none'
+                });
+                onOff = true;
+            }
+
+        }
+        function showMenu() {
+            tMenu.onclick = function () {
+                if (onOff) {
+                    css(list, {
+                        display: 'block'
+                    });
+
+                } else {
+                    css(list, {
+                        display: 'none'
+                    });
+                }
+                onOff = !onOff;
+            }
+        }
+        function css(obj, sVal) {
+            if (typeof sVal == 'object' && sVal) {
+                for (var i in sVal) {
+                    obj.style[i] = sVal[i];
+                }
+            }
+            return 0;
+        }
+    </script>
+</body>
+
+</html>
