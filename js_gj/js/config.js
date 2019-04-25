@@ -31,7 +31,7 @@ var listObj = [
                 t: '数据合并' 
             },
             {
-                type: 'sx',
+                type:'dsx',
                 t: '数据筛选'
             },
             {
