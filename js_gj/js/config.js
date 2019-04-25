@@ -28,7 +28,11 @@ var listObj = [
             },
             {
                 type: 'hp',
-                t: '数据合并'
+                t: '数据合并' 
+            },
+            {
+                type: 'sx',
+                t: '数据筛选'
             },
             {
                 type: 'xl',

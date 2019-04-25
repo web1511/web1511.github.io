@@ -23,39 +23,82 @@
             background-color: rgb(98, 133, 95);
             background-size: 1000% 1000%;
         }
-        #reset{
-            display:block;
+        .btnArr{
+            text-align: center;
+            margin:20px 0;
+        }
+        #reset,#auto{
+            display:inline-block;
             width:100px;
             height:40px;
             line-height:40px;
             text-decoration:none;
             background: pink;
             color:#fff;
-            margin:20px auto;
             text-align: center;
+            margin-right:10px;
             border-radius:5px;
             box-shadow:0 0 5px #000;
         }
+
     </style>
 </head>
 <body>
-    <a href="javascript:;" id="reset">重新来过</a>
+    <div class="btnArr"> 
+        <a href="javascript:;" id="reset">重置</a>
+        <a href="javascript:;" id="auto">自动拼图</a>
+    </div>
     <div class="wrap" id="wrapDiv">
     </div>
 
     <script>
         var wrapDiv = document.querySelector('#wrapDiv');
+        var auto = document.querySelector('#auto');
         var reset = document.querySelector('#reset');
         var squareS = wrapDiv.getElementsByTagName('div');
         var len = 5;
-        var numArr = [];
+        var numArr = []; //存储滑入的数据
+        var num = 0 ; //记录自动拼图的
         createDiv();
         doodFn();
         resetFn();
+       
 
+        function autoFn() {
+            if( num <= squareS.length -1 ) {
+                    autoFn.timer = setTimeout(function(){
+                      
+                        if( num >  squareS.length -1 ) {
+                                alert('图片已经拼完了，可以点击重置按钮再来过');
+                                num = squareS.length -1;
+                                for( var i=0; i<squareS.length;i++) {
+                                    squareS[i].isload = true;
+                                }
+                                console.log(numArr);
+                               return;
+                        }  
+                        if(  squareS[num].isload )  {
+                            squareS[num].style.backgroundImage = 'url(./img/img.jpg)';
+                            squareS[num].isload = false;
+                            numArr.push(num);
+                            numArr = unque( numArr );
+                            
+                        }    
+                        autoFn(); 
+                        num ++;        
+                       
+                        console.log(num);
+                    },100);
+            }
+           
+        }
+        auto.onclick = function () {
+            autoFn(); 
+        }
        
        function resetFn ( ) {
           reset.onclick = function () {
+            numArr = unque( numArr );
             var lastNum = numArr.length; //注意要先存一下，不然放到for循环会出错，因为数组是动态的
             for( let i=0;i< squareS.length;i++ ) {
                 if( lastNum == squareS.length ) {
@@ -63,6 +106,7 @@
                     squareS[i].isload = true;
                     //数组要清空
                     numArr.splice(0,1);
+                    num = 0;
                 }else{
                     alert('图片还没拼完呢');
                     break;
@@ -74,10 +118,12 @@
             for( let i=0;i< squareS.length;i++ ) {
                 squareS[i].isload = true;
                 squareS[i].onmouseover = function() {
+                    clearTimeout(autoFn.timer);
                     if( this.isload ) {
                         this.style.backgroundImage = 'url(./img/img.jpg)';
                         this.isload = false;
                         numArr.push(i);
+                        //num ++;
                     }
                 }
             }
@@ -108,6 +154,19 @@
         //     }
         //     wrapDiv.innerHTML = str;
         // }
+        /***数组去重***/
+        
+        function unque( arr ) {
+            var obj = {}
+            var newArr = [];
+            for( var i=0;i<arr.length;i++) {
+                if(!obj[arr[i]]) {
+                    newArr.push(arr[i]);
+                    obj[arr[i]] = true;
+                }
+            }
+            return newArr;
+        }
     </script>
 </body>
 </html>

@@ -153,12 +153,13 @@
             if ( start < num && isLoad ) {
                 timer = setTimeout(function () {
                     start++;
-                    comDiv[start - 1].style.opacity = 1;
-                    f();
                     if( start >= num ) {
                         isLoad = false;
                         timer = null;
                     }
+                    comDiv[start - 1].style.opacity = 1;
+                    f();
+                   
                 }, 100);
             }
         };
@@ -169,7 +170,7 @@
             clearTimeout(timer);
             start = 0;
             str = '';
-
+            
             if( !isLoad ) {
                 if( onOff ) {
                     box.innerHTML = reverseFn();
@@ -182,7 +183,6 @@
                 onOff = !onOff ;
             }
             autoShow();
-           
         }
 
         // var myNum = 0;
