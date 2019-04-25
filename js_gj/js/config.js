@@ -39,7 +39,17 @@ var listObj = [
                 t: '下拉菜单'
             }
         ]
+    },
+    {
+        title: 'flex布局',
+        url : [
+            {
+               type:'flex_vw',
+            t:'flex布局与vw的使用'
+            }
+        ]
     }
+
 ];
 
 

@@ -1,0 +1,93 @@
+
+/****
+*  vw 根据viewport 视口来缩放   1vw = 100 / 设计稿的总宽度 *  设计稿的元素宽度
+*  @W:750vw;  设计稿是 750 的
+*  
+*   @也可以使用vscode插件 px2vw  
+***/
+@W:750vw;
+@r: (100/@W) ; 
+
+/*reset*/
+
+body {
+    font-family: Microsoft YaHei, Arial;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+em, i {
+    font-style: normal;
+    font-weight: normal;
+}
+
+li {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #292929;
+}
+
+.layout{
+    width:750 * @r;
+}
+
+.list{
+    display: flex;
+    flex-direction:column;
+    width:694 * @r;
+    border:2 * @r solid #fcc2a0;
+    border-radius:2px;
+    margin:0 auto;
+    background: #fff;
+}
+.list .item{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    padding:28* @r 0 14*@r;
+    font-size:28*@r;
+    border-bottom:1*@r solid #d2d2d2;
+}
+.list .item:last-child{
+    border-bottom: none;
+}
+
+.list .item .title{
+    width:482*@r;
+    line-height: 42*@r;
+}
+.list .item span{
+    color:#999;
+    font-size:24*@r;
+}
+.list .item i{
+    width:36 * @r;
+    margin:0  4*@r 0 24*@r;
+    box-sizing: border-box;
+    color:#f52a40;
+}
+.list .item .indentify {
+    position: absolute;
+    right:14*@r;
+    top:50%;
+    margin-top: -17 *@r;
+    padding:8*@r;
+    font-size: 24 *@r;
+    text-align: center;
+    background: #ffe4e5;
+    color:#e1474b;
+    border-radius: 2 *@r;
+}
+
