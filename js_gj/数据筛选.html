@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="arrs">
+        var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', ,
+        function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元',
+        5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+      </div>
+
+      <div class="screen">
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <p id="p4"></p>
+        <p id="p5"></p>
+      </div>
+    </div>
+
+    <script>
+            var p1 = $('#p1');
+            var p2 = $('#p2');
+            var p3 = $('#p3');
+            var p4 = $('#p4');
+            var p5 = $('#p5');
+            var arr = [
+              "100px",
+              "abc" - 6,
+              [],
+              -98765,
+              34,
+              -2,
+              0,
+              "300",
+              ,
+              function() {
+                alert(1);
+              },
+              null,
+              document,
+              [],
+              true,
+              "200px" - 30,
+              "23.45元",
+              5,
+              Number("abc"),
+              function() {
+                alert(3);
+              },
+              "xyz" - 90
+            ];
+              
+
+           // 找出所有的数字 
+           var num1 = [];
+           var num2 = []; //可以转化成数字的
+           var num3 = []; //找出最大的数字
+           var num4 = []; // NaN的位置 
+           var min = -Infinity; // 
+           var max = Infinity;
+          
+              
+           for( var i=0;i<arr.length;i++ ) {
+              if( typeof arr[i] == 'number' && !isNaN(arr[i])) {
+                num1.push(arr[i]);
+                p1.innerHTML ='找出所有的数字：' + num1;
+              }
+
+              if( !isNaN(parseInt(arr[i]))) {
+                num2.push(arr[i]);
+                p2.innerHTML ='可以转化成数字的:' + num2;
+              }
+              if( min < Number(arr[i]) ) {
+                min = arr[i];
+                p3.innerHTML ='最大的数字:' + min;
+              }
+              if( max > Number(arr[i]) ) {
+                max = arr[i];
+                p4.innerHTML ='最小的数字:' + max;
+              }
+              if( typeof arr[i] == 'number' && isNaN(arr[i]) ) {
+                num4.push(i);
+                p5.innerHTML =' NaN的位置:' + num4;
+              }
+           }
+
+           function $( obj ) {
+             return document.querySelector(obj);
+           }
+      </script>
+  </body>
+</html>
