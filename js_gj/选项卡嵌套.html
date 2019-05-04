@@ -1,0 +1,245 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            height: 800px;
+            width: 1200px;
+            overflow: hidden;
+            margin: 0 auto;
+            background-image: url(./images/bg.png);
+            background-repeat: no-repeat;
+        }
+
+        #box {
+            height: 397px;
+            width: 800px;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 228px;
+            background: #ffb746;
+        }
+
+        #box>ul {
+            width: 100%;
+            height: 60px;
+            display: flex;
+        }
+
+        #box>ul li {
+            line-height: 60px;
+            flex: 1;
+            text-align: center;
+            background-color: #fff;
+            color: #000;
+        }
+
+        #box>ul .active {
+            background-color: #ffb746;
+            color: #fff;
+        }
+
+        #box div {
+            width: 70%;
+            height: 60%;
+            margin: 40px auto;
+            display: none;
+            position: relative;
+        }
+
+        #box .com_content{
+            width: 250px;
+            min-height:250px;
+            border:1px solid #d2d2d2;
+        }
+
+        #box div ul {
+            position: absolute;
+            top: 0;
+            left: 250px;
+        }
+
+        #box div li {
+            color: white;
+            text-align: left;
+            padding: 20px 40px;
+        }
+
+        #box div .active {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #box .com_content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="box">
+            <ul class="navs">
+                <li class="active">暖色调</li>
+                <li>金色夕阳</li>
+                <li>灰色格调</li>
+                <li>baby</li>
+            </ul>
+            <div style="display: block;" class="contW">
+                <!-- <img src="images/1.png" style="display: block">
+                <img src="images/2.png">
+                <img src="images/3.png">
+                <img src="images/4.png"> -->
+                <p class="com_content" style="display: block">第一部分图片1</p>
+                <p class="com_content">第一部分图片2</p>
+                <p class="com_content">第一部分图片3</p>
+                <p class="com_content">第一部分图片4</p>
+                <ul>
+                    <li class="active">暖色键盘</li>
+                    <li>惬意时光</li>
+                    <li>午后</li>
+                    <li>一杯苦咖啡</li>
+                </ul>
+            </div>
+            <div class="contW">
+                <p class="com_content" style="display: block">第二部分图片1</p>
+                <p class="com_content">第二部分图片2</p>
+                <ul>
+                    <li class="active">街边夕阳</li>
+                    <li>金色稻草</li>
+                </ul>
+            </div>
+            <div class="contW">
+                <p class="com_content" style="display: block">第三部分图片1</p>
+                <p class="com_content">第三部分图片2</p>
+                <p class="com_content">第三部分图片3</p>
+                <p class="com_content">第三部分图片4</p>    
+                <ul>
+                    <li class="active">灰色通讯</li>
+                    <li>咖啡'配'饼干</li>
+                    <li>孤单键盘</li>
+                    <li>枯树</li>
+                </ul>
+            </div>
+            <div class="contW">
+                <p class="com_content" style="display: block">第四部分图片1</p>
+                <p class="com_content">第四部分图片2</p>
+                <ul>
+                    <li class="active">baby素材一</li>
+                    <li>baby素材二</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+         /***
+         *   封装TabFn的时候 不要使用this ,直接用当前索引，这样可以给定时器复用
+         *   选项卡嵌套选项卡，主要开启内部那个选项卡为主，根据它的索引值走完之后在走外面一层的
+         *   选项卡，注意内部选项卡是要内部定时器停止之后才点击
+         * ***/
+        var box = $('#box');
+        var outLi = $$('#box .navs  li');
+        var outContW = $$('.contW');
+        var outNum = 0;
+        var innerNum = 0;
+
+        outClickTabFn();
+        inAutoTab();
+        iStopFn(); //是否停止定时器
+
+        // function outAutoTab() {
+        //    autoTab.timer = setInterval( function(){
+        //        outNum ++;
+        //        outNum = outNum % outLi.length;
+        //        TabFn( outLi,outContW,outNum );
+        //    },1000);
+        // }
+    
+        function inAutoTab() {
+            var innerLi = outContW[outNum].querySelectorAll('li');
+            var innerContW = outContW[outNum].querySelectorAll('.com_content');
+            var len = innerLi.length;
+            inAutoTab.timer = setInterval( function(){
+               innerNum ++;
+               //console.log( innerNum );
+               if( innerNum >= len ) {
+                  outNum ++;
+                  outNum = outNum % outLi.length;
+                  TabFn( outLi,outContW,outNum );
+                  innerNum = 0;    
+                  innerLi = outContW[outNum].querySelectorAll('li');
+                  innerContW = outContW[outNum].querySelectorAll('.com_content');
+                  len = innerLi.length;     
+                }
+               TabFn( innerLi,innerContW,innerNum );
+           },1500);
+        }
+        function outClickTabFn() {
+           for( var i=0;i<outLi.length;i++ ) {
+             outLi[i].index = i;
+             outLi[i].onclick = function() {
+                TabFn( outLi,outContW,this.index );
+                outNum = this.index; // 重定向下定时器当前的索引
+             }
+           } 
+        }
+        
+        function innerClickTabFn(  ) {
+            var innerLi = outContW[outNum].querySelectorAll('li');
+            var innerContW = outContW[outNum].querySelectorAll('.com_content');
+            for( var i=0;i<innerLi.length;i++ ) {
+                innerLi[i].index = i;
+                innerLi[i].onclick = function() {
+                    TabFn( innerLi,innerContW,this.index );
+                    innerNum = this.index; // 重定向下内部定时器当前的索引
+                }
+           } 
+        }
+        function iStopFn() {
+            box.onmouseover = function () {
+                //console.log( outNum )
+                clearInterval(  inAutoTab.timer );
+                innerClickTabFn();
+            }
+            box.onmouseout = function () {
+                inAutoTab();
+            }
+        }
+
+        /***
+         *  @navObj 导航
+         *  @contObj 内容
+         *  @ index 索引
+         * ***/
+        function TabFn( navObj,contObj,index ) {
+            for( var i=0;i<navObj.length;i++) {
+                navObj[i].classList.remove('active');
+                contObj[i].style.display ="none";
+            }
+            navObj[index].classList.add('active');
+            contObj[index].style.display ="block";
+        }
+        function $( obj ) {
+            return document.querySelector( obj );
+        }
+        function $$( obj ) {
+            return document.querySelectorAll(obj);
+        }
+    </script>
+
+</body>
+
+</html>

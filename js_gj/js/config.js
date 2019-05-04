@@ -41,6 +41,19 @@ var listObj = [
         ]
     },
     {
+        title: '定时器',
+        url : [
+            {
+               type:'timer_tab',
+               t:'自动选项卡'
+            },
+            {
+                type:'timer_towtab',
+                t:'选项卡嵌套'
+            }
+        ]
+    },
+    {
         title: 'flex布局',
         url : [
             {
