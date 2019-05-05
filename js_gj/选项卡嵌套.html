@@ -153,29 +153,20 @@
         var box = $('#box');
         var outLi = $$('#box .navs  li');
         var outContW = $$('.contW');
-        var outNum = 0;
-        var innerNum = 0;
+        var outNum = 0; //外部的索引
+        var innerNum = 0; // 内部索引
 
         outClickTabFn();
         inAutoTab();
         iStopFn(); //是否停止定时器
 
-        // function outAutoTab() {
-        //    autoTab.timer = setInterval( function(){
-        //        outNum ++;
-        //        outNum = outNum % outLi.length;
-        //        TabFn( outLi,outContW,outNum );
-        //    },1000);
-        // }
-    
         function inAutoTab() {
             var innerLi = outContW[outNum].querySelectorAll('li');
             var innerContW = outContW[outNum].querySelectorAll('.com_content');
             var len = innerLi.length;
             inAutoTab.timer = setInterval( function(){
                innerNum ++;
-               //console.log( innerNum );
-               if( innerNum >= len ) {
+               if( innerNum >= len ) { //走完内部的选项卡走外面的
                   outNum ++;
                   outNum = outNum % outLi.length;
                   TabFn( outLi,outContW,outNum );
@@ -209,14 +200,14 @@
            } 
         }
         function iStopFn() {
-            box.onmouseover = function () {
-                //console.log( outNum )
+            window.onblur = box.onmouseover = function () {
                 clearInterval(  inAutoTab.timer );
                 innerClickTabFn();
             }
-            box.onmouseout = function () {
+            window.onfocus = box.onmouseout = function () {
                 inAutoTab();
             }
+            
         }
 
         /***

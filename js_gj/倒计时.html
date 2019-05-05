@@ -1,0 +1,110 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        *{
+           margin:0;
+           padding: 0;
+        }
+        .wrap{
+            width:500px;
+            margin:20px auto;
+            text-align: center;
+            display:flex;
+        }
+        .wrap input{
+            height:30px;
+            width:240px;
+            border-radius:6px;
+            border: 1px solid #d2d2d2;
+            padding-left: 6px;
+            outline: none;
+        }
+        #timeBtn{
+            width:120px;
+            height:32px;
+            line-height: 32px;
+            text-align: center;
+            background:green;
+            color:#fff;
+            border-radius: 6px;
+            margin-left:4px;
+            text-decoration: none;
+        }
+        #showMsg{
+            text-align: center;
+            color:green;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="wrap">
+        <input type="text" id="timeMsg" placeholder="格式为yyyy-mm-dd或者yyyy/mm/dd">
+        <a href="javascript:;" id="timeBtn">倒计时</a>
+    </div>
+    <p id="showMsg"></p>
+    <script>
+
+        /**
+         *   86400 = 24 * 60(分) * 60 (秒) 
+         * ***/
+        var timeMsg = $('#timeMsg');
+        var timeBtn = $('#timeBtn');
+        var showMsg = $('#showMsg');
+        var re = /\d+[-/]\d+[-/]\d+|\d+[-/]\d+[-/]\d+\s\d+:\d+(:\d+)*/;
+        var str = '';
+        timeBtn.onclick = function() {
+            clearInterval(  setTimeFn.timer );
+            var txt = timeMsg.value.trim();
+            if( txt == '') {
+                alert( '请输入时间');
+            }else if( !re.test(txt) ) {
+                alert( '请输入正确的时间');
+            }else{
+                var newDate = new Date( txt );
+                setTimeFn( newDate );
+            }
+        }
+
+        
+        function setTimeFn( newDate ) {
+            setTimeFn.timer = setInterval( function(){
+                var nowDate = new Date();
+                var t = Math.floor((newDate - nowDate) / 1000) // 得到秒
+                if( t < 0 ) {
+                    clearInterval(  setTimeFn.timer );
+                    alert('时间不能小于当前时间');
+                    return;
+                }
+                var day = Math.floor( t/86400 );
+                var hour = Math.floor( t%86400/3600 );
+                var min = Math.floor( t%86400/3600/60 );
+                var sec = Math.floor( t%60 );
+                if( t >=0 ) {
+                    str = '距离' + timeMsg.value.trim() + '还有：' + day + '天' + hour + '时' + min +'分' + sec + '秒';
+                }else{
+                    str = '';
+                    clearInterval(  setTimeFn.timer );
+                }
+                showMsg.innerHTML = str; // 不要直接赋值，不然会有闪烁
+            },1000);
+           
+        }
+        function $( obj ) {
+            return document.querySelector( obj );
+        }
+        function $$( obj ) {
+            return document.querySelectorAll(obj);
+        }
+    </script>
+
+</body>
+
+</html>

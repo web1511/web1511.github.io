@@ -50,6 +50,10 @@ var listObj = [
             {
                 type:'timer_towtab',
                 t:'选项卡嵌套'
+            },
+            {
+                type:'timer_dj',
+                t:'倒计时'
             }
         ]
     },
