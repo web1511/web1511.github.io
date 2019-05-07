@@ -73,9 +73,9 @@
                 <!-- <li>
                    <div class="listTitle">玩转属性操作 ></div>
                    <div class="listmsg">
-                      <a href="">揉捏div揉捏div揉捏div揉捏div</a> 
-                      <a href="">揉捏div</a> 
-                      <a href="">揉捏div</a> 
+                      <a href="" class="comUrl">揉捏div揉捏div揉捏div揉捏div</a> 
+                      <a href="" class="comUrl">揉捏div</a> 
+                      <a href="" class="comUrl">揉捏div</a> 
                    </div>
                 </li> -->
             </ul>
@@ -116,6 +116,7 @@
                      }else{
                         listmsg[this.num].style.display = 'none';
                      }
+
                     this.onOff = !this.onOff;
                 },false);
             }
@@ -131,6 +132,7 @@
                     comUrl[this.now].style.background = bg;
                     var h = getQueryObject(this.getAttribute('_href')).type;
                     iframe.src = this.getAttribute('_href');
+                    document.title = this.getAttribute('alt');
                     location.hash =  h;
                 }
             }
@@ -142,21 +144,25 @@
             for( var i=0;i<len;i++) {
                 str += '<li> <div class="listTitle"> '+listObj[i].title+'></div><div class="listmsg">';
                 for( j=0;j<listObj[i].url.length;j++) {
-                    str += '<a href="javascript:;" _href="'+listObj[i].url[j].t+'.html?type='+listObj[i].url[j].type+'" class="comUrl">'+listObj[i].url[j].t+'</a>';
+                    str += '<a href="javascript:;" _href="'+listObj[i].url[j].t+'.html?type='+listObj[i].url[j].type+'" alt="'+listObj[i].url[j].t+'" class="comUrl">'+listObj[i].url[j].t+'</a>';
                 }        
                 str +='</div></li>';
             }
             menu.innerHTML = str;
         }
         
+
+        /**刷新自动跳转*/
         function autoUrl () {
             var hash = location.hash.substr(1);
             for ( var i=0;i<comUrl.length;i++ ) {
                 var t =  getQueryObject(comUrl[i].getAttribute('_href')).type;
+                var msg =  comUrl[i].getAttribute('alt');
                 if( t == hash ) {                  
                    comUrl[i].parentNode.previousSibling.click();
                    comUrl[i].style.background = bg;
                    iframe.src = comUrl[i].getAttribute('_href');
+                   document.title = msg;
                    break; 
                 }
             }

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        a {
+                text-decoration: none;
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            input {
+                padding: 0;
+            }
+
+            li {
+                list-style: none;
+            }
+
+            #box {
+                width: 800px;
+                height: 700px;
+                margin: 0 auto;
+                position: relative;
+                background-color: #5e76d0;
+                background-repeat: no-repeat;
+            }
+
+            #content {
+                position: absolute;
+                top: 162px;
+                left: 140px;
+                width: 400px;
+                font-size: 14px;
+                padding: 18px;
+                box-sizing: border-box;
+                color: #004654;
+                border: solid 1px #abdde7;
+                border-radius: 2px;
+                background: #eef8fa;
+                line-height: 1.5;
+            }
+
+            #open {
+                position: absolute;
+                top: 162px;
+                right: 140px;
+                text-align: center;
+                vertical-align: bottom;
+            }
+
+            #open a {
+                display: block;
+                width: 100px;
+                height: 80px;
+                line-height: 120px;
+                border-radius: 2px;
+            }
+
+            #open>a {
+                background-color: #90e2f2;
+                color: white;
+                background-repeat: no-repeat;
+                background-position: 50% 25%;
+            }
+
+            #open li a {
+                /* background-color: #C0C0C0; */
+                color: #fff;
+                margin-top: 24px;
+                transition:1s;
+                opacity:0;
+            }
+
+            #open li:nth-child(1) a {
+                background-color: #a8a6f5;
+
+               
+            }
+
+            #open li:nth-child(2) a {
+                background-color: #9fe7a9;
+            }
+           
+            #fun {
+                position: absolute;
+                width: 570px;
+                height: 158px;
+                bottom: 62px;
+                left: 115px;
+                background-color: #ffffff;
+                padding: 25px;
+                box-sizing: border-box;
+                border-radius: 10px;
+            }
+            #funCont{
+                transition:1s;
+                opacity:0;
+            }
+            #fun .btns {
+                /* width: 570px;
+                margin: 0 auto;
+                height: 50px;
+                border-bottom: 2px solid #E73100; */
+            }
+
+            #fun .btns a {
+                display: inline-block;
+                width: 100px;
+                height: 40px;
+                text-align: center;
+                color: #fff;
+                line-height: 40px;
+                border-radius: 2px;
+            }
+
+            #fun .btns a:nth-child(1) {
+                background-color: #a8a6f5;
+            }
+
+            #fun .btns a:nth-child(2) {
+                background-color: #9fe7a9;
+                margin-left: 20px;
+            }
+            #fun .btns a:nth-child(3) {
+                background-color: #c8fccf;
+                margin-left: 20px;
+            }
+
+            #search,
+            #replace {
+                height: 30px;
+                display: none;
+                margin-top: 14px;
+            }
+
+            #search input:nth-child(2) {
+                background-color: #a8a6f5;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+            }
+
+            #replace input:nth-child(3) {
+                background-color: #9fe7a9;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+            }
+
+            #fun input {
+                height: 25px;
+                width: 170px;
+                background-color: #eef8fa;
+                border: solid 1px #abdde7;
+                border-radius: 2px;
+                height: 46px;
+            }
+
+
+            /* #fun input:focus {
+                outline-color: #E73100;
+            } */
+
+            #fun input[type="button"] {
+                width: 100px;
+                vertical-align: bottom;
+                border: none;
+                color:#fff;
+                cursor: pointer;
+            }
+
+            span {
+                background-color: #FFFF00;
+            }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="content">
+            目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，同时还提供了css教程、javascript视频、js特效等，最新推出了外地学员们喜欢的javascript网络课程服务，同时还为处于javascript入门阶段的朋友录制了大量javascript视频，其中涉及了大量javascript基础知识，希望妙味课堂推出的javascript网络培训课程能带给大家更多惊喜。目前主要针对的是javascript培训，
+        </div>
+        <div id="open">
+            <a href="javascript:;" id="expand">展开</a>
+            <ul style="display: none;">
+                <li><a href="javascript:;">查找</a></li>
+                <li><a href="javascript:;">替换</a></li>
+            </ul>
+        </div>
+        <div id="fun" style="display: none;">
+            <div id="funCont">
+                <div class="btns">
+                    <a href="javascript:;" class="active">查找</a>
+                    <a href="javascript:;">替换</a>
+                    <a href="javascript:;">还原</a>
+                </div>
+
+                <div id="search" style="display: block;">
+                    <input type="text" placeholder="输入要查找的内容"/>
+                    <input type="button" value="查找"  id="sBtn"/>
+                </div>
+                <div id="replace">
+                    <input type="text"  placeholder="输入要替换之前的内容"/>
+                    <input type="text"  placeholder="输入要替换之后的内容"/>
+                    <input type="button" value="替换" id="rBtn"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var content = $('#content');
+        var expand = $('#expand');
+        var expandCont = $('#open ul');
+        var expandContBtns = $$('#open ul a');
+        var fun = $('#fun');
+        var funCont = $('#funCont');
+        var searchBtn = $$('.btns a')[0];
+        var opensBtn = $$('#open ul a')[0];
+        var openrBtn = $$('#open ul a')[1];
+        var replaceBtn = $$('.btns a')[1];
+        var clearBtn = $$('.btns a')[2];
+        var searchCont = $('#search');
+        var replaceCont = $('#replace');
+        var sBtn = $('#sBtn');
+        var sMsg = $('#search input[type=text]');
+        var rPrevInput = $$('#replace input[type=text]')[0];
+        var rBtn = $('#rBtn');
+        var rNextInput = $$('#replace input[type=text]')[1];
+        var oldStrArr = content.innerHTML; //原始内容
+        var expandOn = true; //收缩开关
+        
+
+        expand.onclick = function () {
+            initExpand();
+            btnChange();
+        }
+    
+        
+        //清空内容
+        clearBtn.onclick = function() {
+            content.innerHTML = oldStrArr;
+        }
+        
+        sBtn.onclick = function() {
+            searchFn();
+        }
+        rBtn.onclick = function() {
+            replaceFn();
+        }
+
+
+
+        //按钮切换
+        function btnChange() {
+            opensBtn.onclick = searchBtn.onclick = function () {
+                searchCont.style.display = 'block';
+                replaceCont.style.display = 'none';
+            }
+            openrBtn.onclick =  replaceBtn.onclick = function () {
+                searchCont.style.display = 'none';
+                replaceCont.style.display = 'block';
+            }
+        }
+
+
+        //替换内容
+        function replaceFn() {
+            var rPrevMsg = rPrevInput.value.trim();
+            var rNextMsg = rNextInput.value.trim();
+            var re = new RegExp( rPrevMsg,'g');
+            var str = '';
+            if( rPrevMsg == '' ) {
+                alert('请输入替换前的内容');
+                return;
+            }else if( rNextMsg == '' ) {
+                alert('请输入替换后的内容');
+                return;
+            }
+            str = content.innerHTML.replace(re, function($1){
+                $1 = rNextMsg;
+                return $1;
+            });
+            content.innerHTML = str;
+        }
+        //查找内容
+        function searchFn() {
+            var sTxt = sMsg.value.trim();
+            var re = new RegExp( sTxt,'g');
+            var str = '';
+            if( sTxt == '' ) {
+                alert('请输入点内容');
+                return;
+            }
+            str = content.innerHTML.replace(re, function($1){
+                return '<mark>' + $1+'</mark>';
+            });
+            content.innerHTML = str;
+        }
+        //收缩展开
+        function initExpand() {
+            clearInterval(initExpand.timer);
+            var num = 0;
+            var len = expandContBtns.length;
+            if (expandOn) {
+                expandCont.style.display = 'block';
+                expand.innerHTML = '收缩';
+                initExpand.timer = setInterval(function () {
+                    expandContBtns[num].style.opacity = 1;
+                    num++;
+                    if (num >= len) {
+                        num = len - 1;
+                        clearInterval(initExpand.timer);
+                        initExpand.timer = null;
+                        fun.style.display = 'block';
+                        funCont.style.opacity = 1;
+                    }
+                }, 300);
+
+            } else {
+                fun.style.display = expandCont.style.display = 'none';
+                funCont.style.opacity = 0;
+                for (var i = 0; i < len; i++) {
+                    expandContBtns[i].style.opacity = 0;
+                }
+                expand.innerHTML = '展开';
+                num = 0;
+            }
+            expandOn = !expandOn;
+
+
+        }
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+    </script>
+</body>
+
+</html>

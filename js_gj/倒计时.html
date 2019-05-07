@@ -88,7 +88,7 @@
                 var min = Math.floor( t%86400/3600/60 );
                 var sec = Math.floor( t%60 );
                 if( t >=0 ) {
-                    str = '距离' + timeMsg.value.trim() + '还有：' + day + '天' + hour + '时' + min +'分' + sec + '秒';
+                    str = '距离' + fillZero( timeMsg.value.trim() ) + '还有：' + day + '天' + hour + '时' + min +'分' + sec + '秒';
                 }else{
                     str = '';
                     clearInterval(  setTimeFn.timer );
@@ -96,6 +96,39 @@
                 showMsg.innerHTML = str; // 不要直接赋值，不然会有闪烁
             },1000);
            
+        }
+        
+       // fillZero( '2019/5/06' );
+
+        /**
+         *  补零操作 
+         *   value  分两种情况  2019-05-06  不传时分秒
+         *    2019-05-06  10::05:06  传时分秒
+         * 
+         * 
+         * **/
+        function fillZero( value ) {
+            var numArr = null;
+            if( value.indexOf(':') > -1) {  //传时分秒
+               numArr = value.split(' '); //["2019/5/06", "10:5:2"]
+               var ymdArr = zeroFn(numArr[0].split(/[-/]/));
+               var hmsArr = zeroFn(numArr[1].split(/[:：]/));
+               var s = ymdArr.join('-') + ' ' + hmsArr.join(':');
+               return s;
+            }else{
+                var numArr = zeroFn(value.split(/[-/]/));
+                return numArr.join('-');
+            }
+        
+            function zeroFn( obj ) {
+                for( var i=0;i<obj.length;i++ ) {
+                    if( obj[i].length < 2 ) {
+                        obj[i] =  '0' +  obj[i];
+                    }
+                }
+                return obj;
+            }
+          
         }
         function $( obj ) {
             return document.querySelector( obj );

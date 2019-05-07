@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>出现广告</title>
+    <style>
+        .wrap{
+            position:fixed;
+            right:0;
+            bottom:0;
+            width:300px;
+            height:350px;
+            text-align:center;
+            color:#fff;
+            background: red;
+            transition:1s;
+            transform:  translateY( 100%);
+        }
+        .wrap span{
+            display: block;
+            line-height: 350px;
+        }
+        #closeBtn{
+            position: absolute;
+            font-size:20px;
+            right:10px;
+            top:10px;
+            cursor: pointer;
+            font-style: normal;
+        }
+        #djtime{
+            position: absolute;
+            font-size:14px;
+            right:30px;
+            top:10px; 
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+         <span>来点小广告啦啦</span>
+        <em id="closeBtn">x</em>
+        <i id="djtime">5s</i>
+    </div>
+    <script>
+       var wrap = $('.wrap');
+       var djtime = $('#djtime');
+       var closeBtn = $('#closeBtn');
+       var timer = null;
+       var jgTimer = null;
+       var num = 5;
+
+       timer = setTimeout( function(){
+           wrap.style.transform = 'translateY(0)';
+           jgTimer = setInterval( function(){
+               num --;
+               if( num <= 1 ) {
+                  hide();
+               }
+               djtime.innerHTML = num + 's';
+           },1000);
+
+       },1000);
+
+       closeBtn.onclick = hide;
+
+       function hide() {
+           clearInterval( jgTimer );
+           wrap.style.transform = 'translateY(100%)';
+       }
+       function $( obj ) {
+           return document.querySelector(obj);
+       }
+    </script>
+</body>
+</html>

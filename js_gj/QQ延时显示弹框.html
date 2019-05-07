@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QQ延时面板</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 700px;
+            border: 1px solid #000;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            right: 40px;
+            top: 10px;
+            border-radius: 10px;
+        }
+        .user{
+            height: 150px;
+            border-bottom: 1px solid rgb(70, 120, 212);
+        }
+        .user a{
+            text-decoration: none;
+            color: #000;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .avatar{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid rgb(57, 150, 236);
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            cursor: pointer;
+        }
+        .info{
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            background-color: rgb(238, 180, 180);
+            left: -210px;
+            top: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(243, 88, 88);
+            opacity: 0;
+            transition: 1s;
+        }
+        .info p{
+            text-indent: 10px;
+            color: rgb(110, 6, 6);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="user">
+            <a href="javascript:;">☓</a>
+            <div class="avatar">
+            </div>
+        </div>
+        <div class="info">
+            <p>昵称：qq延时面板</p>
+            <p>地点：北京市 朝阳区</p>
+        </div>
+    </div>
+    <script>
+       
+        /**
+         *  1.鼠标滑到头像立即出现 面板，关闭延时定时器
+         *  2. 鼠标离开头像 延时 小时面板
+         *  3. 鼠标滑到面板，关闭延时定时器
+         *  4. 鼠标离开面板，延时消失面板内容
+         * **/
+
+        var avatar = $('.avatar');
+        var info = $('.info');
+        var timer = null;
+        
+        info.onmouseover = avatar.onmouseover = show;
+        info.onmouseout =avatar.onmouseout =  hide;
+
+        function hide() {
+            timer = setTimeout(function(){
+                info.style.opacity = 0;
+            },1500);
+        }
+        function show() {
+            clearTimeout(timer);
+            info.style.opacity = 1;
+        }
+        function $( obj ) {
+            return document.querySelector( obj );
+        }
+    </script>
+</body>
+</html>

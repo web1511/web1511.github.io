@@ -52,8 +52,29 @@ var listObj = [
                 t:'选项卡嵌套'
             },
             {
+                type:'timer_ys',
+                t:'QQ延时显示弹框'
+            },
+            {
+                type:'timer_ad',
+                t:'出现广告'
+            },
+            {
                 type:'timer_dj',
                 t:'倒计时'
+            }
+        ]
+    },
+    {
+        title: '字符串练习',
+        url : [
+            {
+                type:'str_replace',
+                t:'查找替换文字'
+            },
+            {
+                type:'str_by',
+                t:'文字搬运工'
             }
         ]
     },

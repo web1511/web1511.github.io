@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文字搬运工</title>
+    <style>
+        .bg {
+            width: 1200px;
+            height: 700px;
+            background-image: url(./images/bg.png);
+            background-repeat: no-repeat;
+            margin: 0 auto;
+        }
+
+        #box {
+            width: 850px;
+            height: 450px;
+            background: rgb(64, 33, 150, .5);
+            background: rebeccapurple;
+            font-size: 12px;
+            position: relative;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 30px;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        #box:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        textarea,
+        p {
+            width: 325px;
+            height: 388px;
+            line-height: 1.5;
+            background: #fff;
+            resize: none;
+            margin: 10px;
+            float: left;
+            color: #402196;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #box div {
+            float: left;
+            width: 90px;
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%)
+        }
+
+        a {
+            width: 180px;
+            height: 80px;
+            background-repeat: no-repeat;
+            border: none;
+        }
+
+        a,
+        span {
+            text-decoration: none;
+            display: block;
+            line-height: 40px;
+            width: 90px;
+            color: white;
+            margin-top: 10px;
+            text-align: center;
+            /* background: red; */
+        }
+
+        a:hover {
+            background-color: #C65218;
+        }
+
+        span {
+            color: #7edefa;
+            font-weight: bold;
+        }
+
+        p {
+            float: right;
+            background-color: #63EFF7;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+        }
+
+        li {
+            width: 9px;
+            height: 9px;
+            list-style-type: none;
+            margin: 0 1px;
+            background-color: #FF6600;
+            float: left;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div id="box">
+            <textarea>妙味课堂是一支充满温馨并且极富人情味的IT培训团队；2010-2011年，妙味深度关注WEB前端开发领域，为此精心研发出一套灵活而充满趣味的JavaScript课程。2011-2013年，妙味精准研发出最新HTML5\CSS3课程，并推出远程培训课程方案，尝试将线下优良的培训模式移植到远程网络培训中，希望尽最大努力，将一种快乐愉悦的授课体验、结合HTML\CSS\JS知识点，精准传递给妙味课堂的每一位学员。</textarea>
+            <div>
+                <a href="javascript:;" id="startBtn">文字右移动-></a>
+                <span id="process">0/0</span>
+                <ul>
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+
+            <p id="rightMsg"></p>
+        </div>
+    </div>
+    <script>
+        var startBtn = $('#startBtn');
+        var leftW = $('#box textarea');
+        var rightMsg = $('#rightMsg');
+        var process = $('#process');
+        var oldMsg = leftW.innerHTML;
+        var num = 0;
+        var timer = null;
+        
+        startBtn.onclick = function () {
+            var leftMsg = leftW.value.trim();
+            var len = leftMsg.length;
+            var str = '';
+            var re = null;
+            if( leftMsg == '') {
+                alert('请输入点内容');
+                return;
+            }
+            timer = setInterval( function(){
+                str += oldMsg.charAt(num);
+                num ++;
+                rightMsg.innerHTML = str;
+                re = new RegExp( str,'g' );//这行报错了带有反斜杠
+                leftW.value = leftMsg.replace( re,'');
+                process.innerHTML = num + '/' + len;
+                if( num >= len ) {
+                    clearInterval(timer);
+                    num = 0;
+                    leftW.value = '';
+                }
+            },30);
+
+        }
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+    </script>
+</body>
+
+</html>
