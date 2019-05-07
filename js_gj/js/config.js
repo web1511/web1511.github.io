@@ -75,6 +75,10 @@ var listObj = [
             {
                 type:'str_by',
                 t:'文字搬运工'
+            },
+            {
+                type:'str_sort',
+                t:'排序'
             }
         ]
     },
@@ -83,7 +87,7 @@ var listObj = [
         url : [
             {
                type:'flex_vw',
-            t:'flex布局与vw的使用'
+               t:'flex布局与vw的使用'
             }
         ]
     }

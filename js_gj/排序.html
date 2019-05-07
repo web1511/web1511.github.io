@@ -1,0 +1,224 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+                    * {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .wrap {
+                width: 1000px;
+                height: 700px;
+                margin: 0 auto;
+                background-image: url(./images/bg.png);
+                background-repeat: no-repeat;
+                position: relative;
+            }
+
+            .wrap .nav {
+                position: absolute;
+                top: 135px;
+                left: 50%;
+                transform: translateX(-50%)
+            }
+
+            .nav a {
+                display: inline-block;
+                text-decoration: none;
+                width: 146px;
+                height: 38px;
+                border-radius: 20px;
+                border: solid 1px #998ccb;
+                background: #998ccb;
+                color: #fff;
+                text-align: center;
+                line-height: 38px;
+            }
+
+            .nav a:nth-child(2) {
+                margin-left: 60px;
+            }
+
+            ul {
+                width: 1000px;
+                display: flex;
+                flex-wrap: wrap;
+                position: absolute;
+                top: 162px;
+                padding: 64px;
+                box-sizing: border-box;
+            }
+
+            ul li {
+                width: 25%;
+                margin-bottom: 52px;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            ul li .box {
+                display: block;
+                width:148px;
+                height:148px;
+                line-height:148px;
+                text-align:center;
+                border:1px solid #d2d2d2;
+                margin: 0 auto;
+            }
+
+            ul li p {
+                width: 110px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                background: #998ccb;
+                color: #fff;
+                border-radius: 20px;
+                text-align: center;
+                margin: 0 auto;
+                font-size: 12px;
+                position: absolute;
+                top: 135px;
+                left: 50%;
+                transform: translateX(-50%)
+            }
+
+
+            /* ul {
+                margin: 0 auto;
+                padding: 0;
+                width: 1208px;
+            }
+
+            li {
+                list-style-type: none;
+                float: left;
+                padding: 10px;
+                margin: 0 1px;
+                background-color: white;
+            }
+
+            p {
+                margin: 0;
+                text-align: center;
+                background-color: #F1F1F1;
+                line-height: 40px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            img {
+                vertical-align: top;
+            }
+
+            div {
+                margin: 0 auto;
+                width: 210px;
+            }
+
+            div:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+
+            a {
+                text-decoration: none;
+                width: 100px;
+                line-height: 40px;
+                display: block;
+                color: white;
+                background-color: #009999;
+                text-align: center;
+                float: left;
+            }
+
+            a:nth-child(1) {
+                margin-right: 10px;
+            } */
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <a href="javascript:;">从小到大</a><a href="javascript:;">打乱顺序</a>
+        </div>
+        <ul>
+            <li>
+                <div class="box">1</div>
+                <p>1-温馨办公</p>
+            </li>
+            <li>
+                <div class="box">2</div>
+                <p>2-游戏桌面</p>
+            </li>
+            <li>
+                <div class="box">3</div>
+                <p>3-汽车摇滚</p>
+            </li>
+            <li>
+                <div class="box">4</div>
+                <p>4-狭路相逢</p>
+            </li>
+            <li>
+                <div class="box">5</div>
+                <p>5-棒球小子</p>
+            </li>
+            <li>
+                <div class="box">6</div>
+                <p>6-球鞋动力</p>
+            </li>
+            <li>
+                <div class="box">7</div>
+                <p>7-游戏官网</p>
+            </li>
+            <li>
+                <div class="box">8</div>
+                <p>8-指尖社区</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var sortBtn = $$('.nav a')[0];
+        var randBtn = $$('.nav a')[1];
+        var aLis = $$('.wrap li');
+        var ranArr = [];
+        init(); //初始化函数
+        
+        randBtn.onclick = function() {
+            for( var i=0;i<aLis.length;i++ ) {
+                console.log( aLis[i].num );
+            }
+        }
+        sortBtn.onclick = function() {
+            for( var i=0;i<aLis.length;i++ ) {
+                console.log( aLis[i].num );
+            }
+        }
+        
+        //创建随机数
+        function createRandom(star,end){
+             return parseInt(Math.round(Math.random()*(end-star)+star ));
+        }
+        function init() {
+            for( var i=0;i<aLis.length;i++ ) {
+                aLis[i].num = i;
+            }
+        }
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+    </script>
+</body>
+
+</html>

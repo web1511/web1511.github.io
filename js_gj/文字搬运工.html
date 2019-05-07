@@ -139,34 +139,41 @@
         var rightMsg = $('#rightMsg');
         var process = $('#process');
         var oldMsg = leftW.innerHTML;
+        var temp = null;
         var num = 0;
         var timer = null;
-        
+        var isLoad = true;
+        var str = '';
+
         startBtn.onclick = function () {
+            if( !isLoad)return;
             var leftMsg = leftW.value.trim();
-            var len = leftMsg.length;
-            var str = '';
-            var re = null;
+            oldMsg = leftW.value;
+            var len = oldMsg.length;
             if( leftMsg == '') {
                 alert('请输入点内容');
                 return;
             }
-            //带有反斜杠的先转义
-            oldMsg = leftMsg.replace( /\\/g,'\\\\');
-            console.log( oldMsg );
-            timer = setInterval( function(){
-                str += oldMsg.charAt(num);
-                num ++;
-                rightMsg.innerHTML = str;
-                re = new RegExp( str,'g' );//这行报错了带有反斜杠
-                leftW.value = leftMsg.replace( re,'');
-                process.innerHTML = num + '/' + len;
-                if( num >= len ) {
-                    clearInterval(timer);
-                    num = 0;
-                    leftW.value = '';
-                }
-            },30);
+            if( isLoad ) {  //先进来
+                isLoad = false;//锁住
+                timer = setInterval( function(){
+                        str += leftMsg.charAt(num);
+                        num ++;
+                        rightMsg.innerHTML = str;
+                        var newStr = oldMsg.replace( str,'');
+                        leftW.value = newStr; //左边直接匹配当前右边的字符串删掉
+                        process.innerHTML = num + '/' + len;
+                        if( num >= len ) {
+                            clearInterval(timer);
+                            num = 0;
+                            leftW.value = '';                    
+                            timer = null;
+                            isLoad = true;//这里开启
+                            str = '';
+                        }
+                    
+                },30);
+          }
 
         }
         function $$(obj) {
