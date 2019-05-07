@@ -151,6 +151,9 @@
                 alert('请输入点内容');
                 return;
             }
+            //带有反斜杠的先转义
+            oldMsg = leftMsg.replace( /\\/g,'\\\\');
+            console.log( oldMsg );
             timer = setInterval( function(){
                 str += oldMsg.charAt(num);
                 num ++;
