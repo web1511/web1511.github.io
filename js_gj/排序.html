@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>无标题文档</title>
     <style>
-                    * {
+            * {
                 margin: 0;
                 padding: 0;
                 list-style: none;
@@ -15,8 +15,6 @@
                 width: 1000px;
                 height: 700px;
                 margin: 0 auto;
-                background-image: url(./images/bg.png);
-                background-repeat: no-repeat;
                 position: relative;
             }
 
@@ -189,28 +187,95 @@
         var sortBtn = $$('.nav a')[0];
         var randBtn = $$('.nav a')[1];
         var aLis = $$('.wrap li');
-        var ranArr = [];
+        var list  = $('.wrap ul');
+        var initArr = [];
+        var num = 0;
+        var sNum = 0;
+        var timer = null;
+        var sTimer = null;
+        var onOff = true ;
         init(); //初始化函数
         
+        console.log( initArr );
         randBtn.onclick = function() {
-            for( var i=0;i<aLis.length;i++ ) {
-                console.log( aLis[i].num );
-            }
+            clearInterval( timer);
+            var sArr = shuffle(initArr);
+            var str = '';
+            timer = setInterval( function() {
+                str += '<li>'+ sArr[num].msg +'</li>'; 
+                list.innerHTML = str;
+                num ++;
+                if( num >= sArr.length ) {
+                    clearInterval( timer);
+                    num = 0;
+                }
+            },200);
+            
+
         }
         sortBtn.onclick = function() {
-            for( var i=0;i<aLis.length;i++ ) {
-                console.log( aLis[i].num );
-            }
+            clearInterval( sTimer );
+            var sArr = shuffle(initArr);
+            sArr = sortArr( sArr );
+            console.log( sArr );
+            var str = '';
+            sTimer = setInterval( function() {
+                str += '<li>'+ sArr[sNum].msg +'</li>'; 
+                list.innerHTML = str;
+                sNum ++;
+                if( sNum >= sArr.length ) {
+                    clearInterval( sTimer);
+                    sNum = 0;
+                }
+            },200);
+            onOff = !onOff ;
         }
         
-        //创建随机数
-        function createRandom(star,end){
-             return parseInt(Math.round(Math.random()*(end-star)+star ));
+
+        //创建随机数组
+        function sortArr( arr ) {
+            arr.sort( function(a,b){
+              if( onOff ) {
+                 if( a.n < b.n ){
+                    return -1; //升序
+                 }
+              }else{
+                 if( a.n < b.n ){
+                    return 1; //升序
+                 }
+              }
+                
+            });
+            return arr;
         }
+        function shuffle(arr) { 
+ 
+          var i = arr.length, t, j; 
+         
+          while (i) { 
+         
+            j = Math.floor(Math.random() * i--); 
+         
+            t = arr[i]; 
+         
+            arr[i] = arr[j]; 
+         
+            arr[j] = t; 
+         
+          } 
+          return arr;
+        } 
+
+       
         function init() {
             for( var i=0;i<aLis.length;i++ ) {
                 aLis[i].num = i;
+                initArr.push({
+                    n: aLis[i].num ,
+                    msg : aLis[i].innerHTML
+                });
             }
+            return initArr;
         }
         function $$(obj) {
             return document.querySelectorAll(obj);
