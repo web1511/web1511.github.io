@@ -196,8 +196,9 @@
         var ranTimer = null;
         var sTimer = null;
         var ranStr = '';
-        var onOff = true;
+        var onOff = true; //控制排序
         var sArr = null;
+        var isLoad = true; //控制流程
         init(); //初始化函数
         
         randBtn.onclick = function() {
@@ -213,16 +214,6 @@
         }
         sortBtn.onclick = function() {
             onOff = !onOff;
-            // sTimer = setInterval( function(){
-            //     ranStr += ' <li>'+sortArr[sNum].msg+'</li>';
-            //     list.innerHTML = ranStr;
-            //     sNum ++;
-            //     if( sNum >= sortArr.length ) {
-            //         clearInterval(sTimer);
-            //         sNum = 0;
-            //         ranStr = '';
-            //     }
-            // },100);
             var sortArr = pxFn(  initArr );
             var obj = {
                 el: list,
@@ -240,18 +231,22 @@
          *  @obj 对象
          * **/
         function createLi( obj ) {
-            clearInterval(obj.timer);
+           if( !isLoad ) return;
             obj.fn && obj.fn( obj );
-            obj.timer = setInterval( function(){
-                obj.Str += ' <li>'+obj.randArr[obj.Num].msg+'</li>';
-                obj.el.innerHTML =  obj.Str;
-                obj.Num ++;
-                if( obj.Num >= obj.randArr.length ) {
-                    clearInterval(obj.timer);
-                    obj.Num = 0;
-                    obj.Str = '';
-                }
-            },100);
+            if( isLoad ) {
+                isLoad = false;
+                obj.timer = setInterval( function(){
+                    obj.Str += ' <li>'+obj.randArr[obj.Num].msg+'</li>';
+                    obj.el.innerHTML =  obj.Str;
+                    obj.Num ++;
+                    if( obj.Num >= obj.randArr.length ) {
+                        clearInterval(obj.timer);
+                        obj.Num = 0;
+                        obj.Str = '';
+                        isLoad = true;
+                    }
+                },100);
+          } 
         }
 
 
