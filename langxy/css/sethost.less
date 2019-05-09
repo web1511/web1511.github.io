@@ -1,0 +1,84 @@
+@r:50rem;
+@comColor:#009966;
+body{
+    background: #fff;
+}
+.setHostW{
+    overflow: hidden;
+    box-sizing: border-box;
+    li{
+        padding:20/@r 0 20/@r 20/@r;
+        border-bottom: 1px solid #d2d2d2;
+        h2{
+             font-size: 30/@r;
+             margin-bottom: 20/@r;
+            .iconfont{
+                font-size:40/@r;
+                color:@comColor;
+                
+            }
+        }
+        .comSelect{
+            .iconfont{
+                font-size: 34/@r;
+                color:@comColor;
+                &.icon-radio-checked{
+                    color:@comColor;
+                }
+            }
+            .Tipmsg{
+                color:#bebebe;
+            }
+        }
+        .comSelect>div{
+            width:30%;
+            display: inline-block;
+            text-align: center;
+            &.TS{
+              text-align: left;
+              em{
+                  font-size: 24/@r;
+              }
+            }
+            &.alarmDz{
+                width: 100%;
+                text-align: left;
+                box-sizing: border-box;
+                margin:20/@r 0 20/@r 30/@r;
+                input{
+                    height: 66/@r;
+                    padding-left: 10/@r;
+                    border: 1px solid #d2d2d2;
+                    border-radius:10/@r;
+                }
+                .comIcon{
+                    font-size:50/@r;
+                    color:#fff;
+                    background:@comColor;
+                    margin:0 8/@r;  
+                    vertical-align:middle;
+                    border-radius:50%;  
+                }
+                // .icon-iconfontjianhao{
+                //     background: #fff;
+                //     color:@comColor;
+                // }
+               
+                
+            }
+           
+        }
+        .setBtn{
+            width:160/@r;
+            height:60/@r;
+            line-height: 60/@r;
+            text-align: center;
+            background:@comColor;
+            color:#fff;
+            margin:16/@r;
+            border-radius: 20/@r;
+        }
+    }
+}
+
+

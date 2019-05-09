@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<title>探测器状态</title>
+	<script src="js/util.js"></script>
+	<link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+	<link href="css/reset.css" type="text/css" rel="stylesheet" />
+	<link href="css/picker.css" type="text/css" rel="stylesheet" />
+	<link href="css/tcstate.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+	<header class="comTitle">
+		<em class="backIcon"></em>
+		<span>探测器状态</span>
+		<i class="com_Data iconfont icon-dian" id="sxBtn"></i>
+	</header>
+	<section class="contWrap">
+		<section class="search">
+			<input type="text" placeholder="请输入IMIE" />
+			<a href="javascript:;" id="search">搜索</a>
+		</section>
+		<section class="bgList">
+			<ul>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_online">
+							<i>在线</i>
+							<span>在线3天1小时</span>
+						</div>
+						<div class="bgMsg">
+							<span>烟感报警器：</span>
+							<em>1646468646464(厨房)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 温度 -->
+						<em class="bg_cIcon wdu">-20.12</em>
+						<em class="bg_cIcon xdu">13.25</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_bg">
+							<i>报警</i>
+							<span>火警报警、低电压</span>
+						</div>
+						<div class="bgMsg">
+							<span>烟感报警器：</span>
+							<em>1646468646464(客厅)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 未复核 -->
+						<em class="bg_cIcon bgFh">未复核</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_online">
+							<i>在线</i>
+							<span>在线3天1小时</span>
+						</div>
+						<div class="bgMsg">
+							<span>烟感报警器：</span>
+							<em>1646468646464(厨房)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 温度 -->
+						<em class="bg_cIcon wdu">-20.12</em>
+						<em class="bg_cIcon xdu">13.25</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_offline">
+							<i>离线</i>
+							<span>离线3天1小时</span>
+						</div>
+						<div class="bgMsg">
+							<span>门磁报警器：</span>
+							<em>1646468646464(厨房)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 未复核 -->
+						<em class="bg_cIcon bgFh">未复核</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_bg">
+							<i>报警</i>
+							<span>火警报警、低电压</span>
+						</div>
+						<div class="bgMsg">
+							<span>烟感报警器：</span>
+							<em>1646468646464(客厅)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 未复核 -->
+						<em class="bg_cIcon bgFh">未复核</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_offline">
+							<i>离线</i>
+							<span>离线3天1小时</span>
+						</div>
+						<div class="bgMsg">
+							<span>门磁报警器：</span>
+							<em>1646468646464(厨房)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 未复核 -->
+						<em class="bg_cIcon bgFh">未复核</em>
+					</a>
+				</li>
+				<li>
+					<a href="tcdetail.html">
+						<div class="state state_offline">
+							<i>离线</i>
+							<span>离线3天1小时</span>
+						</div>
+						<div class="bgMsg">
+							<span>门磁报警器：</span>
+							<em>1646468646464(厨房)</em>
+						</div>
+						<p class="bgAddress">
+							<span>地址：</span>
+							<em>宝能科技园9栋A做3栋805</em>
+						</p>
+						<!-- 未复核 -->
+						<em class="bg_cIcon bgFh">未复核</em>
+					</a>
+				</li>
+			</ul>
+		</section>
+	</section>
+    <script src="js/jquery-2.2.4.min.js"></script>
+	<script src="plugins/popup/layer.js"></script>
+	<script src="plugins/bScroll/bscroll.min.js"></script>
+	<script src="plugins/picker/picker.js"></script>
+	<script src="js/tcstate.js"></script>
+</body>
+
+</html>

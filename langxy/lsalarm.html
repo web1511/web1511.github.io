@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>历史报警</title>
+    <script src="js/util.js"></script>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="css/reset.css" type="text/css" rel="stylesheet" />
+    <link href="plugins/timer/mobiscroll.css" type="text/css" rel="stylesheet" />
+    <link href="plugins/timer/mobiscroll_002.css" type="text/css" rel="stylesheet" />
+    <link href="plugins/timer/mobiscroll_003.css" type="text/css" rel="stylesheet" />
+    <link href="css/picker.css" type="text/css" rel="stylesheet" />
+    <link href="css/tcstate.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="comTitle">
+        <em class="backIcon"></em>
+        <span>历史报警</span>
+        <i class="com_Data iconfont icon-dian" id="sxBtn"></i>
+    </header>
+    <section class="contWrap">
+        <section class="dateW">
+            <i class="iconfont icon-rili"></i>
+            <label for="dateTimeS">
+                    <input type="text" placeholder="起始时间" value="" name="dateTimeS" id="dateTimeS" readonly="readonly">
+            </label>
+            <em></em>
+            <input type="text" placeholder="结束时间" id="dateTimeE" readonly="readonly">
+            <a href="javascript:;">确定</a>
+        </section>
+        <section class="bgList lsAlarmW">
+            <ul>
+                <li>
+                    <a href="lsalarmdetail.html" class="clearfix">
+                        <div class="clearfix">
+                            <div class="fl comIcon_l">
+                                <em class="com_alarmState ycl">已处理</em>
+                                <p>烟感报警器</p>
+                            </div>
+                            <div class="fl comIcon_r">
+                                <div class="state state_bg">
+                                    <span>火警报警、低电压</span>
+                                </div>
+                                <div class="bgMsg">
+                                    <em>1646468646464(厨房)</em>
+                                </div>
+                                <div>
+                                    时间：
+                                    <em>2019-08-04 14:00:53</em>
+                                </div>
+
+                            </div>
+                            <em class="bg_cIcon wdu">-20.12</em>
+                            <em class="bg_cIcon xdu">13.25</em>
+                        </div>
+                        <p class="bgAddress">
+                            <span>地址：</span>
+                            <em>宝能科技园9栋A做3栋805</em>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="lsalarmdetail.html" class="clearfix">
+                        <div class="clearfix">
+                            <div class="fl comIcon_l">
+                                <em class="com_alarmState wfh">未复核</em>
+                                <p>烟感报警器</p>
+                            </div>
+                            <div class="fl comIcon_r">
+                                <div class="state state_bg">
+                                    <span>火警报警、低电压</span>
+                                </div>
+                                <div class="bgMsg">
+                                    <em>1646468646464(厨房)</em>
+                                </div>
+                                <div>
+                                    时间：
+                                    <em>2019-08-04 14:00:53</em>
+                                </div>
+
+                            </div>
+                            <em class="bg_cIcon wdu">-20.12</em>
+                            <em class="bg_cIcon xdu">13.25</em>
+                        </div>
+                        <p class="bgAddress">
+                            <span>地址：</span>
+                            <em>宝能科技园9栋A做3栋805</em>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="lsalarmdetail.html" class="clearfix">
+                        <div class="clearfix">
+                            <div class="fl comIcon_l">
+                                <em class="com_alarmState error">误报</em>
+                                <p>烟感报警器</p>
+                            </div>
+                            <div class="fl comIcon_r">
+                                <div class="state state_bg">
+                                    <span>火警报警、低电压</span>
+                                </div>
+                                <div class="bgMsg">
+                                    <em>1646468646464(厨房)</em>
+                                </div>
+                                <div>
+                                    时间：
+                                    <em>2019-08-04 14:00:53</em>
+                                </div>
+
+                            </div>
+                            <em class="bg_cIcon wdu">-20.12</em>
+                            <em class="bg_cIcon xdu">13.25</em>
+                        </div>
+                        <p class="bgAddress">
+                            <span>地址：</span>
+                            <em>宝能科技园9栋A做3栋805</em>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="lsalarmdetail.html" class="clearfix">
+                        <div class="clearfix">
+                            <div class="fl comIcon_l">
+                                <em class="com_alarmState test">测试</em>
+                                <p>烟感报警器</p>
+                            </div>
+                            <div class="fl comIcon_r">
+                                <div class="state state_bg">
+                                    <span>火警报警、低电压</span>
+                                </div>
+                                <div class="bgMsg">
+                                    <em>1646468646464(厨房)</em>
+                                </div>
+                                <div>
+                                    时间：
+                                    <em>2019-08-04 14:00:53</em>
+                                </div>
+
+                            </div>
+                            <em class="bg_cIcon wdu">-20.12</em>
+                            <em class="bg_cIcon xdu">13.25</em>
+                        </div>
+                        <p class="bgAddress">
+                            <span>地址：</span>
+                            <em>宝能科技园9栋A做3栋805</em>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <!-- 筛选 -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="plugins/popup/layer.js"></script>
+    <script src="plugins/timer/mobiscroll.js"></script>
+    <script src="plugins/timer/mobiscroll2.js"></script>
+    <script src="plugins/bScroll/bscroll.min.js"></script>
+    <script src="plugins/picker/picker.js"></script>
+    <script src="js/lsalarm.js"></script>
+</body>
+
+</html>

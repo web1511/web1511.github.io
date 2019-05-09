@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>Mobiscroll_2.17.1</title>
+
+<script src="../../js/jquery-2.2.4.min.js"></script>
+
+<script src="./mobiscroll.custom.min.js"></script>
+<link href="./mobiscroll.custom.min.css" rel="stylesheet" type="text/css" />
+<style>
+.section {
+	position: relative;
+	height: 32px;
+	padding-left: 80px;
+	padding-right: 15px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+.section label {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	height: 32px;
+	line-height: 32px;
+	;
+	font-size: 12px;
+}
+.section>select,  .section>input {
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+
+<div class="section">
+<label>普通控件</label>
+<select id="demo_select">
+<option value="">请选择</option>
+<option value="1">选项一</option>
+<option value="2">选项二</option>
+<option value="3">选项三</option>
+<option value="4">选项四</option>
+<option value="5">选项五</option>
+<option value="6">选项六</option>
+<option value="7">选项七</option>
+<option value="8">选项八</option>
+<option value="9">选项九</option>
+</select>
+</div>
+
+<div class="section">
+<label>日期控件</label>
+<input type="text" id="demo_date" />
+</div>
+
+<div class="section">
+<label>日期时间控件</label>
+<input type="text" id="demo_datetime" /> 
+</div>
+
+<div class="section">
+<label>时间控件</label>
+<input type="text" id="demo_time" />
+</div>
+<script>
+
+        var theme = "ios";
+        var mode = "scroller";
+        var display = "bottom";
+        var lang="zh";
+
+
+        // Select demo initialization
+        $('#demo_select').mobiscroll().select({
+            theme: theme,     // Specify theme like: theme: 'ios' or omit setting to use default
+            mode: mode,       // Specify scroller mode like: mode: 'mixed' or omit setting to use default
+            display: display, // Specify display mode like: display: 'bottom' or omit setting to use default
+            lang: lang    ,
+            setText: '确定',
+            cancelText: '取消',    // Specify language like: lang: 'pl' or omit setting to use default
+        });
+
+        // Date demo initialization
+        $('#demo_date').mobiscroll().date({
+            theme: theme,
+            mode: mode,
+            display: display,
+            lang: lang
+        });
+
+        // Date & Time demo initialization
+        $('#demo_datetime').mobiscroll().datetime({
+            theme: theme,
+            mode: mode,
+            display: display,
+            lang: lang,
+            dateFormat:"yyyy-mm-dd",
+            minDate: new Date(2000,3,10,9,22),
+            maxDate: new Date(2030,7,30,15,44),
+            stepMinute: 1,
+            formatResult: function(arr) {
+
+            }
+        });
+
+        // Time demo initialization
+        $('#demo_time').mobiscroll().time({
+            theme: theme,
+            mode: mode,
+            display: display,
+            lang: lang
+        });
+    </script>
+</body>
+</html>

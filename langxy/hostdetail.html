@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>主机实时详情</title>
+    <script src="js/util.js"></script>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="css/reset.css" type="text/css" rel="stylesheet" />
+    <link href="css/hostdetail.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="comTitle">
+        <em class="backIcon"></em>
+        <span>主机实时详情</span>
+        <!-- <i class="com_Data">同步数据</i> -->
+    </header>
+    <section class="contWrap">
+        <section class="hostList">
+            <ul class="clearfix">
+                <li class="active">
+                  <span>
+                      <i class="iconfont icon-WIFIwofi1"></i>
+                      <em>已连接</em>
+                  </span>
+                  <p>WIFI</p>
+                </li>
+                <li class="active">
+                    <span >
+                        <i class="iconfont icon-ggg"></i>
+                        <em>2G</em>
+                    </span>
+                    <p>2G/3G</p>
+                </li>
+                <li>
+                    <span>
+                        <i class="iconfont icon-tubiaozhizuomoban_dianyuan
+                         "></i>
+                        <em>未连接</em>
+                    </span>
+                    <p>电源</p>
+                </li>
+                <li class="active">
+                    <span>
+                        <i class="iconfont icon-dianliang"></i>
+                        <em>20%</em>
+                    </span>
+                    <p>电量</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="hostCont">
+            <div class="hostCont_msg ">
+                <em class="iconfont icon-bufang active"></em>
+                <p>布防</p>
+            </div>
+            <div class="hostCont_msg clearfix ">
+               <div class="fl ">
+                   <em class="iconfont icon-zaijiabufang active"></em>
+                   <p>在家布防</p>
+               </div>
+               <div class="fr">
+                    <em class="iconfont icon-jingyin"></em>
+                    <p>静音</p>
+                </div>
+            </div>
+            <div class="hostCont_msg">
+                <em class="iconfont icon-safang"></em>
+                <p>撤防</p>
+            </div>
+        </section>
+    </section>
+    <footer class="footer hostfootWrap">
+        <a href="hoststate_ns.html" class="fl">更多设备</a>
+        <a href="lsalarm.html" class="fl">历史报警</a>
+        <a href="sethost.html" class="fr">设置</a>
+    </footer>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="plugins/popup/layer.js"></script>
+    <script src="js/hostdetail.js"></script>
+</body>
+
+</html>

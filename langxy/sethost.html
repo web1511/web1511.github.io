@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>主机设置</title>
+    <script src="js/util.js"></script>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="css/reset.css" type="text/css" rel="stylesheet" />
+    <link href="css/sethost.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="comTitle">
+        <em class="backIcon"></em>
+        <span>主机设置</span>
+        <!-- <i class="com_Data iconfont icon-dian"></i> -->
+    </header>
+    <section class="contWrap">
+        <section class="setHostW">
+            <ul>
+                <li class="clearfix">
+                    <h2>
+                        <i class="iconfont icon-jingbao"></i>
+                        <span>警报设置</span>
+                    </h2>
+                    <div class="comSelect clearfix" id="alarmSet">
+                        <div class="fl comBtn">
+                            <i class="iconfont icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            布防
+                        </div>
+                        <div class="fl comBtn">
+                            <i class="iconfont  icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            撤防
+                        </div>
+                        <div class="fl comBtn">
+                            <i class="iconfont icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            在家布防
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="setBtn fr" id="alarmSet_Btn">设置</a>
+                </li>
+                <li class="clearfix">
+                    <h2>
+                        <i class="iconfont icon-wangluo"></i>
+                        <span>主机网络设置</span>
+                    </h2>
+                    <div class="comSelect clearfix" id="wangluo">
+                        <div class="fl comBtn">
+                            <i class="iconfont icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            智能
+                        </div>
+                        <div class="fl comBtn">
+                            <i class="iconfont  icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            WIFI
+                        </div>
+                        <div class="fl TS comBtn">
+                            <i class=" iconfont icon-danxuanweixuanzhong icon-radio-checked"></i>
+                            <em> GPRS/NBLOT</em>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="setBtn fr" id="wangluo_Btn">设置</a>
+                </li>
+                <li class="clearfix">
+                    <h2>
+                        <i class="iconfont icon-alarm-process"></i>
+                        <span>警报设置动作</span>
+                    </h2>
+                    <div class="comSelect clearfix">
+                        <div class="alarmDz">
+                            <!-- <i class="iconfont icon-shijian"></i> -->
+                            <em>长响时间：</em>
+                            <input type="number" placeholder="请输入0-255的数字" id="num" oninput="if(parseFloat(value)>255 ){value=255} else if( parseFloat(value)<0){value=0}" />
+                            <i class="iconfont icon-jiashang comIcon" id="addIcon"></i>
+                            <i class="iconfont icon-jianshao comIcon" id="jsIcon"></i>
+                        </div>
+                        <p class="Tipmsg">备注：0为静音，255为长响</p>
+                    </div>
+                    <a href="javascript:;" class="setBtn fr" id="timerBtn">设置</a>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="plugins/popup/layer.js"></script>
+    <script src="js/sethost.js"></script>
+</body>
+
+</html>

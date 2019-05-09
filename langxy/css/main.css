@@ -1,0 +1,253 @@
+body {
+  background: #fff;
+}
+#bannerW {
+  height: 7.12rem;
+}
+#bannerW img {
+  width: 100%;
+}
+.com_nav {
+  padding-bottom: 0.76rem;
+  border-bottom: 1px solid #d2d2d2;
+}
+.com_nav:last-child {
+  border-bottom: none;
+}
+.com_nav h2 {
+  padding: 0.72rem 0 0.8rem 0;
+  text-align: center;
+  font-size: 0.84rem;
+}
+.com_nav .com_ul1 {
+  width: 14rem;
+  margin: 0 auto;
+}
+.com_nav .com_ul1 li {
+  width: 25%;
+  margin: 0.8rem 0;
+}
+.com_nav .com_ul2 li {
+  width: 25%;
+}
+.com_nav .com_ul3 {
+  text-align: center;
+}
+.com_nav .com_ul3 li {
+  width: 100%;
+}
+.com_nav li {
+  float: left;
+  text-align: center;
+}
+.com_nav li a {
+  display: inline-block;
+  font-size: 0.56rem;
+}
+.com_nav li img {
+  width: 2.4rem;
+}
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.6rem;
+  color: #fff;
+  background: #00a0e9;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.nav .icon {
+  position: absolute;
+  left: 6px;
+  top: 0.08rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.nav i {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.68rem;
+  background: url(../img/return.png) no-repeat;
+  background-size: cover;
+}
+#contW {
+  /* padding:0 24/@r; */
+}
+#contW img {
+  width: 100%;
+}
+.inMsg {
+  padding: 2.4rem 0.48rem 0.6rem 0.48rem;
+  font-size: 0.56rem;
+  text-indent: 0.4rem;
+  line-height: 0.8rem;
+  text-align: justify;
+}
+.inMsg img {
+  margin: 0.8rem 0;
+}
+.inMsg * {
+  width: 100%;
+  text-indent: 0;
+  font-size: 0.56rem !important;
+}
+.recruitW {
+  padding: 0.4rem;
+  padding-bottom: 2rem;
+}
+.recruitW * {
+  width: 100%;
+  font-size: 0.6rem !important;
+  line-height: 1.12rem;
+}
+/* .recruitW p,.recruitW div,.recruitW span{
+	text-indent:40/@r;
+} */
+.recruitW h2 {
+  margin-bottom: 0.6rem;
+  text-align: left;
+}
+.recruitW h2 span {
+  font-size: 0.68rem !important;
+}
+.recruitW #title {
+  text-align: center;
+}
+/***新加的**/
+/* .recruitW h2:first-child{
+	text-align:left;
+	margin-bottom:0;
+} */
+.recruitW .jianjie {
+  width: 100%;
+}
+.recruitW img {
+  width: 6rem !important;
+  height: 6rem !important;
+  float: right;
+  margin-top: 0.24rem;
+}
+.ke-zeroborder {
+  table-layout: fixed;
+}
+/* .ke-zeroborder .require{
+	margin:20px  0px;
+} */
+.recruitW .com_miaoshu {
+  display: block;
+  margin-top: 0.64rem;
+}
+.adW img {
+  width: 100%;
+}
+.adMsg {
+  padding: 0.8rem 0.4rem 0 0.4rem;
+  font-size: 0.56rem;
+}
+.adMsg p {
+  margin-bottom: 0.4rem;
+  line-height: 0.72rem;
+}
+.signBtn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.56rem;
+  color: #fff;
+  background: #E53333;
+}
+/******salary******/
+.salaryW {
+  padding: 0.8rem 0.4rem 0 0.4rem;
+}
+.com_salary {
+  margin-top: 0.4rem;
+}
+.com_salary h2 {
+  color: #01a0e2;
+  font-size: 0.64rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.com_salary .com_salaryList {
+  padding: 0.56rem 0;
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+}
+.com_salary .com_salaryList li {
+  padding: 0 0.28rem;
+  color: #333;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: 0.52rem;
+}
+.com_salary .com_salaryList li span {
+  color: #01a0e2;
+}
+/***劳务派遣***/
+.listW {
+  padding: 2.8rem 0.4rem 0 0.4rem;
+}
+.listW p {
+  margin-bottom: 0.4rem;
+  text-indent: 0.4rem;
+  line-height: 1.12rem;
+  justify-content: center;
+  font-size: 0.6rem;
+}
+.listW img {
+  width: 100%;
+}
+/****报名***/
+.signUp {
+  background: #fff;
+  padding: 0.8rem 0.4rem 2rem 0.4rem;
+  font-size: 0.56rem;
+}
+.signUp .com_sign {
+  margin-top: 0.4rem;
+  height: 1.56rem;
+  border-bottom: 1px solid #d2d2d2;
+}
+.signUp .com_sign input.comText {
+  width: 70%;
+  height: 1.56rem;
+  border: none;
+  border-radius: 0;
+  font-size: 0.56rem;
+}
+.signUp input:-webkit-input-placeholder {
+  font-size: 0.56rem;
+}
+.signUp .sexW {
+  display: inline-block;
+  border: none;
+  height: 1.56rem;
+}
+.signUp .sexW input[type=radio] {
+  width: 0.72rem;
+  height: 0.72rem;
+  -webkit-appearance: radio;
+  vertical-align: middle;
+}
+#comfirmBtn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.56rem;
+  color: #fff;
+  background: #E53333;
+}

@@ -1,0 +1,339 @@
+@r:50rem;
+@online:#009966;
+@col:#013e6e;
+.search{
+    display:flex;
+    flex-direction:row;
+    height:104/@r;
+    background: #fff;
+    justify-content:center;
+    align-items: center;
+    margin:20/@r 0;
+    input{
+        width:518/@r;
+        height:80/@r;
+        border: 1px solid #d2d2d2;
+        border-radius:40/@r;
+        padding-left:10/@r;
+        margin-right:10/@r;
+        font-size:28/@r;
+    }
+    a{
+        width:160/@r;
+        height:80/@r;
+        line-height:80/@r;
+        text-align: center;
+        background: @col;
+        color:#fff;
+        border-radius: 40/@r;
+    }
+}
+/****** bgList ******/
+.bgList{
+    padding:0 20/@r 20/@r 20/@r;
+    font-size:26/@r;
+    position: relative;
+    li{
+        position: relative;
+        padding:20/@r 10/@r 20/@r 20/@r;
+        background: #fff;
+        border-radius:10/@r;
+        margin-top:20/@r;
+    }
+    .state {
+        font-size:24/@r;
+        i{
+            display: inline-block;
+            padding:10/@r 14/@r;
+            color:#fff;
+            border-radius:6/@r;
+            font-size:24/@r;
+            margin-bottom: 6/@r;
+        }
+        span{
+            display: inline-block;
+            margin-bottom: 6/@r;
+        }
+        &.state_online i{
+            background: #009966;
+        }
+        &.state_online span{
+            color: #009966;
+        }
+        &.state_offline i{
+            background: #999;
+        }
+        &.state_offline span{
+            color: #333;
+        }
+        &.state_bg i{
+           background: #ff0000;
+           &.comshostIcon{
+             color: @online;
+           }
+        } 
+        &.state_bg span{
+           color:red;
+        }  
+        &.state_bg span.comshostIcon{
+            color: @online;
+        }
+        .dy{
+            display: inline-block;
+            position: relative;
+            .dybg{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+               
+            }
+            .dybg_10{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:7/@r;
+            }
+            .dybg_20{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:12/@r;
+            }
+            .dybg_30{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:20/@r;
+            }
+            .dybg_40{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:28/@r;
+            }
+            .dybg_50{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:36/@r;
+            }
+            .dybg_60{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:44/@r;
+            }
+            .dybg_70{
+                width:52/@r;
+            }
+            .dybg_80{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:62/@r;
+            }
+            .dybg_90{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                height:32/@r;
+                background: @online;
+                width:70/@r;
+            }
+            .dybg_100{
+                position: absolute;
+                left:5/@r;
+                top:6/@r;
+                width:10/@r;
+                height:32/@r;
+                background: @online;
+                width:76/@r;
+            }
+        }
+        .comshostIcon {
+          background: inherit ;
+          font-size:40/@r  ;
+          color:@online !important;
+          &.icon-dianyuan{
+            color:#d2d2d2!important ;
+          }
+          &.noActive{
+              color:#d2d2d2 !important;
+          }
+       }  
+    }
+    .bgMsg{
+        padding:14/@r 0;
+        max-width:560/@r;
+    }
+    .bgAddress{
+        color:#666;
+    }
+    .bg_cIcon{
+        position: absolute;
+        right: 20/@r;
+        border-radius:50%;
+        color:#fff;
+        text-align:center;
+        font-size:20/@r;
+        &.wdu{
+            width:72/@r;
+            height:72/@r;
+            line-height:72/@r;
+            background: #00ff99;
+            top:20/@r;
+        }
+        &.xdu{
+            width:72/@r;
+            height:72/@r;
+            line-height:72/@r;
+            background: #cc6600;
+            bottom:10/@r;
+        }
+        &.bgFh{
+            padding:12/@r;
+            background: #ffcc33;
+            border-radius:10/@r;
+            top:10/@r;
+        }
+        &.hostIcon{
+            top:10/@r;
+            color:#009966;
+            font-size:40/@r;
+        }
+        &.icon-safang{
+            top:10/@r;
+            right:66/@r;
+            color:#009966;
+            font-size:40/@r;
+        }
+    }
+
+    /***主机状态***/
+}
+
+/***历史报警公用***/
+.comIcon_l{
+    text-align:center;
+     margin:14/@r 14/@r 0  0;
+    .iconfont{
+        color:red;
+        font-size:66/@r;
+    }
+}
+.comIcon_r{
+    max-width: 400/@r;
+}
+
+.dateW{
+    padding:12/@r;
+    input{
+        width:280/@r;
+        height:60/@r;
+        border:1px solid #d2d2d2;
+        background: #fff;
+        padding-left:6/@r;
+        border-radius:10/@r;
+    }
+    em{
+        display: inline-block;
+        width:10/@r;
+        height:1px;
+        background: #333;
+        vertical-align:middle;
+    }
+    a{
+      color:@online;
+    }
+}
+.com_alarmState{
+    display: inline-block;
+    width:110/@r;
+    height:56/@r;
+    line-height:56/@r;
+    text-align:center;
+    border-radius:10/@r;
+    color:#fff;
+    &.ycl{
+        background: #0066ff; 
+    }
+    &.wfh{
+        background: #ffcc00;
+    }
+    &.error{
+        background: #66cc00; 
+    }
+    &.test{
+        background: #ccc; 
+    }
+}
+ .lsAlarmW{
+    .bgAddress {
+        padding-top:6/@r;
+    }
+ }
+/***设备列表**/
+.sblist{
+    .iconfont{
+        color:#009933;
+        font-size:66/@r;
+    }
+    .state{
+        margin-bottom: 6/@r;
+    }
+    .com_sbtn{
+        position: absolute;
+        right: 20/@r;
+        width:160/@r;
+        line-height: 70/@r;
+        border:1px solid #d2d2d2;
+        border-radius:40/@r;
+        text-align:center;
+        &.edit{
+            top:10/@r;
+            color: @online;
+        }
+        &.reset{
+            bottom:10/@r;
+        }
+    }
+}
+
+.addIcon{
+    position: fixed;
+    left:50%;
+    bottom:40/@r;
+    width:130/@r;
+    height:130/@r;
+    margin-left:-65/@r;
+    line-height:130/@r;
+    background:@col;
+    color:#fff;
+    text-align: center;
+    border-radius: 65/@r;
+    .iconfont{
+        
+        font-size:60/@r;
+    }
+  
+}
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>注册</title>
+		<script src="js/util.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/reset.css">
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+	</head>
+	<body>
+		<section class="app">
+			<header class="logo">
+				<!-- <img src="./img/login/logo_n.png"  /> -->
+				<span class="comText">朗鑫云</span>
+			</header>
+			<div class="loginW">
+				<!-- <p>
+				  <em class="userIcon"></em>
+				  <input type="text" placeHolder="用户名" id="username"/>
+				</p> -->
+				<p>
+						<em class="">手机号码:</em>
+						<input type="text" placeHolder="" id="phone"/>
+				</p>
+				<p>
+				  <em class="">密码:</em>
+				  <input type="password" placeHolder="" id="password"/>
+				</p>
+			
+				<p>
+				  <em class="yzIcon">验证码:</em>
+				  <input type="text" placeHolder="" class="yzInput" id="yzText"/>
+				  <span class="yzCode" id="yzBtn">获取验证码</span>
+				</p>
+				<!-- <p>
+				  <em class="tjIcon"></em>
+				  <input type="text" placeHolder="推荐人"/>
+				</p> -->
+			</div>
+			<a href="javascript:;" id="registerBtn" class="com_green">注册</a>
+			<div class="com_back">
+				<s></s>
+				<a href="login.html">已有账号，返回登录</a>
+				<s></s>
+			</div>
+		</section>
+
+	</body>
+	<script src="./js/jquery-2.2.4.min.js"></script>
+	<script src="./plugins/popup/layer.js"></script>
+	<script src="./js/register.js"></script>
+</html>
+

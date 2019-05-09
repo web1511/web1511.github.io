@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>picker</title>
+    <script src="js/util.js"></script>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="css/reset.css" type="text/css" rel="stylesheet" />
+    <style>
+        body{
+            /* background: #fff; */
+            height:100%;
+        }
+        .pickW{
+            position: fixed;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,0.3);
+            display:none;
+            transition:0.5s;
+            transform: translateY(0);
+        }
+        .pickW .pickCont{
+            position: absolute;
+            bottom:0;
+            left:0;
+            width: 100%;
+            
+        }
+        .pickW .title{
+            height:50px;
+            background: #fff;
+        }
+        .pickW .title a{
+            width:40px;
+            line-height: 50px;
+            margin:0 10px;
+        }
+        .scrollW{
+            position: relative;
+            height: 100px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .scroll li{
+            line-height: 36px;
+            text-align: center;
+            opacity: 0.2;
+            transition: 0s opacity;
+        }
+        .line{
+            position: absolute;
+            left:0;
+            top:40px;
+            width:100%;
+            height: 1px;
+            background: #d2d2d2;
+        }
+        #btn{
+           display: block;
+           width: 120px;
+           height:40px;
+           background: green;
+           color:#fff;
+           line-height: 40px;
+           text-align: center;
+           margin:10px auto;
+        }
+        input[type=range] {
+
+                -webkit-appearance:initial;
+
+        }
+    </style>
+</head>
+
+<body>
+   <input type="range" max=250 />
+   <a href="javascript:;" id="btn">出现picker</a>
+   <div class="showVal"></div>
+   <!-- <div class="pickW">
+        <div class="pickCont">
+            <div class="clearfix title">
+                    <a href="javascript:;" class="fl">取消</a>
+                    <a href="javascript:;" class="fr" >确定</a>
+            </div>
+            <div class="scrollW">
+                <ul class="scroll">
+                    <li class="scroll-li">图书</li>
+                    <li class="scroll-li">电影</li>
+                    <li class="scroll-li">音乐</li>
+                    <li class="scroll-li">美食</li>
+                    <li class="scroll-li">音乐</li>
+                    <li class="scroll-li">美食</li>
+                </ul>
+                
+                <em class="line"></em>
+            </div>
+        </div>
+   </div>  -->
+   <script src="plugins/bScroll/bscroll.min.js"></script>
+   <script>
+        var btn = $('#btn');
+        var body = $('body');
+        var pickW = $('.pickW');
+        var pickCont = $('.pickCont');
+        var showVal = $('.showVal');
+        //var scrollW = $('.scrollW');
+        var scroll = $('.scroll');
+        
+        var index = 0;
+       Pick(body,{
+           success :function ( obj ) {
+              var listr = ''; 
+              var arrM = ['']
+              for( var i=0;i<6;i++ ) {
+                listr += '<li class="scroll-li">'+i+'<li>';
+              } 
+              obj.innerHTML = listr;
+           },
+           item :'scroll-li'
+       });
+       function Pick(obj,o) {
+
+            /***生成结构****/
+            o = o || {};
+           
+            var str = '<div class="pickCont">\
+                            <div class="clearfix title">\
+                                    <a href="javascript:;" class="fl">取消</a>\
+                                    <a href="javascript:;" class="fr" >确定</a>\
+                            </div>\
+                            <div class="scrollW">\
+                                <ul class="scroll">\
+                                </ul>\
+                                <em class="line"></em>\
+                            </div>\
+                      </div>';
+            var pickDiv = document.createElement('div');
+            pickDiv.className = 'pickW';
+            pickDiv.innerHTML = str;
+            obj.appendChild(pickDiv);
+            var scroll = $('.scroll');
+            o.success && o.success( scroll ); 
+            o.scrollW = $('.scrollW');
+            var aLi = document.getElementsByClassName( o.item );
+            var s = new BScroll(  o.scrollW ,{
+                    wheel : {
+                        adjustTime:100,
+                        wheelWrapperClass:  o.scrollW.className, 
+                        wheelItemClass: aLi[0].className
+                    }
+            });
+            
+            s.on('scrollEnd',function(val){
+                var num = s.getSelectedIndex();
+                var index = num;
+                for( var i=0;i<aLi.length;i++ ) {
+                    aLi[i].style.opacity = 0.2;
+                    aLi[num].style.opacity = 1;
+                    aLi[num].style['transition-duration'] = '0ms';
+                }
+            });
+            
+            btn.onclick = function() {
+                pickW.style.transform = 'translateY(0)';
+            }
+    } 
+       function $(obj) {
+           return document.querySelector( obj );
+       }
+
+   </script>
+</body>
+
+</html>

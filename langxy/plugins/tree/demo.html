@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>递归的使用-左侧菜单</title>
+<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="./tree.css" />
+<style type="text/css">
+			html,
+			body {
+				height: 100%;
+			}
+			.left {
+				height:100%;
+			}
+		</style>
+</head>
+<body>
+<div class="left"></div>
+<script src="../../js/jquery-2.2.4.min.js"></script>
+<script src="./tree.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+            
+			Menu();
+			function Menu(){
+				$.ajax({
+					type:"get",
+					url:"json/nav.json",
+					dataType:"json",
+					data:{},
+					success:function(data){
+						console.log("返回数据",data);
+						$.leftNav(".left",data);
+					},
+					error:function(erro){
+						console.log("出现错误",erro);
+					}
+				});
+			}
+		</script>
+</body>
+</html>

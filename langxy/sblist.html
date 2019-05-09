@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>设备列表</title>
+    <script src="js/util.js"></script>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="css/reset.css" type="text/css" rel="stylesheet" />
+    <link href="css/picker.css" type="text/css" rel="stylesheet" />
+    <link href="css/tcstate.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="comTitle">
+        <em class="backIcon"></em>
+        <span>设备列表</span>
+        <i class="com_Data iconfont icon-dian" id="sxBtn"></i>
+    </header>
+    <section class="contWrap">
+        <section class="search">
+            <input type="text" placeholder="请输入IMIE" />
+            <a href="javascript:;" id="search">搜索</a>
+        </section>
+        <section class="bgList">
+            <ul>
+                <li>
+                    <div href="alarmdetail.html" class="clearfix sblist">
+                        <div class="fl comIcon_l">
+                            <i class="iconfont icon-yangantanceqi"></i>
+                            <p>烟感报警器</p>
+                        </div>
+                        <div class="fl comIcon_r">
+                            <div class="state">
+                                <span>名称：</span>
+                                <p>卧室1号</p>
+                            </div>
+                            <div class="state ">
+                                <span>IMIE：</span>
+                                <p>136469979464646747</p>
+                            </div>
+                        </div>
+                        <a class="edit com_sbtn" href="addsb_edit.html">编辑</a>
+                        <a class="reset com_sbtn" href="javascript:;">解绑</a>
+                    </div>
+                </li>
+                <li>
+                    <div href="alarmdetail.html" class="clearfix sblist">
+                        <div class="fl comIcon_l ">
+                            <i class="iconfont icon-mencibaojingqi"></i>
+                            <p>门磁报警器</p>
+                        </div>
+                        <div class="fl comIcon_r">
+                            <div class="state">
+                                <span>名称：</span>
+                                <p>卧室1号</p>
+                            </div>
+                            <div class="state ">
+                                <span>IMIE：</span>
+                                <p>136469979464646747</p>
+                            </div>
+                        </div>
+                        <a class="edit com_sbtn" href="addsb_edit.html">编辑</a>
+                        <a class="reset com_sbtn" href="javascript:;">解绑</a>
+                    </div>
+                </li>
+            </ul>
+           <a href="addsb.html" class="addIcon">
+                <span class="iconfont icon-jiashang"></span>
+           </a>
+        </section>
+    </section>
+    <!-- 筛选 -->
+	
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="plugins/popup/layer.js"></script>
+    <script src="plugins/bScroll/bscroll.min.js"></script>
+    <script src="plugins/picker/picker.js"></script>
+    <script src="js/sblist.js"></script>
+</body>
+
+</html>
