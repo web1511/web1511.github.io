@@ -138,7 +138,10 @@
         var leftW = $('#box textarea');
         var rightMsg = $('#rightMsg');
         var process = $('#process');
+        var aLi = $$('li');
+        var aUl = $('#box ul');
         var oldMsg = leftW.innerHTML;
+        var len = oldMsg.length;
         var temp = null;
         var num = 0;
         var timer = null;
@@ -160,9 +163,13 @@
                         str += leftMsg.charAt(num);
                         num ++;
                         rightMsg.innerHTML = str;
-                        var newStr = oldMsg.replace( str,'');
-                        leftW.value = newStr; //左边直接匹配当前右边的字符串删掉
+                        var newStr = oldMsg.replace( str,''); //左边直接匹配当前右边的字符串删掉
+                        leftW.value = newStr;
+                        //leftW.value = oldMsg.substring(num); 
                         process.innerHTML = num + '/' + len;
+                        aUl.style.opacity = 1;
+                        aLi[ num%aLi.length].classList.add('active');
+                        aLi[ (num-1)%aLi.length].classList.remove('active');
                         if( num >= len ) {
                             clearInterval(timer);
                             num = 0;
@@ -170,12 +177,37 @@
                             timer = null;
                             isLoad = true;//这里开启
                             str = '';
+                            aUl.style.opacity = 0;
                         }
                     
                 },30);
           }
 
         }
+
+        /**
+        * 另外一种思路
+        **/
+        // startBtn.onclick = function() {
+        //     clearInterval(timer);
+        //     timer = setInterval(change,30);
+        // }
+        // function change() {
+        //     num ++;
+        //     str += leftW.value.charAt(0);
+        //     leftW.value = leftW.value.substring(1);
+        //     rightMsg.innerHTML = str;
+        //     process.innerHTML = num + '/' + len;
+        //     aUl.style.opacity = 1;
+        //     aLi[ num%aLi.length].classList.add('active');
+        //     aLi[ (num-1)%aLi.length].classList.remove('active');
+        //     if( leftW.value == '' ) {
+        //         clearInterval(timer);
+        //         startBtn.onclick = null; 
+        //          aUl.style.opacity = 0;
+        //     }
+
+        // }
         function $$(obj) {
             return document.querySelectorAll(obj);
         }

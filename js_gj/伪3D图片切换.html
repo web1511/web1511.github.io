@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片切换</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: rgb(247, 202, 208);
+        }
+
+        .wrap {
+            width: 860px;
+            height: 400px;
+            margin: 50px auto;
+            position: relative;
+
+        }
+
+
+        .box {
+            position: absolute;
+            width:300px;
+            height:300px;
+            border-radius:150px;
+            text-align: center;
+            line-height: 300px;
+            z-index: 2;
+            transition:1s;
+        }
+        .wrap>.box:nth-child(1){
+            left:0;
+            background: green;
+        }
+        .wrap>.box:nth-child(2){
+            left:150px;
+            z-index: 10;
+            background: violet;
+        }
+        .wrap>.box:nth-child(3){
+            left:300px;
+            background: blue;
+        }
+
+        #prev {
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 100px;
+            top: 32%;
+            background: url(./img/prev.png) no-repeat;
+            z-index: 9999;
+            color:#fff;
+            text-decoration: none;
+        }
+
+        #next {
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 460px;
+            top: 32%;
+            background: url(./img/next.png) no-repeat;
+            z-index: 9999;
+            color:#fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+            第一个图片
+        </div>
+        <div class="box">
+            第二个图片
+        </div>
+        <div class="box">
+            第三个图片
+        </div>
+        <div class="btns">
+            <a href="javascript:;" id="prev">
+                左按钮
+            </a>
+            <a href="javascript:;" id="next">
+                右按钮
+            </a>
+        </div>
+
+    </div>
+    <script>
+         /***
+          *  思路 用到数组的
+          *     ['a','b','c'] ->['c','a','b'] 用到数组的 var last = arr.pop的返回值 arr.unshift(last);
+          *     ['a','b','c'] ->['b','c','a'] 用到数组的 var first = arr.shift 的返回值 arr.pop(first);
+          * **/
+        var prev = $('#prev');
+        var next = $('#next');
+        var box = $$('.box');
+        var arr = [];
+       
+        arr =  init();
+        
+        next.onclick = function() {
+            arr.unshift( arr.pop());
+            box.forEach(function(item,index){
+                item.style.left = arr[index].left + 'px';
+                item.style['z-index'] = arr[index].zIndex;
+            });
+        }
+        prev.onclick = function() {
+            arr.push( arr.shift());
+            box.forEach(function(item,index){
+                item.style.left = arr[index].left + 'px';
+                item.style['z-index'] = arr[index].zIndex;
+            });
+        }
+        function init() {
+            box.forEach(function(item,index){
+                arr.push({
+                    left: item.offsetLeft,
+                    zIndex: getCssStyle( item ).zIndex
+                });
+            });
+            return arr;
+        }
+
+         function getCssStyle( obj ) {
+            return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
+         }
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+    </script>
+</body>
+
+</html>

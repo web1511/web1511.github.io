@@ -66,7 +66,7 @@ var listObj = [
         ]
     },
     {
-        title: '字符串练习',
+        title: '字符串与数组练习',
         url : [
             {
                 type:'str_replace',
@@ -79,6 +79,10 @@ var listObj = [
             {
                 type:'str_sort',
                 t:'排序'
+            },
+            {
+                type:'arr_3d',
+                t:'伪3D图片切换'
             }
         ]
     },
