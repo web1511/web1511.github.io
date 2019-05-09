@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title>忘记密码</title>
+		<script src="js/util.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/reset.css">
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+	
+	</head>
+	<body>
+		<section class="app">
+			<header class="header">
+				<a class="header_icon fl return" href="login.html"></a>
+				<div class="header_title">忘记密码</div>
+			</header>
+			<div class="forgetW">
+				<p>
+				  <input type="text" placeHolder="请输入手机号码" id="phone"/>
+				</p>
+				<p>
+				  <input type="text" class = "yzMes" placeHolder="请输入验证码" id="yzText"/>
+				  <span class="yzCode" id="yzBtn">获取验证码</span>
+				</p>
+				<div class="confirmPsw">
+					<p>
+				     <input type="password" placeHolder="请输入新的密码" id="newPsw"/>
+				    </p>
+				    <p>
+				     <input type="password" placeHolder="请确认新的密码" id="rePsw"/>
+				    </p>
+				</div>
+			</div>
+			<a href="javascript:;" id="forgetBtn" class="com_forget">提交</a>
+		</section>
+
+	</body>
+	<script src="./js/jquery-2.2.4.min.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./plugins/popup/layer.js"></script>
+	<script src="./js/forget.js"></script>
+</html>
+
