@@ -1,6 +1,7 @@
 @r:50rem;
 @online:#009966;
-@col:#013e6e;
+@col:#2a79b7;
+@qred:#e53535;
 .search{
     display:flex;
     flex-direction:row;
@@ -67,13 +68,13 @@
             color: #333;
         }
         &.state_bg i{
-           background: #ff0000;
+           background: #e53535;
            &.comshostIcon{
              color: @online;
            }
         } 
         &.state_bg span{
-           color:red;
+           color:#e53535;
         }  
         &.state_bg span.comshostIcon{
             color: @online;
@@ -196,19 +197,19 @@
             width:72/@r;
             height:72/@r;
             line-height:72/@r;
-            background: #00ff99;
+            background: #30e79e;
             top:20/@r;
         }
         &.xdu{
             width:72/@r;
             height:72/@r;
             line-height:72/@r;
-            background: #cc6600;
+            background: #e2882e;
             bottom:10/@r;
         }
         &.bgFh{
             padding:12/@r;
-            background: #ffcc33;
+            background: #e1b42c;
             border-radius:10/@r;
             top:10/@r;
         }
@@ -233,7 +234,7 @@
     text-align:center;
      margin:14/@r 14/@r 0  0;
     .iconfont{
-        color:red;
+        color:@qred;
         font-size:66/@r;
     }
 }
@@ -271,13 +272,13 @@
     border-radius:10/@r;
     color:#fff;
     &.ycl{
-        background: #0066ff; 
+        background: #2373eb; 
     }
     &.wfh{
-        background: #ffcc00;
+        background: #e1b42c;
     }
     &.error{
-        background: #66cc00; 
+        background: #e53535; 
     }
     &.test{
         background: #ccc; 
