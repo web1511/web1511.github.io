@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //发布者
+        function Publisher(){
+            this.observers = [];
+            this.state = "";
+
+        }
+        Publisher.prototype.addOb=function(observer){
+            var flag = false;
+            for (var i = this.observers.length - 1; i >= 0; i--) {
+                if(this.observers[i]===observer){
+                    flag=true;                
+                }
+            };
+            if(!flag){
+                this.observers.push(observer);
+            }
+            return this;
+        }
+        Publisher.prototype.removeOb=function(observer){
+            var observers = this.observers;
+            for (var i = 0; i < observers.length; i++) {
+                if(observers[i]===observer){
+                    observers.splice(i,1);
+                }
+            };
+            return this;
+        }
+        Publisher.prototype.notice=function(){
+            var observers = this.observers;
+            for (var i = 0; i < observers.length; i++) {
+                    observers[i].update(this.state);
+            };
+        }
+
+        //订阅者
+        function Subscribe(){
+            this.update = function(data){
+                  console.log(data);
+            };
+        }
+
+        //实际应用
+        var oS1 = new Subscribe(),
+            oS2 = new Subscribe();
+
+        var pba = new Publisher();
+
+        pba.addOb(oS1);
+        pba.addOb(oS2);
+
+        oS1.update = function(state){
+            console.log(state+"hello!");
+        }
+        oS2.update = function(state){
+            console.log(state+"world!");
+        }
+        pba.state = "open ";
+        pba.notice();
+        function fn()
+    </script>
+</body>
+</html>

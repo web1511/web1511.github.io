@@ -94,6 +94,15 @@ var listObj = [
                t:'flex布局与vw的使用'
             }
         ]
+    },
+    {
+        title: 'js设计模式',
+        url : [
+            {
+               type:'ms_sp',
+               t:'发布_订阅'
+            }
+        ]
     }
 
 ];

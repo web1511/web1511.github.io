@@ -95,7 +95,7 @@
     <script>
          /***
           *  思路 用到数组的
-          *     ['a','b','c'] ->['c','a','b'] 用到数组的 var last = arr.pop的返回值 arr.unshift(last);
+          *     ['a','b','c'] ->['c','a','b'] ->['b','c','a']用到数组的 var last = arr.pop的返回值 arr.unshift(last);
           *     ['a','b','c'] ->['b','c','a'] 用到数组的 var first = arr.shift 的返回值 arr.pop(first);
           * **/
         var prev = $('#prev');
@@ -104,7 +104,7 @@
         var arr = [];
        
         arr =  init();
-        
+
         next.onclick = function() {
             arr.unshift( arr.pop());
             box.forEach(function(item,index){
