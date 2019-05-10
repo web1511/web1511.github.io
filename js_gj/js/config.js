@@ -83,6 +83,10 @@ var listObj = [
             {
                 type:'arr_3d',
                 t:'伪3D图片切换'
+            },
+            {
+                type:'arr_select',
+                t:'全选与反选'
             }
         ]
     },

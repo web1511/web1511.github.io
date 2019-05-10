@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{list-style:none;font-size: 16px;}
+        input{
+            font-size:24px;
+            width:16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><input type="checkbox" name="good">图书</li>
+        <li><input type="checkbox" name="good">电影</li>
+        <li><input type="checkbox" name="good">音乐</li>
+        <li><input type="checkbox" name="good">美食</li>
+    </ul>
+    <input type="checkbox" id="allInput">
+    <button id="payBtn" disabled>去支付</button>
+    <script>
+       /***
+          利用数组some方法判断 是否选择一个，every方法判断是否全部全选了
+       **/
+        var payBtn = $('#payBtn');
+        var allInput = $('#allInput');
+        var aInputs = $$('ul input');
+        
+        // var newInputs = [].slice.apply(aInputs);
+        // aInputs.forEach(function(item,index){
+        //     item.onclick = function() {
+        //         var isSelet = newInputs.some(function(item,index){
+        //               return item.checked;
+        //         });
+        //         var allSelect = newInputs.every(function(item,index){
+        //               return item.checked;
+        //         });
+        //         payBtn.disabled =  isSelet ? false : true;
+        //         allInput.checked =  allSelect ? true : false;
+        //     }
+        // });
+
+        // allInput.onclick = function() {
+        //     if( this.checked ) {
+        //         aInputs.forEach(function(item){
+        //             item.checked = true;
+        //         });
+        //         payBtn.disabled = false;
+        //     }else{
+        //         aInputs.forEach(function(item){
+        //             item.checked = false;
+        //         });
+        //         payBtn.disabled = true;
+        //     }
+          
+        // }
+
+        //不用some和every的做法
+        var num = 0; 
+        aInputs.forEach(function(item,index){
+            item.onclick = function() {
+                if( this.checked ) {
+                    num ++;
+                }else{
+                    num --;
+                }
+
+                if( num == aInputs.length ) {
+                    allInput.checked = true;
+                }else{
+                    allInput.checked = false;
+                }
+                payBtn.disabled =  Boolean(num) ? false : true;
+            }
+        });
+        
+        allInput.onclick = function() {
+            if( this.checked ) {
+                aInputs.forEach(function(item){
+                    item.checked = true;
+                });
+                num = aInputs.length;
+                payBtn.disabled = false;
+            }else{
+                aInputs.forEach(function(item){
+                    item.checked = false;
+                });
+                num = 0;
+                payBtn.disabled = true;
+            }
+          
+        }
+        function $( obj ) {
+            return document.querySelector( obj );
+        }
+        function $$( obj ) {
+            return document.querySelectorAll(obj);
+        }
+    </script>
+</body>
+</html>
