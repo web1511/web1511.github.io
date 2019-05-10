@@ -213,6 +213,10 @@
 
     </div>
     <script>
+       /**
+            1.用正则匹配 replace
+            2. 字符串split 和 join 搭配使用
+       **/
         var content = $('#content');
         var expand = $('#expand');
         var expandCont = $('#open ul');
@@ -233,7 +237,7 @@
         var rNextInput = $$('#replace input[type=text]')[1];
         var oldStrArr = content.innerHTML; //原始内容
         var expandOn = true; //收缩开关
-        
+        var str = '';
 
         expand.onclick = function () {
             initExpand();
@@ -269,37 +273,79 @@
 
 
         //替换内容
+        // function replaceFn() {
+        //     var rPrevMsg = rPrevInput.value.trim();
+        //     var rNextMsg = rNextInput.value.trim();
+        //     var re = new RegExp( rPrevMsg,'g');
+        //     if( rPrevMsg == '' ) {
+        //         alert('请输入替换前的内容');
+        //         return;
+        //     } 
+        //     if( rNextMsg == '' ) {
+        //         alert('请输入替换后的内容');
+        //         return;
+        //     }
+        //     str = content.innerHTML.replace(re, function($1){
+        //         $1 = rNextMsg;
+        //         return $1;
+        //     });
+        //     content.innerHTML = str;
+        // }
+        //查找内容
+        // function searchFn() {
+        //     var sTxt = sMsg.value.trim();
+        //     var re = new RegExp( sTxt,'g');
+        //     var str = '';
+        //     if( sTxt == '' ) {
+        //         alert('请输入点内容');
+        //         return;
+        //     }
+        //     if( content.innerHTML.indexOf(sTxt) == -1 ) {
+        //         alert('没有找到你需要的内容');
+        //         return;
+        //     }
+        //     str = oldStrArr.replace(re, function($1){
+        //         return '<mark>' + $1+'</mark>';
+        //     });
+
+        //     content.innerHTML = str;
+        // }
+        //利用split和join 来写
         function replaceFn() {
             var rPrevMsg = rPrevInput.value.trim();
             var rNextMsg = rNextInput.value.trim();
-            var re = new RegExp( rPrevMsg,'g');
-            var str = '';
+            var html = content.innerHTML;
             if( rPrevMsg == '' ) {
                 alert('请输入替换前的内容');
                 return;
-            }else if( rNextMsg == '' ) {
-                alert('请输入替换后的内容');
+            } 
+            if( html.indexOf(rPrevMsg) == -1 ) {
+                alert('没有找到你需要的内容');
                 return;
             }
-            str = content.innerHTML.replace(re, function($1){
-                $1 = rNextMsg;
-                return $1;
-            });
-            content.innerHTML = str;
+            if( rPrevMsg !='' && rNextMsg == '' ) { //删除内容
+                if( confirm("确定要删除"+ rPrevMsg + '?')) {
+                    content.innerHTML = html.split( rPrevMsg ).join('');
+                }
+                return;
+            }
+          
+            content.innerHTML = html.split( rPrevMsg ).join(rNextMsg);
         }
-        //查找内容
-        function searchFn() {
+         function searchFn() {
             var sTxt = sMsg.value.trim();
-            var re = new RegExp( sTxt,'g');
-            var str = '';
+            content.innerHTML = oldStrArr;
+            var html = content.innerHTML;
             if( sTxt == '' ) {
                 alert('请输入点内容');
                 return;
             }
-            str = content.innerHTML.replace(re, function($1){
-                return '<mark>' + $1+'</mark>';
-            });
-            content.innerHTML = str;
+            if( html.indexOf(sTxt) == -1 ) {
+                alert('没有找到你需要的内容');
+                return;
+            }
+            
+            content.innerHTML = html.split( sTxt ).join('<mark>'+sTxt+'</mark>');
         }
         //收缩展开
         function initExpand() {
