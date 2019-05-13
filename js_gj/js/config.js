@@ -87,6 +87,10 @@ var listObj = [
             {
                 type:'arr_select',
                 t:'全选与反选'
+            },
+            {
+                type:'arr_loop',
+                t:'无限级菜单'
             }
         ]
     },
