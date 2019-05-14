@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            /* height:200px; */
+            background: red;
+            height:0;
+            margin:100px auto;
+            transition:1s;
+            overflow: hidden;
+            display: none; 
+        }
+        #box p{
+            transition:.5s;
+            line-height: 200px;
+            color:#fff;
+            text-align: center;
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>内容</p>
+    </div>
+    <script>
+
+        var box = document.querySelector('#box');
+        var text = box.querySelector('p');
+
+        /**
+         * 1. 利用transition 实现 从上往下拉，然后内容在透明显示 就是利用 transitionend 事件 监听动画完成执行
+         *  注意 transitionend 事件 用事件监听来绑定
+         *  2.  注意的是当dispaly为none 和 transition 一起使用时候 一定要保证当前的元素先显示，然后执行动画
+         *     一般是把动画的效果加个延时器
+         * **/
+
+        document.addEventListener('click',function(){
+            //先立即显示，保证执行transition动画
+            box.style.display = 'block';
+            setTimeout(function(){
+                box.style.height = '200px';
+            },100);
+        });
+      
+        box.addEventListener('transitionend',function(){
+            text.style.opacity = 1;
+            box.addEventListener('transitionend',function(){
+                  setTimeout(function(){
+                    box.style.height = '100px';
+                    box.style.display = 'none';
+                    text.style.opacity = 0;
+                  },1000);
+            })
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:100px auto;
+            border-radius: 100px;
+            background: red;
+            overflow: hidden;
+        }
+        #box p{
+            line-height: 200px;
+            color:#fff;
+            text-align: center;
+        }
+
+        .ishow{
+            animation: ishow linear 1s;
+        }
+        .go{
+            animation: go ease-in 1s forwards;
+        }
+        .hx{
+            animation: hx ease-in 1s forwards;
+        }
+        @keyframes ishow {
+            0%{
+               transform: scale(1.2,1);
+            }
+            20%{
+                transform: scale(0.8,1.2); 
+            }
+            40%{
+                transform: scale(1.1,0.9); 
+            }
+            60%{
+                transform: scale(0.9,1.2); 
+            }
+            80%{
+                transform: scale(1.4,0.8); 
+            }
+            100%{
+                transform: scale(1,1); 
+            }
+        }
+        @keyframes go {
+            0%{
+               transform: translateY(100px);
+            }
+            20%{
+                transform: translateY(150px);
+            }
+            40%{
+                transform: translateY(200px);
+            }
+            60%{
+                transform: translateY(250px);
+            }
+            80%{
+                transform: translateY(300px);
+            }
+            100%{
+                transform: translateY(250px);
+            }
+        }
+        @keyframes hx {
+            0%{
+               box-shadow:0 0 4px #fff,0 0 5px blue,0 0 5px pink;
+            }
+            50%{
+                box-shadow:0 0 2px #fff,0 0 10px blue,0 0 20px pink;
+            }
+           
+            100%{
+                box-shadow:0 0 4px #fff,0 0 5px blue,0 0 5px pink;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>内容</p>
+    </div>
+    <script>
+
+        var box = document.querySelector('#box');
+        var text = box.querySelector('p');
+
+        /**
+         * 1. 利用animation 实现 从上往下拉，然后内容在透明显示 就是利用 animationend 事件 监听动画完成执行
+         *  注意 animationend 事件 用事件监听来绑定
+         * 
+         * **/
+         box.addEventListener('click',function(){
+             //this.classList.add('ishow');
+             this.classList.add('hx');
+         });
+         box.addEventListener('animationend',function(){
+             this.classList.remove('hx');
+             this.classList.add('go');
+            //  box.addEventListener('animationend',function(){
+            //     setTimeout(function(){
+            //         box.classList.remove('go');
+            //     },1000)
+            //  });
+         });
+       
+    </script>
+</body>
+</html>

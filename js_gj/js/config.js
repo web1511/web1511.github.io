@@ -95,6 +95,19 @@ var listObj = [
         ]
     },
     {
+        title: '动画练习',
+        url : [
+            {
+               type:'dh_t',
+               t:'transition'
+            },
+            {
+                type:'dh_a',
+                t:'animation'
+             }
+        ]
+    },
+    {
         title: 'flex布局',
         url : [
             {
