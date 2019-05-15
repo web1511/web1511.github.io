@@ -104,7 +104,11 @@ var listObj = [
             {
                 type:'dh_a',
                 t:'animation'
-             }
+            },
+            {
+                type:'dh_kj',
+                t:'运动框架封装'
+            }
         ]
     },
     {
