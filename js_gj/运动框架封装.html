@@ -25,6 +25,19 @@
 	   - c 变化值 = 目标值 - 初始值
 	   - d duration 持续时间
 	*/
+	(function(){
+		if( !window.requestAnimationFrame) {
+			var timer = null;
+			requestAnimationFrame = function( callback ) {
+				timer = setTimeout(callback,30);
+				return timer;
+			}
+			cancelAnimationFrame = function() {
+				clearTimeout( timer );
+			}
+		}
+		
+	})()
 	   var Tween = {
 			linear: function (t, b, c, d){  //匀速
 				return c*t/d + b;
@@ -163,9 +176,12 @@
 	   // var d = 30;
 	   var timer = null;
 	   btn[0].onclick = function() {
-	   	  mTween( {
+	   	  mTween({
 	   	  	el: box,
-	   	  	attr:'left',
+	   	  	attr:{
+	   	  		width:300,
+	   	  		height:300
+	   	  	},
 	   	  	target :400,
 	   	  	fx:'linear',
 	   	  	duration:300,
@@ -174,14 +190,13 @@
 			   	  	el: box,
 			   	  	attr:'width',
 			   	  	target :200,
-			   	  	fx:'backOut',
-			   	  	duration:300,
+				   	  	duration:300,
 			   	  	cb : function() {
 			   	  		
 			   	  	}
 		   	   })
 	   	  	}
-	   	  })
+	   	  });
 	   }
 	   btn[1].onclick = function() {
 	   	  cancelAnimationFrame( timer );
@@ -218,9 +233,13 @@
 	   	  			el.style[attr] = val + 'px';
 	   	  		}
 	   	  }else{
-	   	  	 return parseFloat( getComputedStyle(el)[attr] );
+	   	  	 return parseFloat( getStyle(el)[attr] );
 	   	  }
 	   	  
+	   }
+
+	   function getStyle( obj ) {
+	   	  return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj) 
 	   }
 	   function mTween( objJson ) {
 	   		if( !objJson ) { objJson = {}}
@@ -229,21 +248,28 @@
 	   		var target = objJson.target;
 	   		var attr = objJson.attr;
 	   		var t = 0;
-	   		var b = css( el,attr);
-	   		var c = target - b;
+	   		var b = {}; // {width:300,height:300}
+	   		var c = {}; // { width:100,height:100}
 	   		var d = Math.ceil( objJson.duration / (1000 /60) );
 	   		var fx = objJson.fx || 'linear';
 	   		var timer = null;
+	   		for( var s in attr ) {
+	   			b[s] = css(el,s);
+	   			c[s] = target - attr[s];
+	   		}
 	   		move();
 	   		function move() {
 	   			timer = requestAnimationFrame(function(){
 	   				t++;
 	   				if( t > d ) {
-	   					//console.log('动画结束');
+	   					cancelAnimationFrame(timer);
 	   					cb && cb();
 	   				}else{
-	   					var val = Tween[fx](t,b,c,d)
-	   					css( el,attr,val );
+	   					for( s in b ) {
+	   						var val = Tween[fx](t,b[s],c[s],d);
+	   						css( el,s,val );
+	   					}
+	   					
 	   					move();
 	   				}
 
