@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/index.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            background:#e15671 url("../img/bg.png") center center no-repeat;
+            background-size: 100% 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        img {
+            vertical-align: top;
+        }
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        input,
+        a {
+            outline: none;
+        }
+        #logo {
+            padding: 55px 0;
+            text-align: center;
+        }
+        .wrap {
+            margin: 0 auto;
+            width: 990px;
+            overflow: hidden;
+        }
+        .shopList {
+            margin: 0 -5px;
+            position: relative;
+            height: 400px;
+        }
+        .shopList li {
+            position: relative;
+            float: left;
+            margin: 0 5px;
+            width: 240px;
+            height: 400px;
+            background: #fff;
+        }
+        .shopList header {
+            padding: 8px;
+            height: 24px;
+            background: #191919;
+        }
+        .shopList .datetime {
+            float: left;
+            width: 170px;
+            height: 24px;
+            background: none;
+            border: none;
+            color: #e15671;
+        }
+        .btn {
+            float: right;
+            padding: 0 13px;
+            font: 12px/22px "宋体";
+            color: #e15671;
+            border: 1px solid #e15671;
+            border-radius: 3px;
+        }
+        .remainingTime {
+            margin-top: 30px;
+            font: 14px/28px "宋体";
+            text-align: center;
+        }
+        .remainingTime time {
+            display: inline-block;
+            padding-left: 10px;
+            font-size: 20px;
+            vertical-align: top;
+            color: #e15671;
+        }
+        .remainingTime span {
+            display: inline-block;
+            width: 20px;
+            margin: 0 2px;
+            color: #fff;
+            background: #e15671;
+            text-align: center;
+            perspective-origin: center center;
+        }
+        .shop-img {
+            display: flex;
+            height: 194px;
+            text-align:center;
+        }
+        .shop-img img {
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+
+        }
+        .shop-title {
+            margin-top: 10px;
+            font: bold 16px/24px Arial,"微软雅黑";
+            color: #000;
+            text-align: center;
+        }
+        .shop-price {
+            font: 14px/46px "宋体";
+            text-align: center;
+            color: #8f8f8f;
+        }
+        .shop-price span {
+            font-size: 18px;
+            color: #e15671;
+        }
+        .shopList .over {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                rgba(0, 0, 0, .8)
+                url("./img/over.png") 
+                center center no-repeat;
+        }
+        .overList {
+            margin-top: 10px;
+        }
+        .overList header {
+            height: 40px;
+            background: #191919;
+        }
+        .overList header h3 {
+            float: left;
+            font: 14px/40px "宋体";
+            color: #fff;
+        }
+        .overList .list li {
+            padding: 10px 0;
+            height: 60px;
+            background: #fff;
+        }
+        .overList .list li:nth-child(2n) {
+            background: #f6f5f6;
+        }
+        .overList .list p {
+            float: left;
+            font: bold 16px/60px "宋体";
+        }
+        .overList h3:nth-child(1),
+        .overList .list p:nth-child(1) {
+            width: 450px;
+            text-indent: 20px;
+        }
+        .overList h3:nth-child(2),
+        .overList .list p:nth-child(2) {
+            width: 100px;
+            text-align: center;
+        }
+        .overList .list p:nth-child(2) {
+            color: #e15671;
+        }
+        .overList .shop-img {
+            float: right;
+            margin-right: 60px;
+            width: 50px;
+            height: 50px;
+            padding: 4px;
+            border: 1px solid #bfbfbf;
+            background: #fff;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            transition:1s;
+        }
+    </style>
+</head>
+<body>
+<!-- <div class="wrap">
+    <ul class="shopList">
+        <li>
+            <header>
+                <input type="datetime-local" class="datetime" />
+                <a class="btn">确定</a>
+            </header>
+            <p class="remainingTime">剩余<time><span>0</span><span>0</span>:<span>0</span><span>0</span>:<span>0</span><span>0</span></time></p>
+            <div class="shop-img">
+               商品一
+            </div>
+            <h2 class="shop-title">Apple iPhone 7 Plus 64g</h2>
+            <p class="shop-price">抢购价：<span>￥5799</span></p>
+            <div class="over"></div>
+        </li>
+        <li>
+            <header>
+                <input type="datetime-local" class="datetime" />
+                <a class="btn">确定</a>
+            </header>
+            <p class="remainingTime">剩余<time><span>0</span><span>0</span>:<span>0</span><span>0</span>:<span>0</span><span>0</span></time></p>
+            <div class="shop-img">
+             
+                  商品二
+            </div>
+            <h2 class="shop-title">27 英寸配备 Retina 5K显示屏</h2>
+            <p class="shop-price">抢购价：<span>￥15999</span></p>
+            <div class="over"></div>
+        </li>
+        <li>
+            <header>
+                <input type="datetime-local" class="datetime" />
+                <a class="btn">确定</a>
+            </header>
+            <p class="remainingTime">剩余<time><span>0</span><span>0</span>:<span>0</span><span>0</span>:<span>0</span><span>0</span></time></p>
+            <div class="shop-img">
+              
+                 商品三
+            </div>
+            <h2 class="shop-title">iPad mini 4</h2>
+            <p class="shop-price">抢购价：<span>¥1799</span></p>
+            <div class="over"></div>
+        </li>
+        <li>
+            <header>
+                <input type="datetime-local" class="datetime" />
+                <a class="btn">确定</a>
+            </header>
+            <p class="remainingTime">剩余<time><span>0</span><span>0</span>:<span>0</span><span>0</span>:<span>0</span><span>0</span></time></p>
+            <div class="shop-img">
+               
+                商品四
+            </div>
+            <h2 class="shop-title">Apple Watch</h2>
+            <p class="shop-price">抢购价：<span>￥3799</span></p>
+            <div class="over"></div>
+        </li>
+    </ul>
+    <section class="overList">
+        <header>
+            <h3>商品名称</h3>
+            <h3>价格</h3>
+        </header>
+        <ul class="list">
+            <li>
+                <p>Apple iPhone 7 Plus 64g </p>
+                <p>¥5799</p>
+                <div class="shop-img">
+                    <img src="img/shop0.jpg" />
+                </div>
+            </li>
+            
+        </ul>
+    </section>
+</div> -->
+
+<div id="box">5</div>
+<script src="js/mTween.js"></script>
+<script>
+/*
+    1. 布局
+    2. 设置默认到期时间
+    3. 倒计时
+    4. 修改到期时间
+    5. 到期之后，下架动画
+        1. 显示遮罩
+        2. 抖动
+        3. 下落消失
+        4. 生成内容
+*/   
+var datetime = $('.datetime');
+// 设置默认到期时间
+(function(){
+   // for( var i=0; )
+})();
+box.addEventListener('mouseover',function(){
+    this.style.width = '300px';
+})
+box.addEventListener('transitionend',function(){
+    this.style.width = '100px';
+});
+function setTargetTime( target ) {
+
+}
+function $$(obj) {
+            return document.querySelectorAll(obj);
+}
+function $(obj) {
+    return document.querySelector(obj);
+}
+</script>
+</body>
+</html>

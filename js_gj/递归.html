@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	  var arr = ["第一章","目录",['css',[1,2,3]]];
+	  var newArr = [];
+	  var num = 0;
+	  var k = loop( arr );
+	  
+	 
+	  function loop( arr ) {
+	  	for( var i=0;i<arr.length;i++ ) {
+	  		if( Array.isArray( arr[i] ) ) {
+	  			loop( arr[i] );
+
+	  		}else{
+	  			num ++;
+	  			newArr.push( arr[i] );
+	  			
+	  		}
+	  		
+	  	}
+	  	 console.log( num ) ;
+	  	return newArr;
+	  }
+	</script>
+</body>
+</html>

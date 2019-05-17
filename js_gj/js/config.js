@@ -108,6 +108,10 @@ var listObj = [
             {
                 type:'dh_kj',
                 t:'运动框架封装'
+            },
+            {
+                type:'dh_wf',
+                t:'无缝滚动'
             }
         ]
     },
