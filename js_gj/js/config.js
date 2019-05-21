@@ -112,6 +112,10 @@ var listObj = [
             {
                 type:'dh_wf',
                 t:'无缝滚动'
+            },
+            {
+                type:'dh_nav',
+                t:'3d导航菜单'
             }
         ]
     },

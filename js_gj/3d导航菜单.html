@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        /* 导航 样式 */
+        .index-nav {
+            position: relative;
+            padding: 5px 0 20px;
+            overflow: hidden;
+        }
+
+        .index-nav div {
+            float: left;
+            perspective: 50px;
+            margin-right: 50px;
+        }
+
+        .index-nav p {
+            transform-style: preserve-3d;
+            transform-origin: center center -18px;
+            height: 36px;
+            transition: .3s;
+        }
+
+        .index-nav a {
+            display: block;
+            font: 18px/36px "微软雅黑";
+            color: #000;
+            backface-visibility: hidden;
+        }
+
+        .index-nav a:nth-child(2) {
+            /* 
+                top
+                left
+                right
+                bottom
+                center
+                px (x,y)
+             */
+            transform-origin:top;
+            transform: rotateX(-90deg);
+            color: #e75c77;
+        }
+
+        .index-nav .active p,
+        .index-nav div:hover p {
+            transform: rotateX(90deg);
+        }
+
+        .index-nav .line {
+            position: absolute;
+            left:0px;
+            top: 60px;
+            width: 20px;
+            height: 3px;
+            background: #e75c77;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="index-nav wrap clear">
+        <span class="line"></span>
+        <div>
+            <p>
+                <a href="#">全部</a>
+                <a href="#">全部</a>
+            </p>
+        </div>
+        <div>
+            <p>
+                <a href="#">PC端</a>
+                <a href="#">PC端</a>
+            </p>
+        </div>
+        <div>
+            <p>
+                <a href="#">移动端</a>
+                <a href="#">移动端</a>
+            </p>
+        </div>
+        <div>
+            <p>
+                <a href="#">菜单</a>
+                <a href="#">菜单</a>
+            </p>
+        </div>
+        <div>
+            <p>
+                <a href="#">卡片</a>
+                <a href="#">卡片</a>
+            </p>
+        </div>
+        <div  class="active">
+            <p>
+                <a href="#">聊天</a>
+                <a href="#">聊天</a>
+            </p>
+        </div>
+        <div>
+            <p>
+                <a href="#">图片切换</a>
+                <a href="#">图片切换</a>
+            </p>
+        </div>
+    </nav>
+    <script src="./js/mTween.js"></script>
+    <script>
+        // 1. 鼠标移入 改变 元素中的文字位置
+        // 2. 鼠标移入 获取到元素位置  并且改变 横条的位置   
+        
+        var line=document.querySelector('.line');
+        var lis=document.querySelectorAll('div');
+        var oldL =  document.querySelector('.active').offsetLeft;
+        var oldW =  document.querySelector('.active').offsetWidth;
+        lis  = [...lis];
+        css(line,'width',oldW);
+        css(line,'left',oldL);
+        
+        lis.forEach( (ele)=> {
+            ele.addEventListener('mouseover',function(){
+                var L = this.offsetLeft ;
+                var W = this.offsetWidth ;
+                console.log( L ,W);
+                mTween({
+                    el: line,
+                    attr:{
+                      left: L,
+                      width: W
+                    }
+                });
+            });
+            ele.addEventListener('mouseout',function(){
+                mTween({
+                    el: line,
+                    attr:{
+                      left: oldL,
+                      width: oldW
+                    }
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>
