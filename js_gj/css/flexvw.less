@@ -1,20 +1,21 @@
 
-/////
-/  vw 根据viewport 视口来缩放    设计稿的元素宽度 / (设计稿的总宽度 / 100  )  = 最终的vw
-/  @W:750vw;  设计稿是 750 的
-/  
-/   @也可以使用vscode插件 px2vw  
-////
+/*
+  vw 根据viewport 视口来缩放    设计稿的元素宽度 / (设计稿的总宽度 / 100  )  = 最终的vw
+  @W:750vw;  设计稿是 750 的
+  @也可以使用vscode插件 px2vw  
+
+  @W:750vw;
+  @r: (@W/100) ;
+  最终使用 ： 48/@r
+*/
+
 @W:750vw;
 @r: (@W/100) ; 
-
-//reset//
 
 body {
     font-family: Microsoft YaHei, Arial;
 }
-
-/ {
+*{
     margin: 0;
     padding: 0;
 }
