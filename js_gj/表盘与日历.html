@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>miaov-日历</title>
+    <style>
+        body{
+            margin: 0;
+            min-height: 100vh;
+            background-size: 100% 100%;
+            display: flex;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        p{
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        #wrap{
+            margin: auto;
+            width: 360px;
+            height: 520px;
+            background: rgba(255, 255, 255, .7);
+            box-shadow: 0px  0px 10px #000;
+            border-radius: 5px;
+        }
+        #date{
+            position: relative;
+            height: 91px;
+        }
+        #clock-wrap{
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border:2px solid #fff;
+            background: #eeeded;
+            border-radius: 50%;
+            left: 28px;
+            top: -72px;
+            box-shadow: 0 0 5px #000;
+            padding: 10px;
+        }
+        #clock{
+            width: 110px;
+            height: 110px;
+            background: #000;
+            border: 5px solid #e15671;
+            border-radius: 50%;
+        }
+        #box{
+            position: relative;
+        }
+        .dot{
+            width: 7px;
+            height: 7px;
+            border-radius: 3px;
+            background: #fff;
+            position: absolute;
+            left: 52px;
+            top: 52px;
+        }
+        .hour{
+            width: 7px;
+            height: 35px;
+            background-color: #fff;
+            border-radius: 3px;
+            position: absolute;
+            left: 51px;
+            top: 22px;
+            transform-origin: center 33px;
+        }
+        .min{
+            width: 4px;
+            height: 44px;
+            background: #fff;
+            border-radius: 3px;
+            position: absolute;
+            left: 52px;
+            top: 14px;
+            transform-origin: center 42px;
+        }
+        .sec{
+            width: 43px;
+            height: 44px;
+            background: url(./img/hand.png) no-repeat;
+            position: absolute;
+            left: 18px;
+            top: 16px;
+            transform-origin: 37px 39px;
+        }
+        #lattice-list{
+            position: relative;
+        }
+        .lattice{
+            width: 2px;
+            height: 6px;
+            background: #fff;
+            position: absolute;
+            left: 55px;
+            transform-origin: left 55px;
+        }
+        #now{
+            position: absolute;
+            left: 189px;
+            top: 15px;
+        }
+        #now p{
+            font-size: 14px;
+            line-height: 26px;
+        }
+        #ctrls{
+            width: 100%;
+            height: 37px;
+            line-height: 37px;
+            background: #e1e1e1;
+        }
+        #ctrls #option{
+            color: #3a3a3a;
+            float: left;
+            margin-left: 23px;
+        }
+        #ctrls #arrows{
+            float: right;
+            margin-right: 22px;
+        }
+        #ctrls #arrows a{
+            float: left;
+            width: 23px;
+            height: 11px;
+            margin-top: 14px;
+            margin-left: 20px;
+        }
+        #arrows #prev{
+            background: url(./img/prev.png) no-repeat;
+        }
+        #arrows #next{
+            background: url(./img/next.png) no-repeat;
+        }
+
+
+
+        #main{
+            display: flex;
+            height: 391px;
+            position: relative;
+            overflow: hidden;
+        }
+        .board{
+            min-width: 320px;
+            max-width: 328px;
+            height: 370px;
+            display: flex;
+            padding: 21px 16px 0;
+            flex-wrap: wrap;
+            position: absolute;
+            background: #f5f6f7;
+        }
+        .week{
+            width: 322px;
+            height: 46px;
+            background: rgba(255, 255, 255, .5);
+            display: flex;
+            border-radius: 23px;
+            color: #3a3a3a;
+        }
+        .date{
+            display: flex;
+            flex-wrap: wrap;
+            width: 322px;
+        }
+        .date-cell{
+            width: 46px;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 50%;
+            text-align: center;
+            color: #3a3a3a;
+        }
+        .other-date{
+            color: #999;
+        }
+
+        .month{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 328px;
+            height: 370px;
+        }
+        .month-cell{
+            width: 82px;
+            height: 82px;
+            line-height: 82px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .year{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .year-cell{
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: #3a3a3a;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .other-yaer{
+            color: #a2a2a2;
+        }
+        .active{
+            color: #fff;
+            background-color: #e15671;
+        }
+
+
+        /* moveStyle */
+        .toBottom{
+            animation: toBottom 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes toBottom{
+            from { top: -390px }
+            to { top: 0px }
+        }
+        .toTop{
+            animation: toTop 0.3s ease;
+            animation-fill-mode: both;
+        }
+
+        @keyframes toTop{
+            from { top: 390px }
+            to { top: 0 }
+        }
+        .bottomOut{
+            animation: bottomOut 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes bottomOut{
+            from { top: 0 }
+            to { top: 390px }
+        }
+        .topOut{
+            animation: topOut 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes topOut{
+            from { top: 0 }
+            to { top: -390px }
+        }
+        .toHide{
+            animation: toHide 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes toHide{
+            from { opacity: 1; transform: scale(1) }
+            to { opacity: 0; transform: scale(0) }
+        }
+        .toShow{
+            animation: toShow 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes toShow{
+            from { opacity: 0; transform: scale(2) }
+            to { opacity: 1; transform: scale(1) }
+        }
+        .toBlow{
+            animation: toBlow 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes toBlow{
+            from { opacity: 1; transform: scale(1) }
+            to { opacity: 0; transform: scale(2) }
+        }
+        .toNarrow{
+            animation: toNarrow 0.3s ease;
+            animation-fill-mode: both;
+        }
+        @keyframes toNarrow{
+            from { opacity: 0; transform: scale(0) }
+            to { opacity: 1;transform: scale(1) }
+        }
+    </style>
+</head>
+<body>
+<section id="wrap">
+    <div id="date">
+        <div id="clock-wrap">
+            <div id="clock">
+                <ul id="lattice-list"></ul>
+                <div id="box">
+                    <div class="dot"></div>
+                    <div class="hour"></div>
+                    <div class="min"></div>
+                    <div class="sec"></div>
+                </div>
+            </div>
+        </div>
+        <div id="now">
+            <p>2019年3月18日</p>
+            <p>星期一</p>
+        </div>
+    </div>
+    <div id="ctrls">
+        <a href="javascript:;" id="option">2019年3月</a>
+        <div id="arrows">
+            <a href="javscript:;" id="prev"></a>
+            <a href="javascript:;" id="next"></a>
+        </div>
+    </div>
+    <div id="main">
+        <div class="board"></div>
+    </div>
+</section>
+<script src="js/mTween.js"></script>
+<script>
+// 获取元素
+
+function getEl(selector){
+    return document.querySelector(selector);
+}
+// 表盘
+(function(){
+    /**
+     *  思路 ：修改 三个 旋转角度，秒针和分针都是每秒360/60 deg
+     *   时针 360/12
+     * 
+     * **/
+    var hour = getEl('.hour');
+    var min = getEl('.min');
+    var sec = getEl('.sec');
+    var latticeUl = getEl('#lattice-list'); // 刻度
+    var deply = 0;
+
+    function createLattice () {
+        var sHtml = '';
+        for ( var i=0;i<12;i++ ) {
+            sHtml += '<li class="lattice" style="transform:rotate('+30*i+'deg);"></li>';
+        }
+        latticeUl.innerHTML = sHtml;
+    }
+    createLattice ();
+    setPoninter();
+    setInterval( function(){
+        var d = new Date();
+        var millions = d.getMilliseconds();
+        deply = millions/1000;
+        setPoninter();
+    },deply);
+
+    function setPoninter() {
+        var d = new Date();
+        var millions = d.getMilliseconds(); //毫秒
+        var seconds = d.getSeconds() + millions/1000;
+        var minutes =  d.getMinutes() +  seconds/60;
+        var hours = d.getHours() + minutes/60 ;
+        var secDeg = 360/60 * seconds;
+        var minDeg = 360/60 * minutes;
+        var hourDeg = 360/12 * hours;
+
+        css(hour,"rotate",hourDeg);
+        css(min,"rotate",minDeg);
+        css(sec,"rotate",secDeg);
+    }
+   
+})();
+
+//时间
+(function(){
+    var now = getEl('#now');
+    var headDate = now.querySelectorAll('p')[0];
+    var headWeek = now.querySelectorAll('p')[1];
+    var nowDate = new Date();
+    var week =  nowDate.getDay();
+    var Day = nowDate.getDate();
+    var Month = nowDate.getMonth();
+    var Year = nowDate.getFullYear();
+    var weekArr = ['日','一','二','三','四','五','六'];
+    var headT = Year + '年' + (Month+1) + '月' + Day + '日';
+    
+    headDate.innerHTML = headT;
+    headWeek.innerHTML = '星期' + weekArr[week];
+})();
+//视图切换
+(function(){
+   
+    var date = new Date();
+    var week =  date.getDay();
+    var Day = date.getDate();
+    var Month = date.getMonth();
+    var Year = date.getFullYear();
+    
+    var nowYear = Year;
+    var nowMonth = Month;
+    var nowDay = Day;
+
+   
+   //日期视图（年，月）
+    var main = getEl('#main');
+    var prev = getEl('#prev');
+    var next = getEl('#next');
+    var board = main.querySelector('.board');
+    var option =  getEl('#option')
+    var headStr = '<ul class="week"><li class="date-cell">日</li><li class="date-cell">一</li><li class="date-cell">二</li><li class="date-cell">三</li><li class="date-cell">四</li><li class="date-cell">五</li><li class="date-cell">六</li></ul>';
+    
+    var optionType = 0; // 0 表示日期 1表示月份 2 表示年份
+    var nextOptionType; // 记录下一次要切换的状态
+    var optionInit = nowYear + '年' + (nowMonth+1) + '月';
+    option.innerHTML = optionInit;
+
+
+
+   // 从日期向月份向年份进行切换
+   option.onclick = function() {
+       nextOptionType = optionType + 1;
+       if( nextOptionType > 2) {
+           optionType = 2;
+       }else{
+          tabView();
+       }
+       
+   }
+
+    next.onclick = function() {
+       
+        // switch( optionType ) {
+        //      case 0 :   
+        //         nowMonth ++;
+        //         createDayView( board ,nowYear,nowMonth);
+        //         break;
+        //      case 1 :   
+        //          nowMonth ++;
+        //          createMonthView( board[1],nowYear );
+        //        break;
+        //     case 2 :   
+        //          nowYear += 10;
+        //          createYearView( board[1],nowYear );
+        //        break;  
+        // }
+        tabDate( 1 );
+    }
+
+    prev.onclick = function() {
+        
+        // switch( optionType ) {
+        //      case 0 :   
+        //         nowMonth --;
+        //         createDayView( board ,nowYear,nowMonth);
+        //         break;
+        //      case 1 :   
+        //          nowMonth --;
+        //          createMonthView( board[1],nowYear );
+        //        break;
+        //     case 2 :   
+        //          nowYear -= 10;
+        //          createYearView( board[1],nowYear );
+        //        break;  
+        // }
+        tabDate( -1 );
+    }
+    createDayView( board,nowYear,nowMonth );
+
+    function tabDate( dir ) { //无缝滚动 
+       if( dir > 0 ) { //next 
+            main.innerHTML = '<div class="board topOut"></div><div class="board toTop"></div>';
+            var board = main.querySelectorAll('.board');
+            switch( optionType ) {
+                case 0 :   
+                    createDayView( board[0] ,nowYear,nowMonth);
+                    nowMonth ++;
+                    getNowDate();  // 最大的要重新获取下当前的时间
+                    createDayView( board[1] ,nowYear,nowMonth);
+                    break;
+                case 1 :   
+                    createMonthView( board[0],nowYear ); 
+                    nowMonth ++;
+                    getNowDate();
+                    createMonthView( board[1],nowYear );
+                break;
+                case 2 :  
+                    createYearView( board[0],nowYear ); 
+                    nowYear += 10;
+                    getNowDate();
+                    createYearView( board[1],nowYear );
+                break;  
+            }
+       }else{
+            main.innerHTML = '<div class="board bottomOut"></div><div class="board toBottom"></div>';
+            var board = main.querySelectorAll('.board');
+            switch( optionType ) {
+                case 0 :   
+                    createDayView( board[0] ,nowYear,nowMonth);
+                    nowMonth --;
+                    getNowDate();
+                    createDayView( board[1] ,nowYear,nowMonth);
+                    break;
+                case 1 :   
+                    createMonthView( board[0],nowYear );
+                    nowMonth --;
+                    getNowDate();
+                    createMonthView( board[1],nowYear );
+                break;
+                case 2 :   
+                    createYearView( board[0],nowYear );
+                    nowYear -= 10;
+                    getNowDate();   
+                    createYearView( board[1],nowYear );
+                break;  
+            }
+       }
+       createOption();
+    }   
+     
+
+    function getNowDate() { //获取当前的时间  当nowYear 累加js时间会自动累加 nowMonth 累加js时间也会自动累加
+        var nowDate = new Date( nowYear, nowMonth );
+        nowYear = nowDate.getFullYear();
+        nowMonth = nowDate.getMonth();
+    } 
+    function tabView() {//切换视图
+        /*
+            <div class="board toHide"> 动画隐藏的
+            <div class="board toShow"></div> 动画显示的
+        */
+        if( nextOptionType > optionType ) { 
+            main.innerHTML = '<div class="board toHide"></div><div class="board toShow"></div>';
+            var board = main.querySelectorAll('.board');
+            switch( nextOptionType ) {
+                case 1 :
+                    createDayView( board[0],nowYear,nowMonth );
+                    createMonthView( board[1],nowYear );
+                    board[0].addEventListener('animationend',function(){
+                        main.removeChild( board[0] );
+                    });
+                    optionType = nextOptionType;
+                   break;
+                case 2 :
+                    createMonthView( board[0],nowYear );
+                    createYearView( board[1],nowYear );
+                    board[0].addEventListener('animationend',function(){
+                        main.removeChild( board[0] );
+                    });
+                    optionType = nextOptionType;
+                   break;   
+            }
+           
+        }else{ //
+            main.innerHTML = '<div class="board toBlow"></div><div class="board toNarrow"></div>';
+            var board = main.querySelectorAll('.board');
+            switch( nextOptionType ) {
+                case 1 :
+                    createYearView( board[0],nowYear );
+                    createMonthView( board[1],nowYear );
+                    board[0].addEventListener('animationend',function(){
+                        main.removeChild( board[0] );
+                    });
+                    optionType = nextOptionType;
+                   break;
+                case 0 :
+                     createMonthView( board[0],nowYear );
+                     createDayView( board[1],nowYear,nowMonth );
+                     board[0].addEventListener('animationend',function(){
+                        main.removeChild( board[0] );
+                    });
+                    optionType = nextOptionType;
+                   break;   
+            }
+        }
+        createOption();
+    }
+
+    function createOption() {
+        switch( optionType ) {
+            case 0 : 
+                 var tStr = nowYear + '年' + (nowMonth+1) + '月' ;
+                 option.innerHTML  = tStr;
+               break;
+            case 1 : 
+                 var tStr = nowYear + '年';
+                 option.innerHTML  = tStr;
+               break;
+            case 2 : 
+                    var startYear = Math.floor( nowYear/10 ) *10;
+                    var tStr = startYear + ' - '+ nowYear ;
+                    option.innerHTML  = tStr;
+               break;
+        }
+    }
+    function createYearView( board,year) { //年视图 排16个格子
+        var starYear =  Math.floor(year/10) * 10; // 随便设置 开始年份 
+        console.log( starYear );
+        var yearStr = '<ul class="year">';
+           for( var i=0;i<16;i++ ) {
+               if( i< 4 ) {
+                  yearStr += '<li class="year-cell other-yaer">'+ (starYear - (4 - i))+'</li>';
+               }else if( i - 4 < 10 ) {
+                   if(( starYear + i -4 ) == year ) { //当前年份加上选中样式
+                     yearStr += '<li class="year-cell active">'+ (starYear + i -4 )+'</li>';
+                   }else{
+                     yearStr += '<li class="year-cell">'+ (starYear + i -4 )+'</li>';
+                   }
+                 
+               }else{
+                  yearStr += '<li class="year-cell other-yaer">'+ (starYear + i -4)+'</li>';
+               }
+           }
+          yearStr += '</ul>';
+          board.innerHTML =  yearStr;
+         
+         // 给各种li添加点击事件
+         var aLis = board.querySelectorAll('li');
+         aLis.forEach( function(ele,index) {
+             ele.onclick = function() { // 跳转回月份视图
+                nowYear = parseInt( this.innerHTML );
+                nextOptionType = 1;
+                tabView();
+             }
+             
+         });
+
+    }
+    function createMonthView( board ,year) { //月视图
+        var monthUl = '<ul class="month">';
+        for( var i=0;i<12;i++ ) {
+
+            if( year == nowYear
+                && i ==  nowMonth ) { //当前月份加上选中样式
+                monthUl += '<li class="month-cell active">'+ (i+1) +' 月 </li>';  
+            }else{
+                monthUl += '<li class="month-cell">'+ (i+1) +' 月 </li>';
+            }
+             
+        }
+        monthUl +='</ul>';
+        board.innerHTML =  monthUl;
+        var aLis = board.querySelectorAll('li');
+        aLis.forEach( function(ele,index) {
+             ele.onclick = function() { // 跳转回日期视图
+                nowMonth = parseInt( this.innerHTML ) - 1;
+                nextOptionType = 0;
+                tabView();
+             }
+             
+         });
+    }
+    function createDayView( board ,year,month) { // 日视图
+        var contStr = '<ul class="date" >';
+        var firstDay = new Date(year, month).getDay(); //获取当前月的第一天 是星期几
+        var endMoth = new Date(year,month,0).getDate();//获取上一个月总共有几天 
+        var endDay = new Date(year, month+1,0).getDate(); //获取当前月的最后一天（也就是当前月有几天）
+         /***
+             i:  0  1  2
+             28 29 30 1
+         
+         **/ 
+        for( var i=0;i<42;i++) {
+            if( i < firstDay ) { //上一个月的
+                contStr +='<li class="date-cell other-date">'+(endMoth- (firstDay - i) +1  )+'</li>';
+            }else if(  (i - firstDay ) < endDay ) { //从当前月开始排，但是要减去前面几个格子
+                //当天日期的加上选中样式
+                if( year == nowYear && month == nowMonth &&i -firstDay +1 == nowDay ) {
+                    contStr +='<li class="date-cell active">'+(i -firstDay +1 ) +'</li>';
+                }else{
+                    contStr +='<li class="date-cell">'+(i -firstDay +1 ) +'</li>';
+                }
+              
+            }else{ //下个月开始排的格子，注意要减去第一次，第二次已经排的格子 
+                contStr +='<li class="date-cell other-date">'+( i - endDay - firstDay +1 ) +'</li>';
+            }
+        }
+        contStr += '</ul>';
+        board.innerHTML = headStr + contStr;
+    }
+})();
+
+
+
+</script>    
+</body>
+</html>

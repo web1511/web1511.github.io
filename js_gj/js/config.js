@@ -116,6 +116,10 @@ var listObj = [
             {
                 type:'dh_nav',
                 t:'3d导航菜单'
+            },
+            {
+                type:'dh_bpan',
+                t:'表盘与日历'
             }
         ]
     },
