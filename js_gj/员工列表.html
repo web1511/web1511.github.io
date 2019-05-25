@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>员工列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        a{
+            text-decoration: none;
+            color: #0d3a4b;
+        }
+        .active{
+            color: red;
+        }
+
+        .wrap {
+            width: 700px;
+            height: 500px;
+            /* background-image: url(./images/bg.png); */
+            background-repeat: no-repeat;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .wrap #table {
+            width: 460px;
+            border-radius: 12px;
+            position: absolute;
+            left: 50%;
+            top: 160px;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .wrap #table thead {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            color: #fff;
+            background: #4cbfe5;
+        }
+
+        .wrap #table thead a {
+            color: #fff;
+        }
+
+        .wrap #table tbody {
+            color: #19c2ff;
+        }
+
+        .wrap #table tbody a {
+            color: #19c2ff;
+        }
+
+        .wrap #table tbody tr {
+            background: #fff;
+        }
+        .wrap #table tbody th{
+            border: 1px solid #d2d2d2;
+        }
+        .ctrl {
+            position: absolute;
+            left: 200px;
+            top: 100px;
+        }
+
+        .ctrl div {
+            width: 300px;
+            line-height: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="ctrl">
+        <div class="age_sort">
+            <a href="javascript:;">年龄从小到大</a>
+            <a href="javascript:;">年龄从大到小</a>
+            <a href="javascript:;" class="active">默认排序</a>
+        </div>
+        <div class="gender_show">
+            <a href="javascript:;">只显示男性</a>
+            <a href="javascript:;">只显示女性</a>
+            <a href="javascript:;" class="active">默认</a>
+        </div>
+    </div>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <th>0</th>
+                <th>小明</th>
+                <th>24</th>
+                <th>男</th>
+            </tr>      -->
+        </tbody>
+    </table>
+</div>
+<script>
+// 数据    
+let data = [
+    {
+        id: 0,
+        name: '小明',
+        age: 24,
+        gender: '男'
+    },
+    {
+        id: 1,
+        name: '小芳',
+        age: 30,
+        gender: '女'
+    },
+    {
+        id: 2,
+        name: '小美',
+        age: 31,
+        gender: '女'
+    },
+    {
+        id: 3,
+        name: '小刚',
+        age: 21,
+        gender: '男'
+    },
+    {
+        id: 4,
+        name: '小琪',
+        age: 18,
+        gender: '女'
+    }
+];
+// 把这些数据给他放到页面上去，（根据渲染视图）
+
+/*
+    let 变量     
+    const 常量
+    块级作用域 {}
+
+    箭头函数：
+        (形参)=>{
+            执行语句
+            return 返回值
+        }
+
+        ()=>返回值
+
+        参数=>返回值
+*/
+{
+    let tbody = document.querySelector("#table tbody");
+    let sortBtns = $$('.age_sort a');
+    let filterBtns = $$('.gender_show a');
+    let render = ( data ) => {
+        let str = '';
+        data.forEach( item => {
+            str += `<tr>
+                        <th>${item.id}</th>
+                        <th>${item.name}</th>
+                        <th>${item.age}</th>
+                        <th>${item.gender}</th>
+                    </tr> `;
+        });
+
+        tbody.innerHTML = str;
+        
+
+    }
+   
+    //排序的数组
+   let sortArr = [
+        () => {
+            data.sort( (r1,r2) =>{ //年龄从小到大
+                return r1.age - r2.age;
+            });
+            return data;
+            
+        } ,
+        () => {
+            data.sort( (r1,r2) =>{ //年龄从大到小
+                return r2.age - r1.age;
+            });
+            return data;
+        } ,
+        () => {  // 根据id从小到大
+            data.sort( (r1,r2) => {
+
+                return r1.id - r2.id;
+            });
+            return data;
+        } 
+   ];
+
+   let filterArr = [
+       () => { //只显示男性
+           let newData = data.filter( item=> item.gender == '男');
+           return newData;
+       },
+       () => { //只显示女性
+           let newData = data.filter( item=> item.gender == '女');
+           return newData;
+       },
+       () => { //默认显示
+           return [...data];
+       }
+   ];
+   
+   let sortState = 2; // 排序状态
+   let filterState = 2; //筛选状态
+   render(data); 
+   let aEvent = () => {  // 事件函数
+       render(sortArr[sortState]());
+       render(filterArr[filterState]());
+   }
+
+   sortBtns.forEach((ele,index)=>{
+        ele.addEventListener('click',function(){
+                changeColor( sortBtns ,ele );
+                sortState = index;
+                aEvent();
+        });
+    });
+
+    filterBtns.forEach((ele,index)=>{
+        ele.addEventListener('click',function(){
+                changeColor( filterBtns ,ele );
+                filterState = index;
+                aEvent();
+        });
+    });
+   
+
+   function changeColor( obj ,nowObj ) { // 改变颜色
+       obj.forEach( ele =>{
+         ele.classList.remove( 'active' );
+       });
+       nowObj.classList.add('active');
+   }
+  
+
+
+}
+
+function $$(obj) {
+    return document.querySelectorAll(obj);
+}
+function $(obj) {
+    return document.querySelector(obj);
+}
+</script>
+</body>
+
+</html>

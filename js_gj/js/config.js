@@ -140,7 +140,21 @@ var listObj = [
                t:'发布_订阅'
             }
         ]
+    },
+    {
+        title: 'Es6练习',
+        url : [
+            {
+               type:'es6_list',
+               t:'员工列表' 
+            },
+            {
+                type:'es6_allcheck',
+                t:'百度全选'  
+            }
+        ]
     }
+
 
 ];
 

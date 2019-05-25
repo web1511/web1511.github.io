@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        #wrap {
+            margin: 30px auto;
+            width: 482px;
+            padding: 5px;
+            position: relative;
+            border: 1px solid #000;
+            background: #eee;
+        }
+
+        .title {
+            font: bold 18px/40px "宋体";
+            text-align: center;
+            border-bottom: 1px solid #000;
+        }
+
+        #list {
+            padding-left: 2px;
+        }
+
+        #list li {
+            opacity: 0.8;
+            font: 14px/36px "宋体";
+            border-bottom: 1px solid #000;
+        }
+
+        #list li:hover {
+            opacity: 1;
+        }
+
+        #list label input {
+            margin: 0 20px 0 30px;
+        }
+
+        input[type="chekbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer {
+            font: 16px/36px "宋体";
+        }
+    </style>
+</head>
+
+<body>
+    <section id="wrap">
+        <h2 class="title">百度音乐榜单</h2>
+        <ul id="list">
+            <!-- <li>
+          <input type="checkbox" />
+          <span>第一条信息</span>
+          <a href="javascript:;" class="collect">收藏</a>
+          <a href="javascript:;" class="cancelCollect">取消收藏</a>
+          <a href="javascript:;" class="remove">删除</a>
+        </li> -->
+        </ul>
+        <footer class="footer">
+            <label><input type="checkbox" id="checkAll" />全选/全不选</label>
+            <a href="javascript:;" id="remove">删除</a>
+            <input type="text" id="newInfo" />
+            <a href="javascript:;" id="add">添加</a>
+        </footer>
+    </section>
+    <script>
+        {
+            let checkAll = document.querySelector("#checkAll");
+            let list = document.querySelector("#list");
+            let colors = ["#fff", "#fceef1"];
+            let add = document.querySelector("#add");
+            let newInfo = document.querySelector("#newInfo");
+            let removeAll = document.querySelector('#remove');
+            let Id = 5;
+            let data = [
+                {
+                    id: 0,
+                    title: "残酷月光 - 费启鸣",
+                    checked: true,
+                    collect: true
+                }, {
+                    id: 1,
+                    title: "兄弟 - 艾热",
+                    checked: false,
+                    collect: false
+                }, {
+                    id: 2,
+                    title: "毕生 - 夏增祥",
+                    checked: false,
+                    collect: true
+                }, {
+                    id: 3,
+                    title: "公子向北去 - 李春花",
+                    checked: false,
+                    collect: false
+                }, {
+                    id: 4,
+                    title: "战场 - 沙漠五子",
+                    checked: false,
+                    collect: false
+                }
+            ];
+            let isCheck = ()=>data.every(item=>item.checked);
+                
+            let render = () => {
+                let str = '';
+                data.forEach( (item) => {
+                    str += `<li>
+                                <input type="checkbox" ${ item.checked ? 'checked':'' } />
+                                <span>${item.title}</span>
+                                ${
+                                    item.collect 
+                                    ? ' <a href="javascript:;" class="collect">收藏</a>' 
+                                    : '<a href="javascript:;" class="cancelCollect">取消收藏</a>'
+                                       
+                                }
+                                <a href="javascript:;" class="remove">删除</a>
+                             </li>`;
+                });
+
+                list.innerHTML = str;
+                //判断是否全选，全不选
+                checkAll.checked = isCheck()  && data.length > 0;
+                addEvt();
+            }
+
+           
+            
+            let addEvt = () => { //添加事件
+
+                let lis = list.querySelectorAll('li');
+                lis.forEach( (li,index) =>{
+                    let cancelCollect = li.querySelector('.cancelCollect');
+                    let collect = li.querySelector('.collect');
+                    let checkBox = li.querySelector('input');
+                    let remove = li.querySelector('.remove');
+        
+                    checkBox.onchange = function() {
+                        data[index].checked =  this.checked;
+                        render();   
+                    }
+
+                    collect && (collect.onclick = function() {
+                        data[index].collect = false;
+                        render();
+                    });
+
+                    cancelCollect && (cancelCollect.onclick = function() {
+                        data[index].collect = true;
+                        render();
+                    });
+
+                    remove.onclick = function() {
+                        if(　!data[index].checked　)　{
+                            alert('请选择要删除的选项');
+                            return;
+                        }
+                        data.splice(index,1);
+                        render();
+                    }
+                    
+                });
+               
+            
+            }
+           
+            
+            //是否全选
+            checkAll.onchange = function () {
+                data.forEach(item=>{
+                    item.checked = this.checked;
+                });
+                render();
+                
+            }
+
+            // 删除选中项
+            removeAll.onclick = function() {
+                let noCheck = data.every( item => !item.checked );
+                data = data.filter( item=> !item.checked );  
+               
+                if( noCheck ) {
+                    alert( '请选择要删除的项目');
+                }else{
+                    render();
+                }
+                
+            }
+            add.onclick = function() {
+                let txt = newInfo.value;
+                if ( txt.trim() == '') {
+                    alert('请输入点内容');
+                    return;
+                }
+                data.push({
+                    Id,
+                    title: txt,
+                    checked: false,
+                    collect: false
+                });
+                render();
+                Id ++;
+            
+            }
+
+            render();  
+        }
+    </script>
+</body>
+
+</html>
