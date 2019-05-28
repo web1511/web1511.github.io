@@ -38,8 +38,12 @@
           }
           
       }
-
       show();
+      var p1 = log('第一个请求');
+      var p2 = log('第二个请求');
+      Promise.all([p1,p2]).then(function(result){
+          console.log( result);
+      })
       function log( msg ) {
           var promiseFn = new Promise(function(rs,rj){
                 setTimeout(function(){
