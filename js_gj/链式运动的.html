@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100px;
+            height:100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="js/mTween_可以链式运动.js"></script>
+    <script>
+        /**
+         *  
+         * **/
+        var box = document.querySelector('#box');
+        function run( attrObj ) {
+             return mTween({
+                    el: box,
+                    attr:attrObj
+                });
+        }
+
+        /***
+         *  Promise 和 then的使用
+         * **/
+        // run()
+        // .then(function(){ 
+        //     /**
+        //      *  这里是为了返回之前的Promise  ，不然默认是返回新建的Promise
+        //      * **/
+        //     return mTween({
+        //             el : box,
+        //             attr: { top:100}
+        //     });
+        // })
+        // .then(function(){
+        //     return mTween({
+        //             el : box,
+        //             attr: { left:0}
+        //     });
+        // }).then(function(){
+        //     return mTween({
+        //             el : box,
+        //             attr: { top:0}
+        //     });
+        // })
+       
+        /****************
+         *    async 和 await 的是使用 
+         *    注意 await 要搭配 Promise的使用
+         * 
+         * 
+         * **************************/
+
+         async function runMove() {
+              let a1 = await run({left:200});
+              await run({top:200});
+              await run({left:0});
+              await run({top:0});
+              console.log(a1);
+         }
+         runMove();
+
+    </script>
+</body>
+</html>

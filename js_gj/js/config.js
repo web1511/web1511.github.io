@@ -151,6 +151,14 @@ var listObj = [
             {
                 type:'es6_allcheck',
                 t:'百度全选'  
+            }, 
+            {
+                type:'es6_async',
+                t:'链式运动的'  
+            },
+            {
+                type:'es6_await',
+                t:'异步的同步写法'  
             }
         ]
     }

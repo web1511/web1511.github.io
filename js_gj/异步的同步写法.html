@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrap{
+            width:500px;
+            margin:100px auto;
+        }
+        #wrap p{
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body>
+
+   <div id=wrap>
+       稍等片刻....
+   </div>
+   <script>
+      /**
+       *  核心就是： 封装一个 返回Promise对象的函数， 在成功的时候执行Promise对象中的resolve('这里可以接受参数，
+       *   在then里面接受或者 await的返回结果') 
+       * 
+       *   然后在 声明 async function fn(){ await  封装的返回promise的函数}   最后调用fn函数
+       * 
+       * 
+       * **/ 
+      var wrap = $('#wrap');
+      var str = '';
+      async function show(){
+          for( var i =0;i<4;i++) {
+           var resilt = await log('第'+(i+1)+'次来点内容啦啦');
+           console.log(resilt);
+          }
+          
+      }
+
+      show();
+      function log( msg ) {
+          var promiseFn = new Promise(function(rs,rj){
+                setTimeout(function(){
+                    str += '<p>'+msg + '</p>';
+                    wrap.innerHTML = str; 
+                    rs('成功啦');
+                },1000);
+          });
+          return promiseFn;
+      }
+
+      function $(obj) {
+          return document.querySelector(obj);
+      }
+   </script>  
+</body>
+</html>
