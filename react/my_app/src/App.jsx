@@ -1,9 +1,9 @@
 import React from 'react';
-import { HashRouter  as Router, Route, Link, Switch } from "react-router-dom";
-//import './css/reset.css';
+import { HashRouter  as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 
 import { Layout, Menu, Icon, Dropdown } from 'antd';
+import SlideLeft from './components/SlideLeft.jsx';
 import Allselect from './components/Allselect.jsx';
 import Staff from './components/Staff.jsx';
 // import CardManage from './component/CardManage.jsx';
@@ -15,7 +15,6 @@ import Staff from './components/Staff.jsx';
 // import Setmeal from './component/Setmeal.jsx';
 // import WarnPush from './component/WarnPush.jsx';
 const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu;
 const logout = (
   <Menu>
     <Menu.Item>
@@ -26,12 +25,10 @@ const logout = (
   </Menu>
 );
 
+
 class App extends React.Component {
-  rootSubmenuKeys = ['sub1', 'sub2', 'sub3'];
   state = {
-    collapsed: false,
-    path: window.location.hash.split('/')[1],
-    openKeys: ['sub1']
+    collapsed: false
   };
 
   toggle = () => {
@@ -42,16 +39,7 @@ class App extends React.Component {
   componentWillMount() {
     
   }
-  onOpenChange = openKeys => {
-    const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
-    if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      this.setState({ openKeys });
-    } else {
-      this.setState({
-        openKeys: latestOpenKey ? [latestOpenKey] : [],
-      });
-    }
-  };
+ 
   render() {
     return (
       <Router>
@@ -80,67 +68,7 @@ class App extends React.Component {
             className="slideLeft" 
             trigger={null} collapsible collapsed={this.state.collapsed}
             >
-              <Menu
-                mode="inline"
-                theme="dark"
-                defaultSelectedKeys={[ this.state.path ? this.state.path : 'allselect']}
-                defaultOpenKeys={['sub1']}
-                style={{ height: '100%', borderRight: 0 }}
-                openKeys={this.state.openKeys}
-                onOpenChange={this.onOpenChange}
-
-              >
-                <SubMenu
-                  key="sub1"
-                  title={
-                    <div>
-                      <Icon type="user" />
-                      <span className="menuL"> Es6的学习</span>
-                    </div>
-                  }
-                >
-                  <Menu.Item key="allselect">
-                    <Link to="/allselect">
-                       <span>百度全选</span>
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="Staff">
-                      <Link to="/Staff">
-                         <span>员工列表</span>
-                      </Link>
-                  </Menu.Item>
-                  <Menu.Item key="3">option3</Menu.Item>
-                  <Menu.Item key="4">option4</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub2"
-                  title={
-                    <div>
-                      <Icon type="user" />
-                      <span className="menuL"> DOM的学习</span>
-                    </div>
-                  }
-                >
-                  <Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
-                  <Menu.Item key="8">option8</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub3"
-                  title={
-                    <div>
-                      <Icon type="user" />
-                      <span className="menuL"> DOM的学习</span>
-                    </div>
-                  }
-                >
-                  <Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                  <Menu.Item key="12">option12</Menu.Item>
-                </SubMenu>
-              </Menu>
+              <SlideLeft></SlideLeft>
             </Sider>
             <Layout>
               <Content
@@ -151,7 +79,7 @@ class App extends React.Component {
                 }}
               >
                 <Switch>
-                  <Route path="/*.*" component={Allselect}></Route>
+                  <Route path="." component={Allselect}></Route>
                   <Route path="/allselect" component={Allselect}></Route>
                   <Route path="/Staff" component={Staff}></Route>
                   {/* <Route path="/Flow" component={Flow}></Route>
