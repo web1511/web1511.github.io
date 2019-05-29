@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+       rel="noopener noreferrer" 加上这个是为了防止在test.html页面 window.opener 获取到
+
+       加了这个，window.opener 的值为null
+
+       test.html  防止以下的代码
+           if( window.opener) {
+                console.log("出来带点东西啦啦");
+            }else{
+                console.log("没有东西");
+            }
+    
+    -->
+    <a href="test.html" target="_blank" rel="noopener noreferrer">跳转页面啦啦</a>
+</body>
+</html>

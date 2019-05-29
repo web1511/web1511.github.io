@@ -1,10 +1,16 @@
 var listObj = [
     {
         title: '玩转属性操作',
-        url: [{
-            type: 'rn',
-            t: '揉捏div'
-        }]
+        url: [
+             {
+                type: 'rn',
+                t: '揉捏div'
+            },
+            {
+                type: 'rn_a',
+                t: 'a标签价rel的属性'
+            }
+       ]
     },
     {
 

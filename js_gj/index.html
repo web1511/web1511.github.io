@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/reset.css">
+    <script>
+        (function(){
+            if( window.top.location.href != window.location.href ) {
+                window.top.location.href = window.location.href;
+            }
+        })();
+    </script>
     <style>
        .wrap{
            height:100%;
@@ -167,8 +174,6 @@
                 }
             }
         }
-
-
         
     </script>
 </body>
