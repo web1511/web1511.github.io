@@ -17,10 +17,10 @@ function findSync(startPath) {
     return result;
 }
 
-
+let dir = './my_app/build';
 let filterArr = {
 	allFile () { //返回全部文件
-		let fileNames = findSync('./my_app/build');
+		let fileNames = findSync(dir);
 		return fileNames;
 	},
 	mapFile() { // 返回 html的文件
@@ -39,7 +39,12 @@ let filterArr = {
 
 //筛选只是.html 的内容
 let mapFiles = filterArr.mapFile();
-console.log( mapFiles );
+//console.log( mapFiles[0] );
+let target = './app/css/'
+fs.copyFile( mapFiles[0], target,(err) => {
+    if (err) throw err;
+     console.log('源文件已拷贝到目标文件');
+})
 
 // fs.readFile( htmlFile[2],(err,data) => {
 //  	if( err ) {
