@@ -20,7 +20,21 @@ module.exports = {
     },
     module:{
         rules:[
-
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: [
+                  {
+                     loader: 'babel-loader',
+                     options:{
+                        presets: [
+                            "es2015"
+                        ]
+                     }
+                    
+                  }
+                ]
+            },
             {
                 //提取html里面的img文件
                test: /\.(htm|html)?$/i,
@@ -28,15 +42,18 @@ module.exports = {
             },
             {
                 test: /\.css?$/,
-                use: ['style-loader','css-loader']
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                  })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'file-loader',
                 options: {
                   limit: 8192,
-                  name: '[name].[ext]?[hash:7]',
-                  publicPath:'../imgs/'
+                  name: 'imgs/[name].[ext]?[hash:7]',
+                  publicPath:'../'
                 }
             },
              {
@@ -44,35 +61,42 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                   limit: 100000,
-                  name: '[name].[ext]?[hash:7]',
-                  publicPath:'../imgs/'
+                  name: 'imgs/[name].[ext]?[hash:7]',
+                  publicPath:'../'
                 }
               },
               {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
+                  output:'build/media/',
                   limit: 100000,
-                  name: 'media/[name].[hash:7].[ext]'
+                  name: '[name].[hash:7].[ext]'
                 }
               } ,
               {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
+                  output:'build/fonts/',
                   limit: 10000,
-                  name: 'fonts/[name].[hash:7].[ext]'
+                  name: '[name].[hash:7].[ext]',
+                  publicPath:'../'
                 }
               }
         ]
     },
     plugins:[
 
-        new ExtractTextPlugin('./build/css/[name].[hash:8].css'),
+        new ExtractTextPlugin({
+            filename: 'css/[name].[hash:8].css'
+        }),
         new HtmlWebpackPlugin({
             title: '首页',
 			filename: 'index.html',
             template: './index.html' , // 这个是需要引入的模板
+            chunks:['ventors','main'],
+            hash:true,
             minify:{
 				caseSensitive:false, //是否大小写敏感
 				removeComments:true, //去除注释
@@ -85,6 +109,8 @@ module.exports = {
             title: '主要页面',
 			filename: 'test.html',
             template: './pages/test.html' ,
+            chunks:['ventors','test'],
+            hash:true,
             minify:{
 				caseSensitive:false, //是否大小写敏感
 				removeComments:true, //去除注释

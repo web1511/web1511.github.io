@@ -1,5 +1,3 @@
-import  "./jquery.js";
-
 import love from '../imgs/img.jpg';
 import '../css/main.css';
 
