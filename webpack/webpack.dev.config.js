@@ -1,16 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 module.exports = {
     entry: {
+        vendors:['./src/rem.js','./src/jquery.js'],
         main: path.join(__dirname,'./src/main.js')
     },
     output:{
         path: path.join(__dirname, "./build"),
         filename: "[name].[hash:8].js"
     },
-    devtool: 'cheap-source-map', //开启调试模式，cheap-source-mao提升打包速度和编译速度
+    devtool: 'cheap-source-map', //开启调试模式，cheap-source-map提升打包速度和编译速度
     module:{
         rules:[
 
@@ -69,6 +70,10 @@ module.exports = {
             title: '主要页面',
 			filename: 'test.html',
 			template: './pages/test.html' 
+        }),
+       new CommonsChunkPlugin({
+            name: 'vendors',
+            filename:'vendors.[hash:8].js'
         })
 
     ]

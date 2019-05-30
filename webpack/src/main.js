@@ -1,5 +1,8 @@
-import love from '../imgs/img.jpg';
+// import love from '../imgs/img.jpg';
 import '../css/main.css';
+// require('../css/main.css');
+
+
 
 class Tab {
 
@@ -18,7 +21,7 @@ $('#list li').each(function(){
 });
 
 
-$('body').append(`<img src="${love}"/>`);
+// $('body').append(`<img src="${love}"/>`);
 
 
 async function fn() {
@@ -38,3 +41,5 @@ async function fn() {
 
 
 fn();
+
+console.log('main');
