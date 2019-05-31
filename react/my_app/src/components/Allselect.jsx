@@ -34,10 +34,6 @@ class Allselect extends Component {
         ],
         selectState:false
     }
-    constructor(props) {
-       super(props);
-
-    }
     render() {
         let listData = this.state.data;
        return (

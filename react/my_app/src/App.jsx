@@ -36,9 +36,6 @@ class App extends React.Component {
       collapsed: !this.state.collapsed
     });
   };
-  componentWillMount() {
-    
-  }
  
   render() {
     return (
@@ -79,7 +76,7 @@ class App extends React.Component {
                 }}
               >
                 <Switch>
-                  <Route path="." component={Allselect}></Route>
+                  <Route path="/" component={Allselect}></Route>
                   <Route path="/allselect" component={Allselect}></Route>
                   <Route path="/Staff" component={Staff}></Route>
                   {/* <Route path="/Flow" component={Flow}></Route>

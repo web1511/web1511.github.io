@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {  Link } from "react-router-dom";
 import {  Menu, Icon } from 'antd';
+import   {getQueryObject} from '../util/common.js';
+
 
 
 /** <SubMenu
@@ -30,11 +32,11 @@ const listData = [
         tKey: 'sub1' ,
         url: [
                 {
-                    type: 'allselect',
+                    type: 'allselect?tKey=sub1',
                     t: '百度全选'
                 },
                 {
-                    type: 'Staff',
+                    type: 'Staff?tKey=sub1',
                     t: '员工列表'
                 }
         ]
@@ -44,38 +46,44 @@ const listData = [
         tKey: 'sub2' ,
         url: [
                 {
-                    type: 'allselect',
+                    type: 'allselect2?tKey=sub2',
                     t: '百度全选'
+
                 },
                 {
-                    type: 'Staff',
+                    type: 'Staff2?tKey=sub2',
                     t: '员工列表'
                 }
         ]
     }
 ];
-let rootSub = [];
-listData.forEach(item => {
-    rootSub.push(item.tKey)
+let rootSub=null;
+rootSub = listData.map(item => {
+    return item.tKey;
 });
+
+let firstOpen = getQueryObject(window.location.href).tKey;
 
 class SlideLeft extends Component {
     rootSubmenuKeys = [...rootSub];
     state = {
         list : listData,
         path: window.location.hash.split('/')[1],
-        openKeys: ['sub1']
+        openKeys: [firstOpen ? firstOpen :'sub1']
     }
 
-
+    componentWillMount(){
+        this.activeSlide();
+    }
     render() {
         let list = this.state.list;
+        console.log( 'render',this.state)
         return (
             <Menu
                 mode="inline"
                 theme="dark"
-                defaultSelectedKeys={[ this.state.path ? this.state.path : 'allselect']}
-                defaultOpenKeys={['sub1']}
+                defaultSelectedKeys={[ this.state.path ]}
+                defaultOpenKeys={this.state.openKeys}
                 style={{ height: '100%', borderRight: 0 }}
                 openKeys={this.state.openKeys}
                 onOpenChange={this.onOpenChange}
@@ -110,7 +118,18 @@ class SlideLeft extends Component {
         )
     }
 
-
+    activeSlide = () => {
+        let pRoute = window.location.hash.split('/')[1];
+        if( !pRoute ) {
+            this.setState({
+                path :'allselect'
+            })
+        }else{
+            this.setState({
+                path :pRoute
+            }) 
+        }
+    }
     onOpenChange = openKeys => {
         const latestOpenKey = openKeys.find( key => this.state.openKeys.indexOf(key) === -1);
         if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
