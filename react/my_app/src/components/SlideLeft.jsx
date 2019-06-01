@@ -68,16 +68,17 @@ class SlideLeft extends Component {
     rootSubmenuKeys = [...rootSub];
     state = {
         list : listData,
-        path: window.location.hash.split('/')[1],
+        path: window.location.hash.split('/')[1].split('?')[0],
         openKeys: [firstOpen ? firstOpen :'sub1']
     }
 
     componentWillMount(){
+       
         this.activeSlide();
+        console.log( this.state.path )
     }
     render() {
         let list = this.state.list;
-        console.log( 'render',this.state)
         return (
             <Menu
                 mode="inline"
