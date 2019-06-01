@@ -167,6 +167,16 @@ var listObj = [
                 t:'异步的同步写法'  
             }
         ]
+    },
+    {
+        title: 'DOM练习',
+        url : [
+            {
+               type:'dom_munu',
+               t:'递归_菜单' 
+            }
+
+        ]
     }
 
 
