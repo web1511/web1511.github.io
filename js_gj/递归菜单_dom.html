@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li ul {
+            display:none;
+        }
+
+        li .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list">
+        <!-- <ul>
+        <li>
+            <p>第一级菜单</p>
+            <ul>
+                <li>
+                    <p>第二级菜单</p>
+                    <ul>
+                        <li>
+                            <p>第三级菜单</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>     -->
+    </div>
+    <script>
+
+        var data = [
+            {
+                id: 0,
+                pid: -1,
+                title: "微云"
+            },
+            {
+                id: 1,
+                pid: 0,
+                title: "我的文档"
+            },
+            {
+                id: 2,
+                pid: 0,
+                title: "我的音乐"
+            },
+            {
+                id: 2999,
+                pid: 1,
+                title: "js程序设计"
+            },
+            {
+                id: 29000,
+                pid: 1,
+                title: "js权威指南"
+            },
+            {
+                id: 23333,
+                pid: 2,
+                title: "王杰"
+            },
+            {
+                id: 244444,
+                pid: 2,
+                title: "张国荣"
+            },
+            {
+                id: 3,
+                pid: 2,
+                title: "周杰伦"
+            },
+            {
+                id: 4000,
+                pid: 3,
+                title: "稻香"
+            },
+            {
+                id: 4,
+                pid: 3,
+                title: "发如雪"
+            },
+            {
+                id: 600,
+                pid: 3,
+                title: "夜曲"
+            }
+        ]
+
+        {
+
+            /***
+             * 
+             *  利用dom节点来做
+             *               <ul>
+                                <li>
+                                    <p>第三级菜单</p>
+                                </li>
+                            </ul>
+             * **/
+            let list = document.querySelector('#list');
+            let topPid = -1;
+            list.appendChild(renderMenu(topPid));
+
+            function renderMenu(id) {
+                var childs = getAllChild(id);
+                var ulWrap = document.createElement('ul');
+                childs.forEach( function(item){
+                    var li = document.createElement('li');
+                    var p = document.createElement('p');
+                    p.innerHTML = item.title;
+                    p.onclick = function () {
+                        var nextEle = p.nextElementSibling;
+                        if( nextEle ) {
+                            nextEle.classList.toggle('show'); 
+                        }else{
+                            alert('没有自己菜单啦');
+                        }
+                    }
+                    li.appendChild(p);
+                    ulWrap.appendChild(li);
+                    if( getAllChild(item.id).length > 0 ) {
+                        li.appendChild(renderMenu(item.id));
+                    }
+                });
+                return ulWrap;
+            }
+
+        }
+
+        //根据id == pid 找子级
+
+        function getAllChild(id) {
+            return data.filter(item => item.pid == id);
+        }
+
+    </script>
+
+</body>
+
+</html>

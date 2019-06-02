@@ -39,26 +39,43 @@ let filterArr = {
 
 //筛选只是.html 的内容
 let htmlFile = filterArr.htmlFile();
-console.log( 'htmlFile' , htmlFile )
 
-fs.readFile( htmlFile[2],(err,data) => {
- 	if( err ) {
- 	}else{
- 		var newStr = '';
- 		var htmlStr = data.toString();
- 		console.log( htmlStr );
- 		newStr += '<template>' +htmlStr.split('<body>')[1].split('<script>')[0]+'</template>\n\t';
- 		newStr += '<script>' +htmlStr.split('<script>')[1].split('</script>')[0]+'</scrIpt>\n\t';
- 		newStr += '<style>' +htmlStr.split('<style>')[1].split('</style>')[0]+'</style>';
- 		//写入文件
- 		//const data = new Uint8Array(Buffer.from(newStr);
- 		fs.mkdir('./renew', { }, (err1) => {
-		   
-		    fs.writeFile( './renew/'+ htmlFile[2] + '.vue' ,newStr,
-		    	(err2) => {}
-		    );
-		});
- 		
- 	}
+
+htmlFile.forEach( (item,index) => {
+	createFile( index );
 });
+
+
+function createFile( index ) {
+	let htmlArr = [];
+	fs.readFile( htmlFile[index],(err,data) => {
+		if( err ) {
+		}else{
+			var newStr = '';
+			var htmlStr = data.toString();
+			var reHtml = /<body[^>]*>([\w\W]*)<script>/g;
+			// newStr += '<template>' +htmlStr.replace(/<body>(.)<\/body>/g,function($1,$2){
+			// 	console.log($1,$2)
+			// })+'</template>\n\t';
+		    htmlStr.replace(reHtml,function($1,$2){
+				htmlArr.push($1);
+			});
+			console.log(htmlArr[index]);
+			return;
+			//newStr += '<script>' +fileArr[index].split('<script>')[1].split('</script>')[0]+'</scrIpt>\n\t';
+			newStr += htmlStr.split(/^<style>.<\/style>$/g)[0];
+			//写入文件
+			//const data = new Uint8Array(Buffer.from(newStr);
+			fs.mkdir('./renew', { }, (err1) => {
+			  
+			   fs.writeFile( './renew/'+ htmlFile[index].split('.html')[0] + '.vue' ,newStr,
+				   (err2) => {}
+			   );
+		   });
+			
+		}
+	});
+	
+}
+
 

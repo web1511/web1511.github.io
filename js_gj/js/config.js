@@ -174,6 +174,10 @@ var listObj = [
             {
                type:'dom_munu',
                t:'递归_菜单' 
+            },
+            {
+                type:'dom_mununode',
+                t:'递归菜单_dom' 
             }
 
         ]
