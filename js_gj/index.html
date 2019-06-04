@@ -14,8 +14,51 @@
         })();
     </script>
     <style>
+       .header{
+           position: fixed;
+           left:0;
+           top:0;
+           width:100%;
+           height: 64px;
+           line-height: 64px;
+           background: #424a5d;
+           color:#fff;
+       }
+       .header .headCont{
+           padding:0 20px;
+       }
+       .header .headCont h2{
+           font-size:14px;
+           font-weight:100;
+           cursor: pointer;
+       }
+       .headCont_r{
+           position: relative;
+       }
+       #headMenu{
+           position: absolute;
+           top:48px;
+           right: -8px;
+           background: #fff;
+           color:#333;
+           opacity:0;
+           transition:0.5s;
+           /* display:none; */
+       }
+       #headMenu li:first-child{
+           width:68px;
+           height:44px;
+           text-align:center;
+           line-height: 44px;
+           border-radius: 4px;
+           box-shadow:0 0 6px rgba(0,0,0,0.8);
+       }
+       #headMenu li a{
+         color:#333;
+       }
        .wrap{
            height:100%;
+           padding-top: 64px;
        }
        .list{
            width:220px;
@@ -74,6 +117,19 @@
     </style>
 </head>
 <body>
+    <div class="header clearfix">
+        <div class="headCont">
+            <span class="fl">javascript效果管理</span>
+            <div class="fr headCont_r">
+                <h2 id="manager">admin</h2>
+                <ul id="headMenu">
+                    <li>
+                        <a href="javascript:;">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="clearfix wrap">
         <div class="list fl">
             <ul id="menu">
@@ -103,10 +159,15 @@
         var listTitle = menu.getElementsByClassName('listTitle');
         var listmsg = menu.getElementsByClassName('listmsg');
         var comUrl = menu.getElementsByClassName('comUrl');
+        var manager = $('#manager');
+        var headMenu = $('#headMenu');
+        var headMenuLi = $$('#headMenu li')[0];
+        var timer = null;
         var bg = '#676f82';
         createLi();
         toUrlFn();
         autoUrl();
+        hoverLogout();
         function toUrlFn() {
             for( var i=0;i<listTitle.length;i++ ) {
                 listTitle[i].num = i;
@@ -175,6 +236,29 @@
             }
         }
         
+
+        /***退出出的**/
+        function hoverLogout() {
+            manager.onmouseover = function (){
+                clearTimeout(timer);
+                headMenu.style.opacity = 1;
+            }
+            manager.onmouseout = function (){
+                timer = setTimeout(function(){
+                    headMenu.style.opacity = 0;
+                },200);
+               
+            }
+            headMenuLi.onmouseover = function () {
+                clearTimeout(timer);
+                headMenu.style.opacity = 1;
+            }
+            headMenuLi.onmouseout = function () {
+                timer = setTimeout(function(){
+                    headMenu.style.opacity = 0;
+                },200);
+            }
+        }
     </script>
 </body>
 </html>
