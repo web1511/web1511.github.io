@@ -178,6 +178,10 @@ var listObj = [
             {
                 type:'dom_mununode',
                 t:'递归菜单_dom' 
+            },
+            {
+                type:'dom_yupan',
+                t:'云盘练习' 
             }
 
         ]
