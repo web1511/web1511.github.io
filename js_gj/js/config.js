@@ -182,8 +182,11 @@ var listObj = [
             {
                 type:'dom_yupan',
                 t:'云盘练习' 
+            },
+            {
+                type:'dom_star',
+                t:'星星评价' 
             }
-
         ]
     }
 

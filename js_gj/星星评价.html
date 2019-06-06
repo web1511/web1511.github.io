@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            margin:20px auto;
+            font-size: 0px;
+        }
+        #box span{
+            display: inline-block;
+            width:30px;
+            height:30px;
+            margin-right:10px;
+            background:red;
+        }
+        #box .active{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <script>
+
+        /**
+           思路：    1.  做一个方向判断 ，从左往右和 从右往左 做区分
+                    2.  从左往右 就是星星点亮, 注意的是 就是星星的结束位置就是点击星星的索引值
+                    3.  从右往左 就是星星点亮 ，注意的是 就是星星的开始位置就是点击星星的索引值,结束位置是星星的总个数
+        **/
+        let spanArr = $$('span');
+        let starpointX = 0; // 记录开始的坐标
+        let starW = spanArr[1].offsetLeft; // 
+        let evnetType = 'click';
+        let startL = 0;
+        if(  isPc() ) {
+            evnetType = 'click'; 
+        }else{
+            evnetType = 'touchend'; 
+        }
+        spanArr.forEach( (ele,i) =>{
+            ele.addEventListener(evnetType,function(e){
+                if( isPc()  ) {
+                    startL = e.pageX; 
+                  
+                }else{
+                    startL = e.changedTouches[0].pageX;
+                }
+               
+                let diffDis = startL  - starpointX;
+                starpointX =  startL;
+                if(  diffDis >= 0  ) {
+                    for( let j =0;j<=i;j++ ) {
+                        spanArr[j].classList.add('active');
+                    }
+                }else{
+                    for( let j =i;j<spanArr.length;j++ ) {
+                        spanArr[j].classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        function isPc( ) {
+            var u = navigator.userAgent;
+            if( u.indexOf('iPhone') > -1 || u.indexOf('Android') > -1 || u.indexOf('iPad') > -1 )  {
+                return false;
+            }else{
+                return true; // pc端
+            }
+        }
+
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+    </script>
+</body>
+</html>
