@@ -8,7 +8,7 @@
     <title>Document</title>
     <style>
         li ul {
-            display:none;
+            display:-none;
         }
 
         li .show {
@@ -20,20 +20,12 @@
 <body>
     <div id="list">
         <!-- <ul>
-        <li>
-            <p>第一级菜单</p>
-            <ul>
-                <li>
-                    <p>第二级菜单</p>
-                    <ul>
-                        <li>
-                            <p>第三级菜单</p>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>     -->
+            <li>
+                <p>第三级菜单</p>
+            </li>
+        </ul>  -->
+        <h2 id="title">ssf</h2>
+        <p>654548d</p>
     </div>
     <script>
 
@@ -108,8 +100,7 @@
              * **/
             let list = document.querySelector('#list');
             let topPid = -1;
-            list.appendChild(renderMenu(topPid));
-
+            var title = document.querySelector('#title');
             function renderMenu(id) {
                 var childs = getAllChild(id);
                 var ulWrap = document.createElement('ul');
@@ -133,7 +124,11 @@
                 });
                 return ulWrap;
             }
+            let scriptChilds = document.querySelector('script');
+            //  setTimeout(function(){
 
+            //     list.outerHTML = '<!--' + list.innerHTML + '-->';
+            // },countDown( 3 ).sec);
         }
 
         //根据id == pid 找子级
@@ -141,7 +136,48 @@
         function getAllChild(id) {
             return data.filter(item => item.pid == id);
         }
+        
+        //删除节点
 
+        function delCommet( obj ) {
+            obj.forEach( function( item ){
+                if( item.nodeType == 8 ) {
+                   item.parentNode.removeChild(item);
+                }
+            });
+        }
+        function queryNode(node) {
+            //查询所有子节点并且放到nodeList这个数组中
+            var nodeList = node.childNodes;
+            //定义一个数组,用来存放符合要求的元素节点
+            var arrNode = [];
+            //遍历nodeList这个数组,寻找符合要求的元素节点
+            for (var i = 0; i < nodeList.length; i++) {
+                var node = nodeList[i];
+                //nodeType == 1;元素节点
+                //nodeType == 2;属性节点
+                //nodeType == 3;文本节点
+                if(node.nodeType == 8){
+                    arrNode.push(node);
+                    //继续进行递归寻找下一级的节点
+                    var temp = queryNode(node);
+                    //把两个数组进行合并,就是所有符合要求的节点
+                    arrNode = arrNode.concat(temp);
+                }
+            }
+            return arrNode;
+        }
+        //时间
+        function countDown( n ) {
+            n = parseFloat(n);
+            var timeArr = {
+                sec :  n *60 ,
+                min : n * 60 *60,
+                hour : n * 60 *60*60,
+                day: n * 60 * 60 * 60 * 24
+            }
+            return timeArr;
+        }
     </script>
 
 </body>

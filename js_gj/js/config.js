@@ -188,6 +188,15 @@ var listObj = [
                 t:'星星评价' 
             }
         ]
+    },
+    {
+        title: '事件详解',
+        url : [
+            {
+               type:'ev_munu',
+               t:'自定义菜单' 
+            }
+        ]
     }
 
 
