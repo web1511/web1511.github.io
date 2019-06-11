@@ -190,9 +190,12 @@
             var topId = -1;
             treeUl.innerHTML = createMenu(topId,0);
             treeUl.addEventListener('click',function(e){
-               console.log(e)
-                if( e.target.parentElement.tagName.toLowerCase() == 'p' && e.target.parentElement.classList.contains('has-child')){
+                console.log(e.target.tagName.toLowerCase() == 'span' && e.target.parentElement.classList.contains('has-child')) 
+                if( e.target.tagName.toLowerCase() == 'span' && e.target.parentElement.classList.contains('has-child') ){
                     e.target.parentElement.parentElement.classList.toggle('open');
+                }
+                if( e.target.tagName.toLowerCase() == 'p' && e.target.classList.contains('has-child') ) {
+                    e.target.parentElement.classList.toggle('open');
                 }
             })
         }
