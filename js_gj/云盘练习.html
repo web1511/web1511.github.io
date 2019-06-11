@@ -31,17 +31,6 @@
                     <!-- <li class="open">
                     <p class="has-child"><span>一级菜单</span></p>
                     <ul>
-                        <li class="open">
-                            <p class="has-child active" style="padding-left: 68px;"><span>二级菜单</span></p>
-                            <ul>
-                                <li>
-                                    <p style="padding-left: 96px;"><span>三级菜单</span></p>
-                                </li>
-                                <li>
-                                    <p style="padding-left: 96px;"><span>三级菜单</span></p>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
                             <p style="padding-left: 68px;"><span>二级菜单</span></p>
                         </li>
@@ -66,15 +55,6 @@
                 <!-- 文件夹区域 -->
                 <ul id="folders">
                     <!-- <li class="folder-item active">
-                    <img src="img/folder-b.png" alt="">
-                    <span class="folder-name">js程序设计</span>
-                    <input type="text" class="editor" value="js程序设计">
-                    <label class="checked">
-                        <input type="checkbox" />
-                        <span class="iconfont icon-checkbox-checked"></span>
-                    </label>   
-                </li>
-                <li class="folder-item">
                     <img src="img/folder-b.png" alt="">
                     <span class="folder-name">js程序设计</span>
                     <input type="text" class="editor" value="js程序设计">
@@ -209,13 +189,17 @@
             var treeUl = $('#tree-ul');
             var topId = -1;
             treeUl.innerHTML = createMenu(topId,0);
-  
+            treeUl.addEventListener('click',function(e){
+               console.log(e)
+                if( e.target.parentElement.tagName.toLowerCase() == 'p' && e.target.parentElement.classList.contains('has-child')){
+                    e.target.parentElement.parentElement.classList.toggle('open');
+                }
+            })
         }
 
         function createMenu(id,level) {
             var chils = getAllChild(id);
             var inner = '<ul>';
-            console.log( chils );
             chils.forEach(item=>{
                 var chilsData = getAllChild(item.id)
                 inner += `
