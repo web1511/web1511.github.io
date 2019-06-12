@@ -195,7 +195,11 @@ var listObj = [
             {
                type:'ev_munu',
                t:'自定义菜单' 
-            }
+            },
+            {
+                type:'ev_drag',
+                t:'拖拽' 
+             }
         ]
     }
 

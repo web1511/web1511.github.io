@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        
         *{
             margin:0;
             padding: 0;
         }
+     
         #menu{
             position: absolute;
             width:204px;
@@ -38,24 +40,41 @@
         <li>图书</li>
     </ul>
     <script>
+        /**
+         *  加上 区域限制范围
+         * **/
         var menu = document.querySelector('#menu');
         document.addEventListener('contextmenu',function(e){
             e.preventDefault();
+            var scrollT = document.body.scrollTop || document.documentElement.scrollTop ;
+            var l = e.pageX  - 204;
+            var t = e.pageY  - 150  + scrollT;
+
+            if( l > e.pageX ) {
+                l = l
+            }
+            if( l < 0 ) {
+                l = 0
+            }
+            if(  t > e.pageY ) {
+                t = t;
+            }
+            if( t < 0 ) {
+                t = 0
+            }
             css(menu,{
-                left : e.pageX + 'px',
-                top: e.pageY + 'px' ,
+                left : l + 'px',
+                top:  t + 'px' ,
                 display : 'block'
             })
         });
-        menu.addEventListener('click',function(e){
-            e.stopPropagation();
-            if( e.target.tagName.toLowerCase() == 'li') {
-                alert( '进入' + e.target.innerHTML );
-            }
-            css(menu,{
-                display : 'none'
+        document.addEventListener('click',function(e){
+        
+            css( menu,{
+                display: 'none'
             });
-        });
+        })
+
 
         function css( obj,sVal ) {
             if( typeof sVal == 'object' &&  sVal ) {

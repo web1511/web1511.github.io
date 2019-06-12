@@ -54,7 +54,7 @@
                 </div>
                 <!-- 文件夹区域 -->
                 <ul id="folders">
-                    <!-- <li class="folder-item active">
+                    <li class="folder-item active">
                     <img src="img/folder-b.png" alt="">
                     <span class="folder-name">js程序设计</span>
                     <input type="text" class="editor" value="js程序设计">
@@ -62,7 +62,7 @@
                         <input type="checkbox" />
                         <span class="iconfont icon-checkbox-checked"></span>
                     </label>   
-                </li> -->
+                </li>
                 </ul>
             </article>
         </div>
@@ -190,7 +190,6 @@
             var topId = -1;
             treeUl.innerHTML = createMenu(topId,0);
             treeUl.addEventListener('click',function(e){
-                console.log(e.target.tagName.toLowerCase() == 'span' && e.target.parentElement.classList.contains('has-child')) 
                 if( e.target.tagName.toLowerCase() == 'span' && e.target.parentElement.classList.contains('has-child') ){
                     e.target.parentElement.parentElement.classList.toggle('open');
                 }
