@@ -29,9 +29,6 @@ img {
 }    
 #pics {
     position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
     height: 400px;
     z-index: 1;
 }
@@ -104,7 +101,7 @@ img {
             <p>第五张图片</p>
         </li>
         <li>
-             <p>第六张图片</p>
+             <p>和第一张图片一样</p>
         </li>
     </ul>
     <a href="javascript:;" class="btn prev"><</a>
@@ -129,31 +126,33 @@ img {
     var aBtn = document.querySelectorAll('#navs a');
     var lis = oUl.querySelectorAll('li');
     var iNow = 0 ;
-    var w = 600 ;
-
+    var w = parseFloat( getCssStyle(lis[0]).width ) ;
+    setUlDir( 'left' );
     next.addEventListener('click',function(){
         iNow ++;
         if( iNow == lis.length ) {
             css(oUl,'left',0);
-            iNow = 0;
+            iNow = 1;
         }
-        tab();
+        tab({
+            left : -iNow * w
+        });
     });
     prev.addEventListener('click',function(){
         iNow --;
-        if( iNow < 0 ) {
+        if( iNow <= 0 ) {
             css(oUl,'left',0);
             iNow = lis.length-1;
         }
-        tab();
+        tab({
+            left : -iNow * w
+        });
     });
 
-    function tab(){
+    function tab( arrtObj ){
         mTween({
             el: oUl ,
-            attr : {
-                left : - iNow * w
-            }
+            attr : arrtObj
         });
         aBtn.forEach(function(item){
             item.className = '';
@@ -161,6 +160,45 @@ img {
         aBtn[iNow%aBtn.length].className = 'active';
     }
 
+    function setUlDir( dir ) {
+        if( dir === 'left') {
+            oUl.style.width = w * lis.length + 'px';
+            lis.forEach( item=>{
+                item.style.float = 'left';
+            })
+        }
+        if( dir === 'top') {
+            oUl.style.height = w * lis.length + 'px';
+            lis.forEach( item=>{
+                item.style.float = 'none';
+            })
+        }
+    }
+
+    //监听键盘 上38  下40 左37 右39
+    document.addEventListener('keydown',function(e){
+        console.log(e.keyCode)
+        if( e.keyCode === 37 ) {
+            prev.click();
+        }
+        if( e.keyCode === 38 ) {
+            setUlDir( 'top' );
+            iNow ++;
+            if( iNow > iNow.length -1 ) {
+                iNow = 1
+            }
+            tab( {
+                bottom : -iNow * w 
+            })
+        }
+        if( e.keyCode === 39 ) {
+            next.click();
+        }
+    })
+
+    function getCssStyle( obj ) {
+       return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
+    }
 </script>
 </body>
 </html>

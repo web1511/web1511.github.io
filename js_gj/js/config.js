@@ -199,7 +199,11 @@ var listObj = [
             {
                 type:'ev_drag',
                 t:'拖拽' 
-             }
+            },
+            {
+                type:'ev_keycode',
+                t:'键盘控制图片' 
+            }
         ]
     }
 
@@ -239,4 +243,7 @@ function getQueryObject( url ) {
         return rs;
     });
     return obj;
+}
+function getCssStyle( obj ) {
+    return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
 }
