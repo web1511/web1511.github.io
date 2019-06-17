@@ -40,9 +40,16 @@ img {
 #pics p {
     width: 600px;
     height: 400px;
+    /* background: red; */
+    color:#fff;
+    text-align: center;
+}
+#pics li:nth-child(2n) p{
     background: red;
 }
-
+#pics li:nth-child(2n+1) p{
+    background: green;
+}
 .btn {
     position: absolute;
     top: 170px;
@@ -125,10 +132,15 @@ img {
     var next = document.querySelector('.next');
     var aBtn = document.querySelectorAll('#navs a');
     var lis = oUl.querySelectorAll('li');
-    var iNow = 0 ;
+    var iNow = 0 ; //控制左右
+    var topInow = 0; // 控制上下
     var w = parseFloat( getCssStyle(lis[0]).width ) ;
-    setUlDir( 'left' );
+    var h = parseFloat( getCssStyle(lis[0]).height ) ;
+    var  dir = 'left';
+    setUlDir();
     next.addEventListener('click',function(){
+        dir = 'left' ;
+        setUlDir();
         iNow ++;
         if( iNow == lis.length ) {
             css(oUl,'left',0);
@@ -139,6 +151,8 @@ img {
         });
     });
     prev.addEventListener('click',function(){
+        dir = 'left' ;
+        setUlDir();
         iNow --;
         if( iNow <= 0 ) {
             css(oUl,'left',0);
@@ -157,18 +171,27 @@ img {
         aBtn.forEach(function(item){
             item.className = '';
         });
-        aBtn[iNow%aBtn.length].className = 'active';
+        if( dir == 'left') {
+            aBtn[iNow%aBtn.length].className = 'active';
+        }
+        if( dir == 'top') {
+            aBtn[topInow%aBtn.length].className = 'active';
+        }
     }
-
-    function setUlDir( dir ) {
+    //设置方向
+    function setUlDir(  ) {
         if( dir === 'left') {
             oUl.style.width = w * lis.length + 'px';
+            oUl.style.height = h + 'px';
+            oUl.style.bottom ='initial';
             lis.forEach( item=>{
                 item.style.float = 'left';
             })
         }
         if( dir === 'top') {
-            oUl.style.height = w * lis.length + 'px';
+            oUl.style.width = w + 'px';
+            oUl.style.height = h * lis.length + 'px';
+            oUl.style.left ='initial';
             lis.forEach( item=>{
                 item.style.float = 'none';
             })
@@ -177,25 +200,41 @@ img {
 
     //监听键盘 上38  下40 左37 右39
     document.addEventListener('keydown',function(e){
-        console.log(e.keyCode)
         if( e.keyCode === 37 ) {
             prev.click();
         }
         if( e.keyCode === 38 ) {
-            setUlDir( 'top' );
-            iNow ++;
-            if( iNow > iNow.length -1 ) {
-                iNow = 1
-            }
+            dir = 'top' ;
+            setUlDir();
+            topInow --;
+            if( topInow < 0 ) {
+                css(oUl,'bottom',0);
+                topInow = lis.length - 2;
+            }   
             tab( {
-                bottom : -iNow * w 
-            })
+                bottom : -topInow * h 
+            });
+            e.preventDefault();
+          
+            
         }
         if( e.keyCode === 39 ) {
             next.click();
         }
+        if( e.keyCode === 40 ) {
+            dir = 'top' ;
+            setUlDir();
+            topInow ++;
+            if( topInow > lis.length -1 ) {
+                css(oUl,'bottom',lis.length );
+                topInow = 0;
+            }   
+            tab( {
+                bottom : -topInow * h 
+            });
+            e.preventDefault();
+        }
     })
-
     function getCssStyle( obj ) {
        return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
     }
