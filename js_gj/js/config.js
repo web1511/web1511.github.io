@@ -205,6 +205,15 @@ var listObj = [
                 t:'键盘控制图片' 
             }
         ]
+    },
+    {
+        title: '面向对象',
+        url : [
+            {
+               type:'obj_tap',
+               t:'面向对象tab选项卡' 
+            }
+        ]
     }
 
 

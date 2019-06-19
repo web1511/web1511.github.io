@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabBtns button {
+            margin: 0 10px 0 0;
+        }
+
+        .tabBtns .active {
+            background: red;
+        }
+
+        .tabCont p {
+
+            width: 200px;
+            height: 300px;
+            border: 1px solid #d2d2d2;
+            margin: 10px 0 0 0;
+            display: none;
+        }
+
+        .tabCont .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabBtns" id="tabBtnW1">
+        <button class="active">tab1</button>
+        <button>tab2</button>
+        <button>tab3</button>
+    </div>
+    <div class="tabCont" id="tabContW1">
+        <p class="show">内容一</p>
+        <p>内容二</p>
+        <p>内容三</p>
+    </div>
+    <div class="tabBtns" id="tabBtnW2">
+        <button class="active">tab4</button>
+        <button>tab5</button>
+        <button>tab6</button>
+    </div>
+    <div class="tabCont" id="tabContW2">
+        <p class="show">内容4</p>
+        <p>内容5</p>
+        <p>内容6</p>
+    </div>
+    <button id="autoPlay">点击第二个选项卡自动播放</button>
+    <script>
+        function Tab(obj, conts) {
+            this.obj = obj;
+            this.conts = conts;
+            this.prev = 0 ;
+        }
+        Tab.prototype = {
+            Constructor: Tab,
+            handlerClick: function () {
+                var objThat = this;
+                console.log(this.obj);
+                [...this.obj].forEach(function (ele, index) {
+                    ele.onclick = function () {
+                        console.log( objThat.prev )
+                        objThat.changeTab(objThat.prev,index,this);
+                    }
+                })
+            },
+            changeTab: function ( prev,index ,elethis ) {
+                this.obj[prev].classList.remove('active');
+                this.conts[prev].classList.remove('show');
+                elethis.classList.add('active');
+                this.conts[index].classList.add('show');
+                prev = index;
+            }
+        }
+        function Tabtwo(obj, conts) {
+            Tab.call(this,obj, conts);
+        }
+
+
+        var tabBtns1 = $$('#tabBtnW1 button');
+        var tabConts1 = $$('#tabContW1 p');
+        var tab1 = new Tab(tabBtns1, tabConts1);
+        tab1.handlerClick();
+
+        extend(Tabtwo, Tab);
+        Tabtwo.prototype.autoPlay = function () {
+            var num = 0;
+            var objThat = this;
+            autoPlay.onclick = function () {
+                //that.handlerClick(tabBtns1, tabConts1);
+            }
+        }
+        var tabBtns2 = $$('#tabBtnW2 button');
+        var tabConts2 = $$('#tabContW2 p');
+        var autoPlay = $('#autoPlay');
+        var tab2 = new Tabtwo(tabBtns2, tabConts2);
+        tab2.handlerClick();
+
+
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+        function $$(obj) {
+            return document.querySelectorAll(obj);
+        }
+        //类式继承 封装
+        function extend(subclass, superclass) {
+            var F = function () {};
+            F.prototype = superclass.prototype;
+            subclass.prototype = new F();
+            F.prototype.constructor = subclass;
+            return F;
+        }
+    </script>
+</body>
+
+</html>
