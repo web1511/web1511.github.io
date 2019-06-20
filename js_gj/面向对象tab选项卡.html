@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        .wrap{
+            overflow:hidden;
+            margin:0 0 20px 0;
+        }
+        .fl{
+            float: left;
+            margin-right: 20px;
+        }
         .tabBtns button {
             margin: 0 10px 0 0;
         }
@@ -31,25 +39,32 @@
 </head>
 
 <body>
-    <div class="tabBtns" id="tabBtnW1">
-        <button class="active">tab1</button>
-        <button>tab2</button>
-        <button>tab3</button>
-    </div>
-    <div class="tabCont" id="tabContW1">
-        <p class="show">内容一</p>
-        <p>内容二</p>
-        <p>内容三</p>
-    </div>
-    <div class="tabBtns" id="tabBtnW2">
-        <button class="active">tab4</button>
-        <button>tab5</button>
-        <button>tab6</button>
-    </div>
-    <div class="tabCont" id="tabContW2">
-        <p class="show">内容4</p>
-        <p>内容5</p>
-        <p>内容6</p>
+    <div class="wrap">
+        <div class="fl">
+            <div class="tabBtns" id="tabBtnW1">
+                <button class="active">tab1</button>
+                <button>tab2</button>
+                <button>tab3</button>
+            </div>
+            <div class="tabCont" id="tabContW1">
+                <p class="show">内容一</p>
+                <p>内容二</p>
+                <p>内容三</p>
+            </div>
+
+        </div>
+        <div class="fl">
+            <div class="tabBtns" id="tabBtnW2">
+                <button class="active">tab4</button>
+                <button>tab5</button>
+                <button>tab6</button>
+            </div>
+            <div class="tabCont" id="tabContW2">
+                <p class="show">内容4</p>
+                <p>内容5</p>
+                <p>内容6</p>
+            </div>
+        </div>
     </div>
     <button id="nextBtn">点击第一个选项卡显示下一个内容</button>
     <button id="autoPlayBtn">点击第二个选项卡自动播放</button>
@@ -69,15 +84,15 @@
                  conts : '' ,Nodelist集合
               });
         **/
-        function Tab( csObj ={} ) {
+        function Tab(csObj = {}) {
             this.btns = csObj.btns;
             this.conts = csObj.conts;
-            this.prev = 0 ;
+            this.prev = 0;
             this.init(); // 初始化方法
         }
         Tab.prototype = {
             Constructor: Tab,
-            init: function() {
+            init: function () {
                 this.handlerClick();
             },
             handlerClick: function () {
@@ -88,7 +103,7 @@
                     }
                 })
             },
-            changeTab: function ( index  ) {
+            changeTab: function (index) {
                 this.btns[this.prev].classList.remove('active');
                 this.conts[this.prev].classList.remove('show');
                 //elethis.classList.add('active');
@@ -96,53 +111,53 @@
                 this.conts[index].classList.add('show');
                 this.prev = index;
             },
-            nextTab: function(){
+            nextTab: function () {
                 var nextBtn = document.getElementById('nextBtn');
-                var iNow = this.prev ;
+                var iNow = this.prev;
                 var objThat = this;
                 nextBtn.onclick = function () {
-                    iNow ++ ;
-                    iNow = iNow > objThat.btns.length -1 ? 0 : iNow; 
+                    iNow++;
+                    iNow = iNow > objThat.btns.length - 1 ? 0 : iNow;
                     objThat.changeTab(iNow);
                 }
             }
         }
-        function Tabtwo(csObj ={}) {
-            Tab.call(this,csObj);
+        function Tabtwo(csObj = {}) {
+            Tab.call(this, csObj);
         }
         extend(Tabtwo, Tab);
 
         var tabBtns1 = $$('#tabBtnW1 button');
         var tabConts1 = $$('#tabContW1 p');
         var tab1 = new Tab({
-            btns : tabBtns1,
-            conts : tabConts1
+            btns: tabBtns1,
+            conts: tabConts1
         });
         tab1.nextTab();
 
-        
+
         Tabtwo.prototype.autoPlay = function () {
             var num = this.prev;
             var objThat = this;
-            var timer = null ;
+            var timer = null;
             var autoPlayBtn = document.getElementById('autoPlayBtn');
             autoPlayBtn.onclick = function () {
                 clearInterval(timer);
-                timer =  setInterval( function(){
-                    num ++;
-                    num = num > objThat.btns.length-1 ? 0 : num;
+                timer = setInterval(function () {
+                    num++;
+                    num = num > objThat.btns.length - 1 ? 0 : num;
                     objThat.changeTab(num);
-                },1000);
+                }, 1000);
             }
         }
         var tabBtns2 = $$('#tabBtnW2 button');
         var tabConts2 = $$('#tabContW2 p');
         var autoPlay = $('#autoPlay');
         var tab2 = new Tabtwo({
-            btns : tabBtns2,
-            conts : tabConts2
+            btns: tabBtns2,
+            conts: tabConts2
         });
-       // tab2.handlerClick();
+        // tab2.handlerClick();
         tab2.autoPlay();
 
 
@@ -154,7 +169,7 @@
         }
         //类式继承 封装
         function extend(subclass, superclass) {
-            var F = function () {};
+            var F = function () { };
             F.prototype = superclass.prototype;
             subclass.prototype = new F();
             F.prototype.constructor = subclass;
