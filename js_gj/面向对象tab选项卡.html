@@ -51,50 +51,86 @@
         <p>内容5</p>
         <p>内容6</p>
     </div>
-    <button id="autoPlay">点击第二个选项卡自动播放</button>
+    <button id="nextBtn">点击第一个选项卡显示下一个内容</button>
+    <button id="autoPlayBtn">点击第二个选项卡自动播放</button>
     <script>
-        function Tab(obj, conts) {
-            this.obj = obj;
-            this.conts = conts;
+
+        /***
+            Tab 
+              csObj  -> Object {
+
+                  btns: '按钮集合' // 这是一个Nodelist集合
+                  conts ： '显示内容集合' // 这是一个Nodelist集合
+              }
+              用法：
+
+              new Tab({
+                 btns : '', Nodelist集合
+                 conts : '' ,Nodelist集合
+              });
+        **/
+        function Tab( csObj ={} ) {
+            this.btns = csObj.btns;
+            this.conts = csObj.conts;
             this.prev = 0 ;
+            this.init(); // 初始化方法
         }
         Tab.prototype = {
             Constructor: Tab,
+            init: function() {
+                this.handlerClick();
+            },
             handlerClick: function () {
                 var objThat = this;
-                this.obj.forEach(function (ele, index) {
+                this.btns.forEach(function (ele, index) {
                     ele.onclick = function () {
                         objThat.changeTab(index);
                     }
                 })
             },
             changeTab: function ( index  ) {
-                this.obj[this.prev].classList.remove('active');
+                this.btns[this.prev].classList.remove('active');
                 this.conts[this.prev].classList.remove('show');
                 //elethis.classList.add('active');
-                this.obj[index].classList.add('active');
+                this.btns[index].classList.add('active');
                 this.conts[index].classList.add('show');
                 this.prev = index;
+            },
+            nextTab: function(){
+                var nextBtn = document.getElementById('nextBtn');
+                var iNow = this.prev ;
+                var objThat = this;
+                nextBtn.onclick = function () {
+                    iNow ++ ;
+                    iNow = iNow > objThat.btns.length -1 ? 0 : iNow; 
+                    objThat.changeTab(iNow);
+                }
             }
         }
-        function Tabtwo(obj, conts) {
-            Tab.call(this,obj, conts);
+        function Tabtwo(csObj ={}) {
+            Tab.call(this,csObj);
         }
         extend(Tabtwo, Tab);
 
         var tabBtns1 = $$('#tabBtnW1 button');
         var tabConts1 = $$('#tabContW1 p');
-        var tab1 = new Tab(tabBtns1, tabConts1);
-        tab1.handlerClick();
+        var tab1 = new Tab({
+            btns : tabBtns1,
+            conts : tabConts1
+        });
+        tab1.nextTab();
 
         
         Tabtwo.prototype.autoPlay = function () {
             var num = this.prev;
             var objThat = this;
-            autoPlay.onclick = function () {
-                setInterval( function(){
+            var timer = null ;
+            var autoPlayBtn = document.getElementById('autoPlayBtn');
+            autoPlayBtn.onclick = function () {
+                clearInterval(timer);
+                timer =  setInterval( function(){
                     num ++;
-                    num = num > objThat.obj.length-1 ? 0 : num;
+                    num = num > objThat.btns.length-1 ? 0 : num;
                     objThat.changeTab(num);
                 },1000);
             }
@@ -102,8 +138,11 @@
         var tabBtns2 = $$('#tabBtnW2 button');
         var tabConts2 = $$('#tabContW2 p');
         var autoPlay = $('#autoPlay');
-        var tab2 = new Tabtwo(tabBtns2, tabConts2);
-        tab2.handlerClick();
+        var tab2 = new Tabtwo({
+            btns : tabBtns2,
+            conts : tabConts2
+        });
+       // tab2.handlerClick();
         tab2.autoPlay();
 
 
