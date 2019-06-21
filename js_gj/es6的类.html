@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            background: yellow;
+            position: absolute;
+        }
+        #box2{
+            margin:110px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <div id="box2" class="box"></div>
+    <script>
+        class Drag {
+            constructor(ele) {
+                this.ele = ele;
+                this.startDis = null;
+                this.eleOffset = null;
+                this.dis = null;
+                this.downFn();
+            }
+            downFn( ) {
+                var that = this;
+                this.ele.addEventListener('mousedown',function(e){
+                    that.startDis = {
+                        x : e.clientX ,
+                        y:  e.pageY
+                    }
+                    that.eleOffset = {
+                        x : that.ele.offsetLeft,
+                        y: that.ele.offsetTop
+                    }
+                    console.log(that.eleOffset)
+                    that.moveFn()
+                    that.upFn();
+                })
+            }
+            moveFn(){
+                var that = this;
+                //document.addEventListener('mousemove', that.moveEleDis.bind(that));
+                document.onmousemove = function(e) {
+                    that.moveEleDis(e)
+                }
+            }
+            upFn() {
+                var that = this;
+                document.addEventListener('mouseup',function(){
+                    document.onmousemove = null;
+                },{
+                    once:true
+                })
+            }
+            moveEleDis(e){
+                this.dis = {
+                    x: e.clientX - this.startDis.x,
+                    y: e.pageY - this.startDis.y
+                }
+                this.ele.style.left = this.dis.x + this.eleOffset.x + 'px';
+                this.ele.style.top = this.dis.y + this.eleOffset.y + 'px';
+                console.log(this.eleOffset.y);
+            }
+        } 
+
+        class ChagenDrag extends Drag {
+            constructor(ele) {
+                super(ele);
+                this.changeColor();
+            }
+            changeColor() {
+                var that = this;
+                this.ele.addEventListener('mousedown',function(e){
+                    that.ele.style['background'] = 'red';
+                })
+                document.addEventListener('mouseup',function(e){
+                    that.ele.style['background'] = 'yellow';
+                })
+            }
+        }
+        var box = document.querySelector('#box');
+        var drag1 = new Drag(box);
+        var box2 = document.querySelector('#box2');
+        var drag2 = new ChagenDrag(box2);
+        console.log( drag2 );
+    </script>
+</body>
+</html>

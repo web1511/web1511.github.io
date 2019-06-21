@@ -5,8 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="box"></div>
+    <script>
+        var box  = document.querySelector('#box');
+        var startOffset ;
+        var nowMouse ;
+        var move = function(e) {
+            var nowMouse = {
+                x: e.clientX,
+                y: e.clientY
+            }
+            dis = {
+                x: nowMouse.x - startMouse.x,
+                y: nowMouse.y - startMouse.y
+            }
+            box.style.left = dis.x + startOffset.x +  'px';
+            box.style.top = dis.y +  startOffset.y + 'px';
+        }
+        box.addEventListener('mousedown',function(e){
+            startOffset = {
+                x: box.offsetLeft,
+                y: box.offsetTop
+            }
+            startMouse = {
+                x : e.clientX,
+                y : e.clientY
+            }
+            document.addEventListener('mousemove',move);
+            document.addEventListener('mouseup',function(e){
+                document.removeEventListener('mousemove',move);
+            },{
+                once:true
+            })
+        })
+    </script>
 </body>
 </html>

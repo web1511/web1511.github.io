@@ -212,6 +212,10 @@ var listObj = [
             {
                type:'obj_tap',
                t:'面向对象tab选项卡' 
+            },
+            {
+                type:'obj_class',
+                t:'es6的类' 
             }
         ]
     }
@@ -237,6 +241,33 @@ function css( obj,sVal ) {
         }
     }
     return 0;
+}
+
+//深拷贝
+function deepCopy(obj){
+    var newObj;
+    if( RepType(obj) === 'array'){
+        newObj = []
+    }else if( RepType(obj) === 'object'){
+        newObj = {}
+    }else{
+        return obj;
+    }
+    for( var i in obj ){
+      if( obj.hasOwnProperty(i) ) {
+         if( typeof obj[i] === 'object') {
+          newObj[i] = deepCopy(obj[i])
+         }else{
+             newObj[i] = obj[i]
+         }
+      }
+        
+    }
+    return newObj;
+}
+//判断类型
+function RepType(ry){
+    return Object.prototype.toString.call(ry).toLowerCase().slice(8,-1);
 }
 //解析地址参数
 function getQueryObject( url ) {
