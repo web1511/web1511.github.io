@@ -43,6 +43,9 @@
                     }
                     that.moveFn()
                     that.upFn();
+                    document.addEventListener('dragstart',function(e){ //清除默认的拖拽事件，防止多个元素触发
+                        e.preventDefault(); 
+                    });
                 })
             }
             moveFn(){
@@ -53,13 +56,11 @@
                 //     that.moveEleDis(e)
                 // }
             }
-            upFn(callback) {
+            upFn() {
                 var that = this;
                 document.addEventListener('mouseup',function(){
                    // document.onmousemove = null;
                    document.removeEventListener( 'mousemove',that.newMove );
-                   //that.newMove = null;
-                   callback && callback ();
                 },{
                     once:true
                 })
@@ -71,7 +72,6 @@
                 }
                 this.ele.style.left = this.dis.x + this.eleOffset.x + 'px';
                 this.ele.style.top = this.dis.y + this.eleOffset.y  +  'px';
-               // console.log(this.eleOffset.y);
             }
         } 
 
@@ -82,16 +82,12 @@
             }
             changeColor() {
                 var that = this;
-                this.ele.addEventListener('mousedown',function(e){
+                this.ele.addEventListener('mousedown',function(){
                     that.ele.style['background'] = 'red';
                     document.addEventListener('mouseup',function(){
-                      
-                      that.upFn(function(){
-                        that.ele.style['background'] = 'yellow';
-                      })
-                   })
-                });
-                console.log('ss',this);
+                      that.ele.style['background'] = 'yellow';
+                    });
+                })
                
             }
         }
