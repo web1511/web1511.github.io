@@ -105,7 +105,7 @@ class SlideLeft extends Component {
                                     item.url.map((ele) =>{
                                         return (
                                             <Menu.Item key={ele.type}>
-                                                <Link to={'/' + ele.type }>
+                                                <Link to={'/Main/' + ele.type }>
                                                     <span>{ele.t}</span>
                                                 </Link>
                                           </Menu.Item>
