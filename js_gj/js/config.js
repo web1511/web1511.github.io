@@ -218,7 +218,17 @@ var listObj = [
                 t:'es6的类' 
             }
         ]
+    },
+    {
+        title: 'nodejs',
+        url : [
+            {
+               type:'node_http',
+               t:'node_动态页面' 
+            }
+        ]
     }
+
 
 
 ];
