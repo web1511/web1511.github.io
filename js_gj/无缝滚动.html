@@ -25,27 +25,36 @@ img {
     width: 600px;
     height: 400px;
     border: 2px solid #000;
-    overflow: hidden;
+    overflow:hidden;
 }    
 #pics {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
+    width:600px;
     height: 400px;
-    z-index: 1;
+    position: relative;
 }
 #pics li{
+    position: absolute;
+    left: 0;
+    top:0;
     width: 600px;
     height: 400px;
-    overflow: hidden;
+   
 }
+
 #pics p {
     width: 600px;
     height: 400px;
+    color:#fff;
+    text-align: center;
     background: red;
+    margin: 0;
 }
-
+#pics li:nth-of-type(2n+1) p{
+    background: green;
+}
+#pics li:nth-of-type(2n+2) p{
+    background: blue;
+}
 .btn {
     position: absolute;
     top: 170px;
@@ -89,22 +98,13 @@ img {
 <div id="wrap">
     <ul id="pics">
         <li>
-            <p>第一张图片</p>
+            <p>第三张图片</p>
         </li>
         <li>
             <p>第二张图片</p>
         </li>
         <li>
-           <p>第三张图片</p>
-        </li>
-        <li>
-            <p>第四张图片</p>
-        </li>
-        <li>
-            <p>第五张图片</p>
-        </li>
-        <li>
-             <p>第六张图片</p>
+            <p>第一张图片</p>
         </li>
     </ul>
     <a href="javascript:;" class="btn prev"><</a>
@@ -113,54 +113,56 @@ img {
         <a class="active"></a>
         <a></a>
         <a></a>
-        <a></a>
-        <a></a>
     </nav>
 </div>
 <script src="js/mTween.js"></script>
 <script>
     /*
-        1. 改变的是ul 的left值 当运动到最后一张的图片的时候
-          ul的left 改为初始值 ，iNow重置
+        1. 改变的是ul 的子级li 全部定位，利用transition 做动画，注意的是transition 需要在transitionend 清楚掉之前的样式
+        
     */
     var oUl = document.querySelector('#pics');
     var prev = document.querySelector('.prev');
     var next = document.querySelector('.next');
     var aBtn = document.querySelectorAll('#navs a');
-    var lis = oUl.querySelectorAll('li');
-    var iNow = 0 ;
-    var w = 600 ;
+    var lis = oUl.children;
+    var iconNum = 0; //图标的索引
+    var iNow = lis.length - 1;
 
+    [...lis].forEach( item=> {
+        item.addEventListener('transitionend',end);
+    });
     next.addEventListener('click',function(){
-        iNow ++;
-        if( iNow == lis.length ) {
-            css(oUl,'left',0);
-            iNow = 0;
-        }
-        tab();
+        rightMove();
     });
     prev.addEventListener('click',function(){
-        iNow --;
-        if( iNow < 0 ) {
-            css(oUl,'left',0);
-            iNow = lis.length-1;
-        }
-        tab();
+        leftMove();
     });
 
-    function tab(){
-        mTween({
-            el: oUl ,
-            attr : {
-                left : - iNow * w
-            }
-        });
-        aBtn.forEach(function(item){
-            item.className = '';
-        });
-        aBtn[iNow%aBtn.length].className = 'active';
-    }
 
+    function leftMove() {
+        lis[iNow].style.transition = '.5s';
+        lis[iNow].style.left = '-100%';
+        iconNum --; 
+        for( var i=0;i<aBtn.length;i++ ) {
+            aBtn[i].classList.remove('active');
+        }
+        aBtn[iconNum%aBtn.length].classList.add('active');
+    }
+    function rightMove() {
+        lis[iNow].style.transition = '.5s';
+        lis[iNow].style.left = '100%';
+        
+        iconNum ++; 
+        for( var i=0;i<aBtn.length;i++ ) {
+            aBtn[i].classList.remove('active');
+        }
+        aBtn[iconNum%aBtn.length].classList.add('active');
+    }
+    function end() {
+        this.style.cssText="";
+        oUl.insertBefore(lis[iNow],lis[0]);
+    }
 </script>
 </body>
 </html>
