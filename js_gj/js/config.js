@@ -227,6 +227,19 @@ var listObj = [
                t:'node_动态页面' 
             }
         ]
+    },
+    {
+        title: '移动端',
+        url : [
+            {
+               type:'page_yd',
+               t:'摇一摇' 
+            } ,
+            {
+                type:'page_flex',
+                t:'flex布局与vw的使用' 
+             } 
+        ]
     }
 
 
@@ -296,4 +309,20 @@ function getQueryObject( url ) {
 }
 function getCssStyle( obj ) {
     return obj.currentStyle ? obj.currentStyle : document.defaultView.getComputedStyle(obj);
+}
+
+//缓存数据
+var store = {
+    save : function(name,value){
+      localStorage.setItem(name,JSON.stringify(value));
+    },
+    fetch:function(value){
+      return JSON.parse(localStorage.getItem(value)) || [];
+    },
+    remove : function(name){
+        localStorage.removeItem(name);
+    },
+    clear : function(){
+         localStorage.clear();
+    }
 }

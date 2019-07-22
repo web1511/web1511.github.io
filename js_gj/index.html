@@ -199,9 +199,19 @@
                     }
                     comUrl[this.now].style.background = bg;
                     var h = getQueryObject(this.getAttribute('_href')).type;
-                    iframe.src = this.getAttribute('_href');
+                    var isMoble = this.parentNode.previousSibling.innerHTML;
+                 
+                    if( isMoble.indexOf('移动端') > -1 ) {
+                        location.href = 'mobile.html';
+                        store.save('mobileUrl',this.getAttribute('alt'));
+                        location.hash = '';
+                    }else{
+                        iframe.src = this.getAttribute('_href');
+                        location.hash =  h;
+                    }
+                    
                     document.title = this.getAttribute('alt');
-                    location.hash =  h;
+                   
                 }
             }
            
@@ -222,6 +232,10 @@
 
         /**刷新自动跳转*/
         function autoUrl () {
+            var mobileUrl = store.fetch('mobileUrl');
+            if(  mobileUrl  ) {
+                store.remove('mobileUrl');
+            }
             var hash = location.hash.substr(1);
             for ( var i=0;i<comUrl.length;i++ ) {
                 var t =  getQueryObject(comUrl[i].getAttribute('_href')).type;

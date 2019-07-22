@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>摇一摇</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html,body{
+            max-width:414px;
+        }
+        .box{
+            position: absolute;
+            left: 50%;
+            top:50%;
+            margin:-6.6667vw 0 0 -6.6667vw;
+            width: 13.3333vw;
+            height: 13.3333vw;
+            background: red;
+
+        }
+        .msg p{
+            line-height: 2;
+            font-size:5.3333vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="msg">
+        <p>646464</p>
+        
+    </div>
+    <script>
+        var msg = document.querySelector('.msg');
+        throttle(shake(function(){
+            alert('用户摇了手机');
+        },200,true));
+        
+        function shake( fn ) {
+            const MAXRANGE = 60;// 当两次之间的晃动幅度超过这个数，我们就可以认定用户进行了摇一摇
+            const MINRANGE = 5;//当用户的停止了摇动手机，执行摇一摇要进行的操作
+            var lastX = 0 ;
+            var lastY = 0 ;
+            var lastZ = 0 ;
+            var isShake = false; //记录用户摇动了手机的标志
+            window.addEventListener('devicemotion',function(e){
+                var motion = e.acceleration ;
+                var x = motion.x;
+                var y = motion.y;
+                var z = motion.z;
+                
+                var range = Math.abs(x - lastX)  +  Math.abs(y - lastY) +  Math.abs(z - lastZ); 
+                
+                if( range >= MAXRANGE ) {
+                
+                    isShake = true;
+                }
+                if( range<= MINRANGE  && isShake ) {
+                    fn && fn();
+                    isShake = false;
+                }
+                lastX = x ;
+                lastY = y ;
+                lastZ = z ;
+            });
+        }
+
+        //节流
+
+        function throttle( fn,deply=200,isImmediately = false) {
+            var timer;
+            return function ( ...arg ) {
+                var _this = this;
+                if( timer ) {
+                    return;
+                }
+                if( isImmediately ) { // 立即执行
+                    fn &&fn.call(_this,...arg);
+                }
+                
+                timer = setTimeout(  function(){
+                    fn &&fn.call(_this,...arg);
+                    timer = 0;
+                },deply)
+            }
+        }
+    </script>
+</body>
+</html>
