@@ -238,7 +238,16 @@ var listObj = [
             {
                 type:'page_flex',
                 t:'flex布局与vw的使用' 
-             } 
+             } ,
+             {
+                type:'page_bsjz',
+                t:'上拉刷新与下拉加载' 
+             } ,
+
+             {
+                type:'page_picker',
+                t:'picker的使用' 
+             }
         ]
     }
 

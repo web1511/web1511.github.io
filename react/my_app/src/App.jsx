@@ -11,18 +11,24 @@ import Main from './components/Main.jsx';
 
 
 
+
 class App extends React.Component {
-  
+  state = {
+    
+  };
+
+  componentWillMount() {
+  }
   render() {
     return (
       <Router>
         <Switch>
-            {/* <Redirect from="/" to="/Main" exact/> */}
             <Route path="/Main" component={Main}
             ></Route>
             <Route path="/Login" component={Login}
             exact
             ></Route>
+           <Redirect  to="/Main/staff" />
         </Switch>
       </Router>
 

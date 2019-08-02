@@ -57,25 +57,24 @@ const listData = [
         ]
     }
 ];
-let rootSub=null;
-rootSub = listData.map(item => {
+let rootSub=null;                                                                                                                                            
+rootSub = listData.map(item => {                                                                               
     return item.tKey;
 });
 
-let firstOpen = getQueryObject(window.location.href).tKey;
 
 class SlideLeft extends Component {
     rootSubmenuKeys = [...rootSub];
     state = {
-        list : listData,
-        path: window.location.hash.split('/')[1].split('?')[0],
-        openKeys: [firstOpen ? firstOpen :'sub1']
+        list : [...listData],
+        path: '',
+        openKeys: ['sub1']
     }
 
     componentWillMount(){
        
-        this.activeSlide();
-        console.log( this.state.path )
+       this.activeSlide();
+       // console.log( this.state.path )
     }
     render() {
         let list = this.state.list;
@@ -104,8 +103,8 @@ class SlideLeft extends Component {
                                 {
                                     item.url.map((ele) =>{
                                         return (
-                                            <Menu.Item key={ele.type}>
-                                                <Link to={'/Main/' + ele.type }>
+                                            <Menu.Item key={'/main/' + ele.type}>
+                                                <Link to={'/main/' + ele.type }>
                                                     <span>{ele.t}</span>
                                                 </Link>
                                           </Menu.Item>

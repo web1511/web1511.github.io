@@ -1,4 +1,4 @@
-import React ,{Component}from 'react';
+import React ,{Component} from 'react';
 import { Route, Switch, Link } from "react-router-dom";
 
 import { Layout, Menu, Icon, Dropdown } from 'antd';
@@ -25,7 +25,38 @@ const logout = (
 
 class Main extends Component {
     state = {
-        collapsed: false
+        collapsed: false,
+        listData : [
+            {
+                title: 'E6的学习',
+                tKey: 'sub1' ,
+                url: [
+                        {
+                            type: 'allselect?tKey=sub1',
+                            t: '百度全选'
+                        },
+                        {
+                            type: 'staff?tKey=sub1',
+                            t: '员工列表'
+                        }
+                ]
+            },
+            {
+                title: 'DOM的学习',
+                tKey: 'sub2' ,
+                url: [
+                        {
+                            type: 'allselect2?tKey=sub2',
+                            t: '百度全选'
+        
+                        },
+                        {
+                            type: 'staff2?tKey=sub2',
+                            t: '员工列表'
+                        }
+                ]
+            }
+        ]
       };
     
       toggle = () => {
@@ -34,6 +65,7 @@ class Main extends Component {
         });
       };
     render() {
+        let { listData } = this.state;
         return (
             <Layout className="wrap">
                 <Header className="header">
@@ -72,7 +104,7 @@ class Main extends Component {
                         >
                             <Switch>
                                 <Route path="/Main/allselect" component={Allselect}></Route>
-                                <Route path="/Main/Staff" component={Staff}></Route>
+                                <Route path="/Main/staff" component={Staff}></Route>
                             </Switch>
                         </Content>
                     </Layout>

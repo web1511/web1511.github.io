@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>摇一摇</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html,body{
+            max-width:414px;
+        }
+        #wrap { /*需要有个固定的高度*/
+          width:100vw;
+          height:100vh;
+          overflow: hidden;
+          background: #fff;
+        }
+        #list {
+           position: relative;
+        }
+        #list li{
+            border-bottom: 1px solid #d2d2d2;
+            height:9.6vw;
+            line-height: 9.6vw;
+        }
+        .pullUp:after {
+            content:"正在加载更多内容";
+        }
+        .pullUpEnd:after {
+            content:"没有更多数据了";
+        }
+        .pullDown:before {
+            content:"正在刷新";
+            position: absolute;
+            top: -50px;
+        }
+        .pullDownEnd:before {
+            content:"刷新完毕";
+            position: absolute;
+            top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="list">
+           
+        </ul>
+    </div>
+    <script src="js/bscroll.js"></script>
+    <script>
+       {
+           let data =  [...(".".repeat(200))].map((item,index)=>`这是第${index}条数据`);
+           let page = 0;
+           let len = 60;
+           let wrap = $('#wrap');
+           let list = $('#list');
+           let render = () => {
+               let start = page * len;
+               let end = ( page + 1 ) * len ;
+               let nowData = data.filter( (item,index) => index>= start && index< end );
+               return nowData.map( item => `<li>${item}</li>` ).join('');
+           }
+
+           list.innerHTML += render();
+           
+
+           let bscroll = new BScroll(wrap,{
+              scrollbar: {
+                    fade: true,
+                    interactive: false
+              },
+              mouseWheel: {
+                speed: 20,
+                invert: false,
+                easeTime: 300
+              },
+              pullDownRefresh: {
+                    threshold: 50,
+                    stop: 50
+              },
+              pullUpLoad: {
+                threshold: -20
+              }
+           });
+           bscroll.on( 'beforeScrollStart' ,() => {
+               list.classList.remove('pullDownEnd');
+           });
+           bscroll.on('pullingDown',() => {
+               list.classList.add("pullDown");
+               setTimeout(()=>{
+                    list.classList.remove("pullDown");
+                    list.classList.add("pullDownEnd");
+                    list.innerHTML = `<li>这是刷新的新数据${Date.now()}</li>` +  list.innerHTML;
+                    bscroll.finishPullDown()
+                },1000);
+           });
+           bscroll.on( 'pullingUp',() => {
+               //console.log('上滑加载');
+               list.classList.add("pullUp");
+               page ++;
+               setTimeout(()=> {
+                   list.classList.remove("pullUp");
+                   list.innerHTML +=  render(); 
+                   bscroll.finishPullUp();
+                   
+                   if( ( page + 1 ) * len >= data.length ) {
+                       list.classList.add('pullUpEnd');
+                   }
+               },1000)
+           })
+           
+       }
+
+       function $( obj ) {
+           return document.querySelector( obj );
+       }
+    </script>
+</body>
+</html>
