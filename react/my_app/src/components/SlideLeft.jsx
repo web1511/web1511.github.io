@@ -36,23 +36,19 @@ const listData = [
                     t: '百度全选'
                 },
                 {
-                    type: 'Staff?tKey=sub1',
+                    type: 'staff?tKey=sub1',
                     t: '员工列表'
                 }
         ]
     },
     {
-        title: 'DOM的学习',
+        title: 'react的学习',
         tKey: 'sub2' ,
         url: [
                 {
-                    type: 'allselect2?tKey=sub2',
-                    t: '百度全选'
+                    type: 'rchildren',
+                    t: 'children的学习'
 
-                },
-                {
-                    type: 'Staff2?tKey=sub2',
-                    t: '员工列表'
                 }
         ]
     }

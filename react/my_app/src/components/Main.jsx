@@ -5,6 +5,7 @@ import { Layout, Menu, Icon, Dropdown } from 'antd';
 import SlideLeft from './SlideLeft.jsx';
 import Allselect from './Allselect.jsx';
 import Staff from './Staff.jsx';
+import Rchildren from './Rchildren.jsx';
 
 
 
@@ -105,6 +106,7 @@ class Main extends Component {
                             <Switch>
                                 <Route path="/Main/allselect" component={Allselect}></Route>
                                 <Route path="/Main/staff" component={Staff}></Route>
+                                <Route path="/Main/rchildren" component={Rchildren}></Route>
                             </Switch>
                         </Content>
                     </Layout>
